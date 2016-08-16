@@ -33,6 +33,7 @@ namespace StockVentas
         public int? idCliente = null;
         public bool formClosing = false;
         string articuloOld = string.Empty;
+        private int? codigoError = null;
 
         public enum FormState
         {
@@ -438,9 +439,7 @@ namespace StockVentas
                         this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
                         if (string.IsNullOrEmpty(PK))
                         {
-                            rowView.EndEdit();
-                            frmProgress progreso = new frmProgress(dsVentas, "frmVentas", "grabar");
-                            progreso.Show();
+                            Grabar();
                         }
                         else
                         {
@@ -456,6 +455,28 @@ namespace StockVentas
                         e.Cancel = true;
                         break;
                 }
+            }
+        }
+
+        private void Grabar()
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            BL.TransaccionesBLL.GrabarVentas(dsVentas, ref codigoError);
+            Cursor.Current = Cursors.WaitCursor;
+            switch (codigoError)
+            {
+                case null:
+                    break;
+                case 0:
+                    MessageBox.Show("Procedure or function cannot be found in database. No se grabaron los datos. Consulte al administrador del sistema.", "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case 1042:
+                    MessageBox.Show("Unable to connect to any of the specified MySQL hosts. No se grabaron los datos. Consulte al administrador del sistema.", "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                default:
+                    MessageBox.Show("Se produjo un error inesperado. No se grabaron los datos. Consulte al administrador del sistema."
+                                    , "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
             }
         }
 
@@ -569,7 +590,6 @@ namespace StockVentas
             }
         }
 
-
         public void CargarComboClientes()
         {
             DataSet dsClientes = BL.ClientesBLL.GetClientes(0);
@@ -590,13 +610,6 @@ namespace StockVentas
             cmbCliente.AutoCompleteCustomSource = clientesColection;
             cmbCliente.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cmbCliente.AutoCompleteSource = AutoCompleteSource.CustomSource;
-        }
-
-        private void Grabar()
-        {
-            rowView.EndEdit();
-            frmProgress progreso = new frmProgress(dsVentas, "frmVentas", "grabar");
-            progreso.Show();
         }
 
         private double CalcularTotal()

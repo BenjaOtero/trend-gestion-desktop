@@ -146,7 +146,7 @@ namespace StockVentas
 
         private void frmArticulosItems_FormClosing(object sender, FormClosingEventArgs e)
         {
-          /*  bindingSource1.EndEdit();
+            bindingSource1.EndEdit();
             if (tblArticulosItems.GetChanges() != null)
             {
                 DialogResult respuesta =
@@ -165,7 +165,7 @@ namespace StockVentas
                         e.Cancel = true;
                         break;
                 }
-            }*/
+            }
             bindingSource1.RemoveFilter();
         }
 

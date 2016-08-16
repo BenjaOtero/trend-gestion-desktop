@@ -422,7 +422,7 @@ namespace StockVentas
             {
                 if (MessageBox.Show("¿Confirma la grabación de datos?", "Trend Gestión",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
-                grabar();
+                Grabar();
             }
         }
 
@@ -450,7 +450,7 @@ namespace StockVentas
                 {
                     case DialogResult.Yes:
                         formClosing = true;
-                        grabar();
+                        Grabar();
                         break;
                     case DialogResult.No:
                         tblStockMovDetalle.RejectChanges();
@@ -462,7 +462,7 @@ namespace StockVentas
             }
         }
 
-        private void grabar()
+        private void Grabar()
         {
             Cursor.Current = Cursors.WaitCursor;
             rowView.EndEdit();
@@ -506,7 +506,6 @@ namespace StockVentas
                 dateTimePicker1.DataBindings.Add("Text", rowView, "FechaMSTK", false, DataSourceUpdateMode.OnPropertyChanged);
                 cmbOrigen.DataBindings.Add("SelectedValue", rowView, "OrigenMSTK", false, DataSourceUpdateMode.OnPropertyChanged);
                 cmbDestino.DataBindings.Add("SelectedValue", rowView, "DestinoMSTK", false, DataSourceUpdateMode.OnPropertyChanged);
-                //     cmbDestino.SelectedIndexChanged -= new EventHandler(validarMaestro);
                 cargarCombos();
                 foreach (DataRow row in tblStockMovDetalle.Rows)
                 {

@@ -487,6 +487,40 @@ namespace StockVentas
                                     , "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
+            ResetForm();
+        }
+
+        private void ResetForm()
+        {
+            if (string.IsNullOrEmpty(PK) && !formClosing)
+            {
+                Random rand = new Random();
+                int clave = rand.Next(1, 2000000000);
+                lblNro.Text = clave.ToString();
+                rowView = viewStockMov.AddNew();
+                rowView["IdMovMSTK"] = clave.ToString();
+                rowView["FechaMSTK"] = DateTime.Today;
+                rowView["CompensaMSTK"] = 0;
+                rowView.EndEdit();
+                dateTimePicker1.DataBindings.Clear();
+                cmbOrigen.DataBindings.Clear();
+                cmbDestino.DataBindings.Clear();
+                dateTimePicker1.DataBindings.Add("Text", rowView, "FechaMSTK", false, DataSourceUpdateMode.OnPropertyChanged);
+                cmbOrigen.DataBindings.Add("SelectedValue", rowView, "OrigenMSTK", false, DataSourceUpdateMode.OnPropertyChanged);
+                cmbDestino.DataBindings.Add("SelectedValue", rowView, "DestinoMSTK", false, DataSourceUpdateMode.OnPropertyChanged);
+                cmbDestino.SelectedIndexChanged -= new EventHandler(this.ValidarOrigenDestino);
+                cargarCombos();
+                cmbDestino.SelectedIndex = -1;
+                cmbOrigen.SelectedIndex = -1;
+                foreach (DataRow row in tblStockMovDetalle.Rows)
+                {
+                    row.Delete();
+                }
+                tblStockMovDetalle.AcceptChanges();
+                cmbDestino.Focus();
+            }
+            cmbOrigen.Focus();
+            if (!string.IsNullOrEmpty(PK)) Close();
         }
 
         private void frmProgress_FormClosed(object sender, FormClosedEventArgs e)

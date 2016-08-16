@@ -65,6 +65,7 @@ namespace StockVentas
 
         private void frmClientes_Load(object sender, EventArgs e)
         {
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.Location = new Point(50, 50);
             System.Drawing.Icon ico = Properties.Resources.icono_app;
             this.Icon = ico;

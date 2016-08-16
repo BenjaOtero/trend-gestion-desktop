@@ -12,3 +12,8 @@ C:\Trend\Gestion-cloud\trunk\Backup\bin\Debug\Backup.pdb
 C:\Trend\Gestion-cloud\trunk\Backup\obj\x86\Debug\Backup.exe
 C:\Trend\Gestion-cloud\trunk\Backup\obj\x86\Debug\Backup.pdb
 C:\Trend\Gestion-cloud\trunk\Backup\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Trend\Gestion-desktop\trunk\Backup\bin\Debug\Backup.exe
+C:\Trend\Gestion-desktop\trunk\Backup\bin\Debug\Backup.pdb
+C:\Trend\Gestion-desktop\trunk\Backup\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Trend\Gestion-desktop\trunk\Backup\obj\x86\Debug\Backup.exe
+C:\Trend\Gestion-desktop\trunk\Backup\obj\x86\Debug\Backup.pdb
