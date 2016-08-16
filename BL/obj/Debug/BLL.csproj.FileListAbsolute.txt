@@ -1,0 +1,99 @@
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\BL\bin\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\BL\bin\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\BL\bin\Debug\DAL.dll
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\BL\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\BL\bin\Debug\DAL.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\BL\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\BL\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\BL\obj\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\BL\obj\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\BL\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\BL\obj\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\BL\obj\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\BL\bin\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\BL\bin\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\BL\bin\Debug\DAL.dll
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\BL\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\BL\bin\Debug\DAL.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\BL\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware\BL\bin\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\NcSoftware\BL\bin\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware\BL\bin\Debug\DAL.dll
+N:\NcSoftware\01_C_sharp\NcSoftware\BL\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\NcSoftware\BL\bin\Debug\DAL.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware\BL\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware\BL\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\NcSoftware\BL\obj\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\NcSoftware\BL\obj\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\Karminna\BL\bin\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\Karminna\BL\bin\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\Karminna\BL\bin\Debug\DAL.dll
+N:\NcSoftware\01_C_sharp\Karminna\BL\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\Karminna\BL\bin\Debug\DAL.pdb
+N:\NcSoftware\01_C_sharp\Karminna\BL\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\Karminna\BL\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\Karminna\BL\obj\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\Karminna\BL\obj\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\Karminna Administracion\BL\bin\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\Karminna Administracion\BL\bin\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\Karminna Administracion\BL\bin\Debug\DAL.dll
+N:\NcSoftware\01_C_sharp\Karminna Administracion\BL\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\Karminna Administracion\BL\bin\Debug\DAL.pdb
+N:\NcSoftware\01_C_sharp\Karminna Administracion\BL\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\Karminna Administracion\BL\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\Karminna Administracion\BL\obj\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\Karminna Administracion\BL\obj\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\BL\bin\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\BL\bin\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\BL\bin\Debug\DAL.dll
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\BL\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\BL\bin\Debug\DAL.pdb
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\BL\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\BL\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\BL\obj\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\BL\obj\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\Karminna Admin\BL\bin\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\Karminna Admin\BL\bin\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\Karminna Admin\BL\bin\Debug\DAL.dll
+N:\NcSoftware\01_C_sharp\Karminna Admin\BL\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\Karminna Admin\BL\bin\Debug\DAL.pdb
+N:\NcSoftware\01_C_sharp\Karminna Admin\BL\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\Karminna Admin\BL\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\Karminna Admin\BL\obj\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\Karminna Admin\BL\obj\Debug\BL.pdb
+C:\Users\Benja\Desktop\Karminna Admin\BL\bin\Debug\BL.dll
+C:\Users\Benja\Desktop\Karminna Admin\BL\bin\Debug\BL.pdb
+C:\Users\Benja\Desktop\Karminna Admin\BL\bin\Debug\DAL.dll
+C:\Users\Benja\Desktop\Karminna Admin\BL\bin\Debug\Entities.dll
+C:\Users\Benja\Desktop\Karminna Admin\BL\bin\Debug\DAL.pdb
+C:\Users\Benja\Desktop\Karminna Admin\BL\bin\Debug\Entities.pdb
+C:\Users\Benja\Desktop\Karminna Admin\BL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Benja\Desktop\Karminna Admin\BL\obj\Debug\BL.dll
+C:\Users\Benja\Desktop\Karminna Admin\BL\obj\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin\BL\bin\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\karminna_admin\BL\bin\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin\BL\bin\Debug\DAL.dll
+N:\NcSoftware\01_C_sharp\karminna_admin\BL\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\karminna_admin\BL\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin\BL\obj\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\karminna_admin\BL\obj\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin\BL\bin\Debug\DAL.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin\BL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\BL\bin\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\BL\bin\Debug\BL.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\BL\bin\Debug\DAL.dll
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\BL\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\BL\bin\Debug\DAL.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\BL\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\BL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\BL\obj\Debug\BL.dll
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\BL\obj\Debug\BL.pdb
+C:\Trend\Gestion-cloud\trunk\BL\bin\Debug\BL.dll
+C:\Trend\Gestion-cloud\trunk\BL\bin\Debug\BL.pdb
+C:\Trend\Gestion-cloud\trunk\BL\bin\Debug\DAL.dll
+C:\Trend\Gestion-cloud\trunk\BL\bin\Debug\Entities.dll
+C:\Trend\Gestion-cloud\trunk\BL\bin\Debug\DAL.pdb
+C:\Trend\Gestion-cloud\trunk\BL\bin\Debug\Entities.pdb
+C:\Trend\Gestion-cloud\trunk\BL\obj\Debug\BL.dll
+C:\Trend\Gestion-cloud\trunk\BL\obj\Debug\BL.pdb
+C:\Trend\Gestion-cloud\trunk\BL\obj\Debug\ResolveAssemblyReference.cache

@@ -1,0 +1,101 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.IO;
+using System.Windows.Forms;
+using DAL;
+using Entities;
+
+namespace BL
+{
+    public class TransaccionesBLL
+    {
+        public static void GrabarArticulosStock(DataSet dtArticulos, DataSet dtStock)
+        {
+            MySqlTransaction tr = null;
+            try
+            {
+                MySqlConnection SqlConnection1 = DALBase.GetConnection();                
+                SqlConnection1.Open();
+                tr = SqlConnection1.BeginTransaction();
+                DAL.ArticulosDAL.GrabarDB(dtArticulos, SqlConnection1, tr);
+                DAL.StockDAL.GrabarDB(dtStock, SqlConnection1, tr);
+                string strFilePath = Application.StartupPath + "\\Datasets_xml\\";
+                dtArticulos.Tables["Articulos"].WriteXml(strFilePath + "Articulos.xml", XmlWriteMode.WriteSchema);
+                dtStock.Tables["Stock"].WriteXml(strFilePath + "Stock.xml", XmlWriteMode.WriteSchema);
+                tr.Commit();
+                SqlConnection1.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString(), "NcSoft", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dtArticulos.RejectChanges();
+                dtStock.RejectChanges();
+                tr.Rollback();
+            }
+        }
+
+        public static void GrabarStockMovimientos(DataSet dtStockMov, DataRowView drvw, string origen, ref int? codigoError)
+        {
+            MySqlTransaction tr = null;
+            try
+            {
+                MySqlConnection SqlConnection1 = DALBase.GetConnection();
+                SqlConnection1.Open();
+                tr = SqlConnection1.BeginTransaction();
+                DAL.StockMovDAL.GrabarDB(dtStockMov, drvw, SqlConnection1, tr);
+                DAL.StockMovDetalleDAL.GrabarDB(dtStockMov, SqlConnection1, tr);
+                tr.Commit();
+                SqlConnection1.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1042) //no se pudo abrir la conexion por falta de internet
+                {
+                    dtStockMov.RejectChanges();
+                    codigoError = 1042;
+                }
+                else
+                {
+                    dtStockMov.RejectChanges();
+                    if (tr != null)
+                    {
+                        tr.Rollback();
+                    }
+                    codigoError = ex.Number;
+                }
+            }
+        }
+
+        public static void GrabarVentas(DataSet dtVentas, DataSet dtStock, DataRowView drvw)
+        {
+            MySqlTransaction tr = null;
+            try
+            {
+                MySqlConnection SqlConnection1 = DALBase.GetConnection();
+                SqlConnection1.Open();
+                tr = SqlConnection1.BeginTransaction();
+                DAL.VentasDAL.GrabarDB(dtVentas, drvw, SqlConnection1, tr);
+                DAL.VentasDetalleDAL.GrabarDB(dtVentas, SqlConnection1, tr);
+                DAL.StockDAL.GrabarDB(dtStock, SqlConnection1, tr);
+           //     string strFilePath = Application.StartupPath + "\\Datasets_xml\\";
+                string strFilePath = Application.StartupPath + "\\Datasets_xml\\";
+                dtStock.Tables["Stock"].WriteXml(strFilePath + "Stock.xml", XmlWriteMode.WriteSchema);
+                dtVentas.WriteXml(strFilePath + "Ventas.xml", XmlWriteMode.WriteSchema);
+                tr.Commit();
+                SqlConnection1.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString(), "NcSoft", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dtVentas.RejectChanges();
+                dtStock.RejectChanges();
+                tr.Rollback();
+            }
+        }
+    }
+}
