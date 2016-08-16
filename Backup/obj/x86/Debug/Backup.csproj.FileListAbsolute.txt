@@ -1,0 +1,14 @@
+N:\NcSoftware\01_C_sharp\karminna_admin\Backup\bin\Debug\Backup.exe
+N:\NcSoftware\01_C_sharp\karminna_admin\Backup\bin\Debug\Backup.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin\Backup\obj\x86\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\karminna_admin\Backup\obj\x86\Debug\Backup.exe
+N:\NcSoftware\01_C_sharp\karminna_admin\Backup\obj\x86\Debug\Backup.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\Backup\bin\Debug\Backup.exe
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\Backup\bin\Debug\Backup.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\Backup\obj\x86\Debug\Backup.exe
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\Backup\obj\x86\Debug\Backup.pdb
+C:\Trend\Gestion-cloud\trunk\Backup\bin\Debug\Backup.exe
+C:\Trend\Gestion-cloud\trunk\Backup\bin\Debug\Backup.pdb
+C:\Trend\Gestion-cloud\trunk\Backup\obj\x86\Debug\Backup.exe
+C:\Trend\Gestion-cloud\trunk\Backup\obj\x86\Debug\Backup.pdb
+C:\Trend\Gestion-cloud\trunk\Backup\obj\x86\Debug\ResolveAssemblyReference.cache
