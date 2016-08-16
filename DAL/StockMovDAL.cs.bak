@@ -1,0 +1,163 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Data;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.IO;
+using Entities;
+
+namespace DAL
+{
+    public class StockMovDAL
+    {
+        private static MySqlConnection SqlConnection1;
+        private static MySqlDataAdapter SqlDataAdapter1;
+        private static MySqlCommand SqlSelectCommand1;
+        private static MySqlCommand SqlInsertCommand1;
+        private static MySqlCommand SqlUpdateCommand1;
+        private static MySqlCommand SqlDeleteCommand1;
+        public static DataSet dt;
+        
+
+        public static DataSet CrearDataset()
+        {
+            MySqlDataAdapter da = AdaptadorSELECT();
+            dt = new DataSet();
+            da.Fill(dt);
+            return dt;
+        }
+
+        public static DataSet CrearDatasetCons(string fechaDesde, string fechaHasta, int idLocal, string tipoMov, string movimiento)
+        {
+            MySqlDataAdapter da = AdaptadorSelectCons(fechaDesde, fechaHasta, idLocal, tipoMov, movimiento);
+            dt = new DataSet();
+            da.Fill(dt);
+            return dt;
+        }
+
+        public static void InsertarDT(DataTable tabla, StockMov entidad)
+        {
+            DataRowCollection cfilas = tabla.Rows;
+            DataRow nuevaFila;
+            try
+            {
+                nuevaFila = tabla.NewRow();
+                nuevaFila[0] = entidad.IdMovM;
+                nuevaFila[1] = entidad.Fecha;
+                nuevaFila[2] = entidad.Origen;
+                nuevaFila[3] = entidad.Destino;
+                cfilas.Add(nuevaFila);
+            }
+            catch (ConstraintException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public static void EditarDT(DataRowView vistaFilaActual, StockMov entidad)
+        {
+            vistaFilaActual.BeginEdit();
+            vistaFilaActual["FechaMSTK"] = entidad.Fecha.ToString();
+            vistaFilaActual["OrigenMSTK"] = entidad.Origen.ToString();
+            vistaFilaActual["DestinoMSTK"] = entidad.Destino.ToString();
+            vistaFilaActual.EndEdit();
+        }
+
+        public static void EditarDT(string idMov, DataTable tbl, StockMov entidad, DataSet dt)
+        {
+            DataRow[] foundRows;
+            foundRows = dt.Tables["StockMov"].Select("IdMovSTK = " + idMov);
+            DataRow filaActual = foundRows[0];
+            filaActual.BeginEdit();
+            filaActual["FechaMSTK"] = entidad.Fecha.ToString();
+            filaActual["OrigenMSTK"] = entidad.Origen.ToString();
+            filaActual["DestinoMSTK"] = entidad.Destino.ToString();
+            filaActual.EndEdit();
+        }
+
+        public static void BorrarDT(DataGridView gvwDatos, string origen, DataSet dt)
+        {
+            if (MessageBox.Show("¿Desea borrar este registro?", "Buscar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (origen != "StockMov")
+                {
+                    var registro = ((DataRowView)gvwDatos.CurrentRow.DataBoundItem)["IdMovSTK"].ToString();
+                    DataRow[] foundRows;
+                    foundRows = dt.Tables["StockMov"].Select("IdMovSTK = " + registro);
+                    foundRows[0].Delete();
+                }
+                DataRowView vistaFilaActual = (DataRowView)gvwDatos.CurrentRow.DataBoundItem;
+                vistaFilaActual.Row.Delete();
+            }
+        }
+
+        public static void GrabarDB(DataSet dt, DataRowView drvw, MySqlConnection conn, MySqlTransaction tr)
+        {
+            MySqlDataAdapter da = AdaptadorABM(dt, drvw, conn, tr);
+            da.Update(dt, "StockMov");
+        }
+
+        private static MySqlDataAdapter AdaptadorSELECT()
+        {
+            SqlConnection1 = DALBase.GetConnection();
+            SqlDataAdapter1 = new MySqlDataAdapter();
+            SqlSelectCommand1 = new MySqlCommand("StockMov_Listar", SqlConnection1);
+            SqlDataAdapter1.SelectCommand = SqlSelectCommand1;
+            SqlSelectCommand1.CommandType = CommandType.StoredProcedure;
+            return SqlDataAdapter1;
+        }
+
+        private static MySqlDataAdapter AdaptadorSelectCons(string fechaDesde, string fechaHasta, int idLocal, string tipoMov, string movimiento)
+        {
+            SqlConnection1 = DALBase.GetConnection();
+            SqlDataAdapter1 = new MySqlDataAdapter();
+            SqlSelectCommand1 = new MySqlCommand("StockMov_Cons", SqlConnection1);
+            SqlDataAdapter1.SelectCommand = SqlSelectCommand1;
+            SqlSelectCommand1.Parameters.AddWithValue("p_fecha_desde", fechaDesde);
+            SqlSelectCommand1.Parameters.AddWithValue("p_fecha_hasta", fechaHasta);
+            SqlSelectCommand1.Parameters.AddWithValue("p_id_local", idLocal);
+            SqlSelectCommand1.Parameters.AddWithValue("p_tipo_mov", tipoMov);
+            SqlSelectCommand1.Parameters.AddWithValue("p_movimiento", movimiento);
+            SqlSelectCommand1.CommandType = CommandType.StoredProcedure;
+            return SqlDataAdapter1;
+        }
+
+        private static MySqlDataAdapter AdaptadorABM(DataSet dt, DataRowView drvw, MySqlConnection SqlConnection1, MySqlTransaction tr)
+        {
+            SqlDataAdapter1 = new MySqlDataAdapter();
+            SqlInsertCommand1 = new MySqlCommand("StockMov_Insertar", SqlConnection1);
+            SqlUpdateCommand1 = new MySqlCommand("StockMov_Actualizar", SqlConnection1);
+            SqlDeleteCommand1 = new MySqlCommand("StockMov_Borrar", SqlConnection1);
+            SqlInsertCommand1.Transaction = tr;
+            SqlUpdateCommand1.Transaction = tr;
+            SqlDeleteCommand1.Transaction = tr;
+            SqlDataAdapter1.DeleteCommand = SqlDeleteCommand1;
+            SqlDataAdapter1.InsertCommand = SqlInsertCommand1;
+            SqlDataAdapter1.UpdateCommand = SqlUpdateCommand1;
+
+       //     SqlInsertCommand1.Parameters.Add("p_id", MySqlDbType.Int32, 11, "IdMovMSTK"); Esta otra forma también funciona
+            SqlInsertCommand1.Parameters.AddWithValue("p_id", drvw["IdMovMSTK"]);
+            SqlInsertCommand1.Parameters.AddWithValue("p_fecha", drvw["FechaMSTK"]);
+            SqlInsertCommand1.Parameters.AddWithValue("p_origen", drvw["OrigenMSTK"]);
+            SqlInsertCommand1.Parameters.AddWithValue("p_destino", drvw["DestinoMSTK"]);
+            SqlInsertCommand1.Parameters.AddWithValue("p_compensa", drvw["CompensaMSTK"]);
+            SqlInsertCommand1.CommandType = CommandType.StoredProcedure;
+
+            SqlUpdateCommand1.Parameters.AddWithValue("p_id", drvw["IdMovMSTK"]);
+            SqlUpdateCommand1.Parameters.AddWithValue("p_fecha", drvw["FechaMSTK"]);
+            SqlUpdateCommand1.Parameters.AddWithValue("p_origen", drvw["OrigenMSTK"]);
+            SqlUpdateCommand1.Parameters.AddWithValue("p_destino", drvw["DestinoMSTK"]);
+            SqlUpdateCommand1.Parameters.AddWithValue("p_compensa", drvw["CompensaMSTK"]);
+            SqlUpdateCommand1.CommandType = CommandType.StoredProcedure;
+
+            SqlDeleteCommand1.Parameters.Add("p_id", MySqlDbType.Int32, 11, "IdMovMSTK");
+            SqlDeleteCommand1.CommandType = CommandType.StoredProcedure;
+            return SqlDataAdapter1;
+        }
+
+    }
+
+}

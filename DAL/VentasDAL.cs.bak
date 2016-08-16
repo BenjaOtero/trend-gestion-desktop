@@ -1,0 +1,189 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Data;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.IO;
+using Entities;
+
+namespace DAL
+{
+    public class VentasDAL
+    {
+        private static MySqlConnection SqlConnection1;
+        private static MySqlDataAdapter SqlDataAdapter1;
+        private static MySqlCommand SqlSelectCommand1;
+        private static MySqlCommand SqlInsertCommand1;
+        private static MySqlCommand SqlUpdateCommand1;
+        private static MySqlCommand SqlDeleteCommand1;
+        public static DataSet dt;
+
+
+        public static DataSet CrearDataset()
+        {
+            MySqlDataAdapter da = AdaptadorSELECT();
+            dt = new DataSet();
+            da.Fill(dt);
+            return dt;
+        }
+
+        public static DataSet CrearDatasetArqueo(string fechaDesde, string fechaHasta, int pc)
+        {
+            MySqlDataAdapter da = AdaptadorSelectArqueo(fechaDesde, fechaHasta, pc);
+            dt = new DataSet();
+            da.Fill(dt);
+            return dt;
+        }
+
+        public static DataSet CrearDatasetVentasPesos(int forma, string desde, string hasta, string locales)
+        {
+            MySqlDataAdapter da = AdaptadorVentasPesos(forma, desde, hasta, locales);
+            dt = new DataSet();
+            da.Fill(dt);
+            return dt;
+        }
+
+        public static DataSet CrearDatasetVentasDetalle(int forma, string desde, string hasta, string locales, int opcion, string parametros)
+        {
+            MySqlDataAdapter da = AdaptadorVentasDetalle(forma, desde, hasta, locales, opcion, parametros);
+            dt = new DataSet();
+            da.Fill(dt);
+            return dt;
+        }
+
+        public static void InsertarDT(DataTable tabla, Ventas entidad)
+        {
+            DataRowCollection cfilas = tabla.Rows;
+            DataRow nuevaFila;
+            try
+            {
+                nuevaFila = tabla.NewRow();
+                nuevaFila[0] = entidad.IdVenta;
+                nuevaFila[1] = entidad.IdPc;
+                nuevaFila[2] = entidad.Fecha;
+                nuevaFila[3] = entidad.IdCliente;
+                cfilas.Add(nuevaFila);
+            }
+            catch (ConstraintException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public static void EditarDT(DataRowView vistaFilaActual, Ventas entidad)
+        {
+            vistaFilaActual.BeginEdit();
+            vistaFilaActual["IdPCVEN"] = entidad.IdPc.ToString();
+            vistaFilaActual["FechaMSTK"] = entidad.Fecha.ToString();
+            vistaFilaActual["IdClienteVEN"] = entidad.IdCliente.ToString();
+            vistaFilaActual.EndEdit();
+        }
+
+        public static void EditarDT(string idVenta, DataTable tbl, Ventas entidad, DataSet dt)
+        {
+            DataRow[] foundRows;
+            foundRows = dt.Tables["Ventas"].Select("IdVentaVEN = " + idVenta);
+            DataRow filaActual = foundRows[0];
+            filaActual.BeginEdit();
+            filaActual["IdPCVEN"] = entidad.IdPc.ToString();
+            filaActual["FechaMSTK"] = entidad.Fecha.ToString();
+            filaActual["IdClienteVEN"] = entidad.IdCliente.ToString();
+            filaActual.EndEdit();
+        }
+
+        public static void GrabarDB(DataSet dt, DataRowView drvw, MySqlConnection conn, MySqlTransaction tr)
+        {
+            MySqlDataAdapter da = AdaptadorABM(dt, drvw, conn, tr);
+            da.Update(dt, "Ventas");
+        }
+
+        private static MySqlDataAdapter AdaptadorSELECT()
+        {
+            SqlConnection1 = DALBase.GetConnection();
+            SqlDataAdapter1 = new MySqlDataAdapter();
+            SqlSelectCommand1 = new MySqlCommand("Ventas_Listar", SqlConnection1);
+            SqlDataAdapter1.SelectCommand = SqlSelectCommand1;
+            SqlSelectCommand1.CommandType = CommandType.StoredProcedure;
+            return SqlDataAdapter1;
+        }
+
+        private static MySqlDataAdapter AdaptadorSelectArqueo(string fechaDesde, string fechaHasta, int pc)
+        {
+            SqlConnection1 = DALBase.GetConnection();
+            SqlDataAdapter1 = new MySqlDataAdapter();
+            SqlSelectCommand1 = new MySqlCommand("Ventas_Arqueo", SqlConnection1);
+            SqlDataAdapter1.SelectCommand = SqlSelectCommand1;
+            SqlSelectCommand1.Parameters.AddWithValue("p_fecha_desde", fechaDesde);
+            SqlSelectCommand1.Parameters.AddWithValue("p_fecha_hasta", fechaHasta);
+            SqlSelectCommand1.Parameters.AddWithValue("p_pc", pc);
+            SqlSelectCommand1.CommandType = CommandType.StoredProcedure;
+            return SqlDataAdapter1;
+        }
+
+        private static MySqlDataAdapter AdaptadorVentasPesos(int forma, string desde, string hasta, string locales)
+        {
+            SqlConnection1 = DALBase.GetConnection();
+            SqlDataAdapter1 = new MySqlDataAdapter();
+            SqlSelectCommand1 = new MySqlCommand("VentasPesosCons_Listar", SqlConnection1);
+            SqlDataAdapter1.SelectCommand = SqlSelectCommand1;
+            SqlSelectCommand1.Parameters.AddWithValue("p_forma", forma);
+            SqlSelectCommand1.Parameters.AddWithValue("p_locales", locales);
+            SqlSelectCommand1.Parameters.AddWithValue("p_fechaDesde", desde);
+            SqlSelectCommand1.Parameters.AddWithValue("p_fechaHasta", hasta);
+            SqlSelectCommand1.CommandType = CommandType.StoredProcedure;
+            return SqlDataAdapter1;
+        }
+
+        private static MySqlDataAdapter AdaptadorVentasDetalle(int forma, string desde, string hasta, string locales, int opcion, string parametros)
+        {
+            SqlConnection1 = DALBase.GetConnection();
+            SqlDataAdapter1 = new MySqlDataAdapter();
+            SqlSelectCommand1 = new MySqlCommand("VentasDetalleCons_Listar", SqlConnection1);
+            SqlDataAdapter1.SelectCommand = SqlSelectCommand1;
+            SqlSelectCommand1.Parameters.AddWithValue("p_forma", forma);
+            SqlSelectCommand1.Parameters.AddWithValue("p_locales", locales);
+            SqlSelectCommand1.Parameters.AddWithValue("p_fechaDesde", desde);
+            SqlSelectCommand1.Parameters.AddWithValue("p_fechaHasta", hasta);
+            SqlSelectCommand1.Parameters.AddWithValue("p_opcion", opcion);
+            SqlSelectCommand1.Parameters.AddWithValue("p_parametros", parametros);
+            SqlSelectCommand1.CommandType = CommandType.StoredProcedure;
+            return SqlDataAdapter1;
+        }
+
+        private static MySqlDataAdapter AdaptadorABM(DataSet dt, DataRowView drvw, MySqlConnection SqlConnection1, MySqlTransaction tr)
+        {
+            SqlDataAdapter1 = new MySqlDataAdapter();
+            SqlInsertCommand1 = new MySqlCommand("Ventas_Insertar", SqlConnection1);
+            SqlUpdateCommand1 = new MySqlCommand("Ventas_Actualizar", SqlConnection1);
+            SqlDeleteCommand1 = new MySqlCommand("Ventas_Borrar", SqlConnection1);
+            SqlInsertCommand1.Transaction = tr;
+            SqlUpdateCommand1.Transaction = tr;
+            SqlDeleteCommand1.Transaction = tr;
+            SqlDataAdapter1.DeleteCommand = SqlDeleteCommand1;
+            SqlDataAdapter1.InsertCommand = SqlInsertCommand1;
+            SqlDataAdapter1.UpdateCommand = SqlUpdateCommand1;
+
+            //     SqlInsertCommand1.Parameters.Add("p_id", MySqlDbType.Int32, 11, "IdMovMSTK"); Esta otra forma también funciona
+            SqlInsertCommand1.Parameters.AddWithValue("p_id", drvw["IdVentaVEN"]);
+            SqlInsertCommand1.Parameters.AddWithValue("p_id_pc", drvw["IdPCVEN"]);
+            SqlInsertCommand1.Parameters.AddWithValue("p_fecha", drvw["FechaVEN"]);
+            SqlInsertCommand1.Parameters.AddWithValue("p_cliente", drvw["IdClienteVEN"]);
+            SqlInsertCommand1.CommandType = CommandType.StoredProcedure;
+
+            SqlUpdateCommand1.Parameters.AddWithValue("p_id", drvw["IdVentaVEN"]);
+            SqlUpdateCommand1.Parameters.AddWithValue("p_id_pc", drvw["IdPCVEN"]);
+            SqlUpdateCommand1.Parameters.AddWithValue("p_fecha", drvw["FechaVEN"]);
+            SqlUpdateCommand1.Parameters.AddWithValue("p_cliente", drvw["IdClienteVEN"]);
+            SqlUpdateCommand1.CommandType = CommandType.StoredProcedure;
+
+            SqlDeleteCommand1.Parameters.Add("p_id", MySqlDbType.Int32, 11, "IdVentaVEN");
+            SqlDeleteCommand1.CommandType = CommandType.StoredProcedure;
+            return SqlDataAdapter1;
+        }
+
+    }
+
+}
