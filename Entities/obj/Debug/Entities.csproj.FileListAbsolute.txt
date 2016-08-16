@@ -1,0 +1,71 @@
+N:\NcSoftware\01_C_sharp\NcSoftware 3 Capas\NcSoftware\Entities\bin\Debug\Entities.dll.config
+N:\NcSoftware\01_C_sharp\NcSoftware 3 Capas\NcSoftware\Entities\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\NcSoftware 3 Capas\NcSoftware\Entities\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware 3 Capas\NcSoftware\Entities\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\NcSoftware 3 Capas\NcSoftware\Entities\obj\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\NcSoftware 3 Capas\NcSoftware\Entities\obj\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\Entities\bin\Debug\Entities.dll.config
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\Entities\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\Entities\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\Entities\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\Entities\obj\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\NcSoftware\Entities\obj\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\Entities\bin\Debug\Entities.dll.config
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\Entities\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\Entities\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\Entities\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\Entities\obj\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\NcSoftware N Capas\Entities\obj\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware\Entities\bin\Debug\Entities.dll.config
+N:\NcSoftware\01_C_sharp\NcSoftware\Entities\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\NcSoftware\Entities\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\NcSoftware\Entities\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\NcSoftware\Entities\obj\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\NcSoftware\Entities\obj\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\Karminna\Entities\bin\Debug\Entities.dll.config
+N:\NcSoftware\01_C_sharp\Karminna\Entities\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\Karminna\Entities\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\Karminna\Entities\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\Karminna\Entities\obj\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\Karminna\Entities\obj\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\Karminna Administracion\Entities\bin\Debug\Entities.dll.config
+N:\NcSoftware\01_C_sharp\Karminna Administracion\Entities\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\Karminna Administracion\Entities\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\Karminna Administracion\Entities\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\Karminna Administracion\Entities\obj\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\Karminna Administracion\Entities\obj\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\Entities\bin\Debug\Entities.dll.config
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\Entities\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\Entities\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\Entities\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\Entities\obj\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\Karminna Administracion punto\Entities\obj\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\Karminna Admin\Entities\bin\Debug\Entities.dll.config
+N:\NcSoftware\01_C_sharp\Karminna Admin\Entities\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\Karminna Admin\Entities\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\Karminna Admin\Entities\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\Karminna Admin\Entities\obj\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\Karminna Admin\Entities\obj\Debug\Entities.pdb
+C:\Users\Benja\Desktop\Karminna Admin\Entities\bin\Debug\Entities.dll.config
+C:\Users\Benja\Desktop\Karminna Admin\Entities\bin\Debug\Entities.dll
+C:\Users\Benja\Desktop\Karminna Admin\Entities\bin\Debug\Entities.pdb
+C:\Users\Benja\Desktop\Karminna Admin\Entities\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Benja\Desktop\Karminna Admin\Entities\obj\Debug\Entities.dll
+C:\Users\Benja\Desktop\Karminna Admin\Entities\obj\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin\Entities\bin\Debug\Entities.dll.config
+N:\NcSoftware\01_C_sharp\karminna_admin\Entities\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\karminna_admin\Entities\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin\Entities\obj\Debug\ResolveAssemblyReference.cache
+N:\NcSoftware\01_C_sharp\karminna_admin\Entities\obj\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\karminna_admin\Entities\obj\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\Entities\bin\Debug\Entities.dll.config
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\Entities\bin\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\Entities\bin\Debug\Entities.pdb
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\Entities\obj\Debug\Entities.dll
+N:\NcSoftware\01_C_sharp\karminna_admin_con_generos\Entities\obj\Debug\Entities.pdb
+C:\Trend\Gestion-cloud\trunk\Entities\bin\Debug\Entities.dll.config
+C:\Trend\Gestion-cloud\trunk\Entities\bin\Debug\Entities.dll
+C:\Trend\Gestion-cloud\trunk\Entities\bin\Debug\Entities.pdb
+C:\Trend\Gestion-cloud\trunk\Entities\obj\Debug\Entities.dll
+C:\Trend\Gestion-cloud\trunk\Entities\obj\Debug\Entities.pdb
+C:\Trend\Gestion-cloud\trunk\Entities\obj\Debug\ResolveAssemblyReference.cache
