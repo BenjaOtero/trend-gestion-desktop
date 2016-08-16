@@ -1,0 +1,64 @@
+	en trend gestion
+-al instalar o iniciar por primera vez, upload locales.xml y pcs.xml al servidor web
+-siempre que se actualicen o inserten datos en las tablas locales y pcs, upload locales.xml y pcs.xml al servidor web
+-al importar movimientos de pos_desktop consultar si el IdLocal en la tabla exportar_fondo_caja existe en la tabla locales
+	en ncsoftwa_re. Si no existe insertar el local.
+
+	en pos
+  al iniciar por primera vez:
+-descargar locales.xml y pcs.xml del servidor web ->
+-solicitar mediante un listbox el local asignado al punto de venta ->
+-insertar locales.xml en la tabla locales en pos_desktop
+-insertar un nuevo registro en la tabla pc en pos_desktop resultante de la mayor idPc + 1 de pcs.xml (resolver nro de caja)
+-al exportar movimientos incluir nro de local en la tabla exportar_fondo_caja
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

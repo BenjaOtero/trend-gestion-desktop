@@ -1,0 +1,31 @@
+http://support.microsoft.com/kb/302084/es
+http://support.microsoft.com/kb/302084/es
+
+http://blogs.msdn.com/b/andreww/archive/2008/07/25/creating-a-pivottable-programmatically.aspx
+
+conexion ODBC
+http://dev.mysql.com/doc/refman/5.0/fr/odbc-net-op-c-sharp-cp.html
+
+http://www.techrepublic.com/article/using-odbc-within-a-net-application/#.
+
+Microsoft.Data.Odbc.dll
+
+
+conexion ODBC Excel VBA
+http://forums.codeguru.com/showthread.php?331453-Using-ODBC-in-VBA-%28Excel%29
+http://support.microsoft.com/default.aspx?scid=kb;en-us;124218
+
+conexion ODBC Excel VBA (RECUPERA DATOS)
+http://stackoverflow.com/questions/14575422/open-connection-mysql-vba-excel-2007
+
+
+ODBC PROVIDER
+http://msdn.microsoft.com/en-us/library/windows/desktop/ms675326%28v=vs.85%29.aspx
+
+
+Crear archivo .dsn
+http://www.lawebdelprogramador.com/foros/ODBC/653885-Ayuda_UrgenteComo_crear_un_archivo_.dsn.html
+
+
+Convertir macro VBA a c#
+http://blogs.msdn.com/b/csharpfaq/archive/2010/09/28/converting-a-vba-macro-to-c-4-0.aspx?Redirected=true

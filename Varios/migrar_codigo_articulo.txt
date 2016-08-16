@@ -1,0 +1,30 @@
+-backup db ncsoftwa_re cyberneticos
+-copiar los datos de db ncsoftwa_re cyberneticos a ncsoftwa_re localhost 
+-actualizar los codigos de articulos al nuevo formato en todas las tablas en ncsoftwa_re localhost (ejecutar 
+	el metodo private void button1_Click(object sender, EventArgs e) del frmPruebas
+-actualizar tabla articulos set idGeneroART = 1 (MUJER)
+-vaciar db ncsoftwa_re cyberneticos (borrar tablas, views, stored procedures, etc)
+-backup db ncsoftwa_re localhost
+-restaurar ncsoftwa_re localhost (tablas, views, stored procedures, etc) en db ncsoftwa_re cyberneticos
+
+
+-----------------------------------------------------------------------
+
+ok	-restaurar ncsoftwa_re_beta (ver consultas pedido y Pedido_cons)
+ok	-backup db ncsoftwa_re cyberneticos
+ok	-borrar datos ncsoftwa_re_beta (excepto alicuotasiva, `condicioniva`, `razonsocial`)
+ok	-backup datos only de ncsoftwa_re cyberneticos y destildar use database stament
+ok	-Backup ncsoftwa_re_beta solo triggers
+ok	-borrar ncsoftwa_re_beta triggers
+ok	-restaurar datos de ncsoftwa_re cyberneticos a ncsoftwa_re_beta 
+ok	-restaurar triggers
+ok	-update tblArticulos campos (set IdGeneroART = 1, IdAliculotaIvaART = 5)
+ok	-comparar datos entre dbs (stock y ventas)
+ok	-ejecutar button1_Click del frmPruebas para modificar articulos
+
+
+-volver relacion entre tabla articulos y tabla stockmovdetalle (destildar on update)
+-volver relacion entre tabla articulos y tabla ventasdetalle(destildar on update)
+
+
+

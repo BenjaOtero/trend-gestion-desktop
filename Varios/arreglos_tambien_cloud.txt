@@ -1,0 +1,73 @@
+-Ver mail oterobenjamin@gmail.com (¡Notificación Importante! Vulnerabilidad POODLE)
+-Validar que coincidan ImagenART con ImagenColorART en frmArticulosDetalle
+- edición ventas desde arqueo (ya lo ví y no dió error. Ver nuevamente)
+- tener en cuenta en la configuracion inicial de mysql server que el directorio de instalacion del mismo puede varias entre 
+	'archivos de programas', 'program files' y 'program files(x86)'
+-error en frmAlicuotasIva al actualizar
+-backup db (crear servicio windows)
+-Update no puede encontrar TableMapping['Ventas'] o DataTable 'Ventas'.
+
+
+-ofuscar codigo
+pedidostockcons
+issd#8953
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

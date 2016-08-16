@@ -1,0 +1,73 @@
+- tener en cuenta en la configuracion inicial de mysql server que el directorio de instalacion del mismo puede varias entre 
+	'archivos de programas', 'program files' y 'program files(x86)'
+
+-Update no puede encontrar TableMapping['Ventas'] o DataTable 'Ventas'. Lo probé varias veces, dió error. Volver a probarlo.
+-agregar en requisitos previos sp3 windows xp
+-ver contraseñas 8953#AFjn
+-ofuscar codigo
+-desarrollar ayuda
+-frmAlicuotasIva, txtPorcentajeALI_KeyPress (permitir un solo punto y dos decimales)
+
+
+prever caida servicio mysql y reiniciarlo
+probar importar datos
+probar y refactorizar exportar datos
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

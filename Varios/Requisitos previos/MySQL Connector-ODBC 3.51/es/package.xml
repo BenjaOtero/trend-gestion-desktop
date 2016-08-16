@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/developer/2004/01/bootstrapper" Name="DisplayName" Culture="Culture">
+    <!-- Defines a localizable string table for error messages-->
+    <Strings>
+        <String Name="DisplayName">MySQL ODBC Connector 3.51</String>
+        <String Name="Culture">es</String>
+        <String Name="AdminRequired">Se requieren permisos de administrador para instalar Windows Installer 3.1. Póngase en contacto con el administrador.</String>
+        <String Name="InvalidPlatform">La instalación de Windows Installer 3.1 requiere el Service Pack 3 (o posterior) de Windows 2000. Póngase en contacto con el proveedor de la aplicación.</String>
+        <String Name="InvalidPlatformArchitecture">Windows Installer 3.1 no se admite en un sistema operativo de 64 bits. Póngase en contacto con el proveedor de la aplicación.</String>
+        <String Name="GeneralFailure">Error al intentar instalar Windows Installer 3.1.</String>
+        <String Name="Msi31Exe">http://go.microsoft.com/fwlink/?LinkId=49256</String>
+    </Strings>
+
+</Package>
