@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using BL;
 using System.Data.Objects.DataClasses;
+using DAL;
 
 namespace StockVentas
 {
@@ -199,6 +200,11 @@ namespace StockVentas
                     MessageBox.Show(mensaje, "Trend", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     bindingSource1.CancelEdit();
                 }
+            }
+            catch (ServidorInaccesibleException ex)
+            {
+                MessageBox.Show(ex.Message, "Trend Gestión",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

@@ -6,11 +6,16 @@ using System.Configuration;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data.OleDb;
+using System.ServiceProcess;
+using System.Windows.Forms;
+
 
 namespace DAL
 {
     public class DALBase
     {
+        static int intentos = 0;
+
         public DALBase()
         {
 
@@ -26,7 +31,7 @@ namespace DAL
            // "server=ns21a.cyberneticos.com;User Id=ncsoftwa_re;Persist Security Info=False;database=ncsoftwa_trend;Pwd=8953#AFjn" />
 
             string connectionString;
-           MySqlConnection objCon;
+            MySqlConnection objCon;
             connectionString = "server=" + server + ";";
             connectionString += "User Id=" + user + ";";
             connectionString += "Persist Security Info=False;";
@@ -34,6 +39,89 @@ namespace DAL
             connectionString += "Pwd=" + pass;
             connectionString = ConfigurationManager.ConnectionStrings["DBMainLocal"].ConnectionString;        
             objCon = new MySqlConnection(connectionString);
+abrirConexion:
+            try
+            {
+                objCon.Open();
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1042)
+                {
+                    if (intentos == 0)
+                    {
+                        if (ExisteServicioMySQL())
+                        {
+                            //    IniciarServicioMysql();
+                            intentos++;
+                            goto abrirConexion;
+                        }
+                    }
+                    else
+                    {
+                        
+                        MessageBox.Show("", "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        intentos = 0;
+                      //  throw new ServidorInaccesibleException("No se pudo conectar con el servidor de base de datos.", ex);
+                        //  this.Visible = false;
+                           
+
+                    }
+
+                }
+            }
+            return objCon;
+        }
+
+        public static MySqlConnection GetConnection(string origen)
+        {
+            const string server = "ns21a.cyberneticos.com";
+            const string user = "ncsoftwa_re";
+            string db = ConfigurationManager.ConnectionStrings["DBMain"].ConnectionString;
+            const string pass = "8953#AFjn";
+
+            // "server=ns21a.cyberneticos.com;User Id=ncsoftwa_re;Persist Security Info=False;database=ncsoftwa_trend;Pwd=8953#AFjn" />
+
+            string connectionString;
+            MySqlConnection objCon;
+            connectionString = "server=" + server + ";";
+            connectionString += "User Id=" + user + ";";
+            connectionString += "Persist Security Info=False;";
+            connectionString += "database=" + db + ";";
+            connectionString += "Pwd=" + pass;
+            connectionString = ConfigurationManager.ConnectionStrings["DBMainLocal"].ConnectionString;
+            objCon = new MySqlConnection(connectionString);
+        abrirConexion:
+            try
+            {
+                objCon.Open();
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1042)
+                {
+                    if (intentos == 0)
+                    {
+                        if (ExisteServicioMySQL())
+                        {
+                            //    IniciarServicioMysql();
+                            intentos++;
+                            goto abrirConexion;
+                        }
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("", "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        intentos = 0;
+                        //  throw new ServidorInaccesibleException("No se pudo conectar con el servidor de base de datos.", ex);
+                        //  this.Visible = false;
+
+
+                    }
+
+                }
+            }
             return objCon;
         }
 
@@ -64,5 +152,48 @@ namespace DAL
             objCon = new OleDbConnection(connectionString);
             return objCon;
         }
+
+        private static void IniciarServicioMysql()
+        {
+            ServiceController sc = new ServiceController("MySQL");
+            if ((sc.Status.Equals(ServiceControllerStatus.Stopped)) || (sc.Status.Equals(ServiceControllerStatus.StopPending)))
+            {
+                sc.Start();
+            }
+        }
+
+        private static bool ExisteServicioMySQL()
+        {
+            bool existeServicio = false;
+            ServiceController[] scServices;
+            scServices = ServiceController.GetServices();
+            foreach (ServiceController scTemp in scServices)
+            {
+                if (scTemp.ServiceName == "MySQL")
+                {
+                    existeServicio = true;
+                    continue;
+                }
+            }
+            return existeServicio;
+        }
     }
+
+    public class ServidorInaccesibleException : Exception
+    {
+        public ServidorInaccesibleException()
+        {
+        }
+
+        public ServidorInaccesibleException(string message)
+            : base(message)
+        {
+        }
+
+        public ServidorInaccesibleException(string message, Exception inner)
+            : base(message, inner)
+        {
+        }
+    }
+
 }

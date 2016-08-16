@@ -502,30 +502,5 @@ namespace BL
             return ((file1byte - file2byte) == 0);
         }
 
-        public static void IniciarServicioMysql()
-        {
-            ServiceController sc = new ServiceController("MySQL");
-            if ((sc.Status.Equals(ServiceControllerStatus.Stopped)) || (sc.Status.Equals(ServiceControllerStatus.StopPending)))
-            {
-                sc.Start();
-            } 
-        }
-
-        private bool ExisteServicioMySQL()
-        {
-            bool existeServicio = false;
-            ServiceController[] scServices;
-            scServices = ServiceController.GetServices();
-            foreach (ServiceController scTemp in scServices)
-            {
-                if (scTemp.ServiceName == "MySQL")
-                {
-                    existeServicio = true;
-                    continue;
-                }
-            }
-            return existeServicio;
-        }
-
     }
 }

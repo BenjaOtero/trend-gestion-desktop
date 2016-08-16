@@ -16,6 +16,7 @@ using System.Threading;
 using System.Timers;
 using System.Configuration;
 using BL;
+using DAL;
 
 namespace StockVentas
 {
@@ -124,29 +125,15 @@ namespace StockVentas
                         BL.RazonSocialBLL.GrabarDB(tblRazon);
                     }                    
                 }
-                catch (MySqlException ex)
+                catch (ServidorInaccesibleException ex)
                 {
-                    int codigoError = ex.Number;
-                    if (codigoError == 1042) //Unable to connect to any of the specified MySQL hosts.
+                    this.Invoke((Action)delegate
                     {
-                        this.Invoke((Action)delegate
-                        {
-                            this.Visible = false;
-                            MessageBox.Show("No se pudo establecer la conexión con el servidor (verifique la conexión a internet).","Trend Gestión",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Application.Exit();
-                        });
-                    }
-                    if (codigoError == 0) // Procedure or function cannot be found in database 
-                    {
-                        this.Invoke((Action)delegate
-                        {
-                            this.Visible = false;
-                            MessageBox.Show("Ocurrió un error al ejecutar la consulta MySQL (consulte al administrador del sistema).", "Trend Gestión",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Application.Exit();
-                        });
-                    }
+                      //  this.Visible = false;
+                        MessageBox.Show(ex.Message,"Trend Gestión",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);                        
+                    });
+                    System.Environment.Exit(1);
                 }
                 catch (System.TimeoutException)
                 {
@@ -172,7 +159,7 @@ namespace StockVentas
                     this.Invoke((Action)delegate
                     {
                         this.Visible = false;
-                        string error = ex.Message;
+                        string error = ex.Message;                        
                         MessageBox.Show(error, "Trend Gestión",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     });
