@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<configuration>
+  <configSections>
+    <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+      <section name="StockVentas.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+    </sectionGroup>
+  </configSections>
+  <connectionStrings configProtectionProvider="RsaProtectedConfigurationProvider">
+    <EncryptedData Type="http://www.w3.org/2001/04/xmlenc#Element"
+      xmlns="http://www.w3.org/2001/04/xmlenc#">
+      <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+      <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <EncryptedKey xmlns="http://www.w3.org/2001/04/xmlenc#">
+          <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+          <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <KeyName>Rsa Key</KeyName>
+          </KeyInfo>
+          <CipherData>
+            <CipherValue>viRf+VrKrrdsaQ8uHcwZPn8xL8FNpW5wAoT8fKfiHbjN3+AXiwobtAGwCCBRNNbIe9fP0pIexCrrEwoxtAgFIQVKS6siRf4kwAxzvZS5/KLn4NosyQfS8kY6amBj9mnxTolSokVkp4Mrr1kpA4EITmlGnqQpXZHjTEiqhJOTqK4=</CipherValue>
+          </CipherData>
+        </EncryptedKey>
+      </KeyInfo>
+      <CipherData>
+        <CipherValue>6t80hE34P7SlVre4AYylmovOZUlK/XBYxQaOH7KM9Kc3+LzpqbjJe1+7sk3h6JNzJ6Ez6naVyWaqjo6DpFjI5Q0ASe6SW696OlJobTXGrZyUfT2ksJgeRxzZI92BFVTclzOMXwxfcvSuHuwoeC9d0M17IHwP6b7Do2kKfbGGfIcvbIxq9xWMOSeYHzMbGYIxWugFpUAw1u0TEPkZIV/itlhPtT/0dQQcbanItcb0QoE0xm7XLDKIEEhKkJWtITwmaNHQX+8bCqeMIYR2hKpsRTMAtukfR3/iqVe2pt0Nk8+vK/1B9AYUOjGgzZqW7jA/WqmveXqXqjaF3T8etkkTzksab9YZ79pwsaH1Maz/wMZRHimjpxv/oIfyGA7ts5QpuGrZa3KyA+gwM8Ohv1Xf7gsGIKqUbHzaFsU4k4DuzLbb5Vyx76qpUKYTSZku5x27C3Lg9sdsq9UTRw6Tj0Wi1YQYTGyLlvuHcjHRqCRoKYYfis/6gaGsf0UiqQcQQok82XgTK98V6EHnVl7lFjlEL7IXb9u26r8OPnK8FXGE/vm1FVT00p27TzAi7UY/VzodAE4NOo+REdbcWE+iyafVmo04pl9DX5zKdeOjvZACGp029JWK01GgsOxfrx/vx99uzNergwXSkHDKAQNJT0PXK2Kzc+3AsXj2w2/RLZdCagqXOe9oDpezi1r0q6p/xMy5evyKZGP608KPcY+st88eTDrkOFoRO15DVCtm/lbd1YrtgUfDEQMhdO1C2iGQ8fKk/30wDuoRNxM1H5NV3DhIqFumat2Hk5UhvJfapMsbo58d+9kkw/XGTorUjvlABjzm24IQLg2lgwSSBSu6sXtp4gF+TaYtHtE25mkIfc/FzdYWtXp+nNI9LWlAoT2rZKqOvOmANTjq67KgSB5qq2of1lTa8JmKztaJzCo2mKpIR45AFiaFOL3lf+WHsb2P9hZrEk8A1hA1lpo2pM7yfv2y3G7bYqZGrrNmGFX/tm/hpd0By6PshzG8P9ArfX2cz2JW78eDWoDrrb3qnSvSAjCy2exejy0+5wSDKdbfyRlmluDj/eSMcDBDbIxiJsFtiWbKF4EpTptBd90i1qrhG85tQXEDBoXGPh0B677i/kaNSaINby89IR0isfuGJzaV9bPrzNFbFvoByyNOdzKiAWHDQXpcUxg12o5P3vy6gFrdWb8e4EwPGZ+lfAu/KTfMwUiUqZ8JW0F23hSNiuKfoSu6oum73u6iiLpm56ap/V1Hc2h4AHcNRSvRSfWJNuxTpllEOY2p7+whd1u8l0pnWjbpI+FmzYano9B0Nr+kZG+blyiMB050DoqgWK2+4ApeVEPafWfIJxckR40fR7aVaGS54s8SmkUvusTAlV6aDRsX8Gm24OwdHWIR7NDY1xetY3FqlBFsLX+wokHGvQy+GDNL4Vwwc+KP9Zpqm9BG957/hANeJIAjUncDNymqlMoQYCN8yA1UGykIfPMApFuwbictuiHtC9LC5pdAinWRbvMgEFUWMKCuEZ55+PdvSLbybAiNq7FG8hgBGHujk7wgTbEbE091GtBO4glqnsVSg+0+vl8U6RgqCXkDmK3+RK1JHoXGKo+fQ9+t8Ltvg/ACCIs8IDuTYmq4s6ZohQsD/5f6hwZH2IJST+gmaGEE1Ys5g/jhHKPYNyt0w7SafxwrkwWA8fxt+Z/+DHneQK7L3qvUv9TVBaxg6hFwEe/TdWN2HpC8k/bApIG+0HaORlLBgb2ta1U/7DsE+sBZ/RL6rGzgJhHLw0gf25k53ygLSuP8rH0Vi6c57fUrG7+i5Gmkf9atSZfOGRIbEfGeeqddRYBWWd0w5VhtlYkr+iZAqTQqWKVyQ437PrLH1quuCFJZCUjIpSnnZi92Pt2Q4KulWT+qngYE9XT5Tc/XVziZ2gNvvx6FDsS/JnEKGGNLVXV9XHIn1X7B+4gcOC4cKrotFeTot2gdAFaFpoxgIU3q5rrTAaEiR6bMdtHhzToHerEYcHyn5QMlbXKTYR1nKCzvOfDF3mXRzjITlfd63nQxpHy5OoQJuiD+IZ0iTT6LScKaXDRftU3q28TUav2mbnz4VN7BKhBX4+i97R+WYjoBIqvW8M05ApJTulh0ow1lKDscQXuj02oaZVEvB+qj71OEA/x1sqVOkIzOy4pAQErwl8JasEwe4E6r4SpzC2QS0tvc1H0X+xHsUOHWNLr3DSUEAAOjnlL7cxg5Yco3Qa6rs6K03m1VJpJY6BbP8hdAgIuXk+sAd7x7+dC+bjt6WHwo4+7vM48nMK8KNup+++j71DaTi9eXFmGgl1UcWyMbNjB98GJfweNyaBg+1aSIToEkFS79BsaNbpiSqYvI0Kxr5fwlr2Nq5AlpE8iH8GoRIjK9mTDwRtdqEG3M9JUI0uKUT/W5Ii5o77SyPQ3wepDO+qJiRLMXJ/MkG76kGgsxRbYT7FdFYsAR7zZmvSYPJO35GYtAyaJE1zW9ww3MCOO/4Set4Sq9uVmDez4bXRatrwy3hWesN4W/2wH35cstRH3b89ktjpfyauuTHu0CAJmipARufPeqIHI9m5VSKuEnPNYdcieCzh4PmJm8wDVfJwK9+t5187G+vEn0zF0mOXl6tBq4URJlyl/yWm4fu01Y4Ks7jl3ECd1S2a4H1fht/qjIcYizJMyIgChwj7NebBMdmdoCaUciidiWSbxSQB5jT2zlyD4CenjKwWqthtu5wkwYJAQGSdBqe+OBwOoZl5Xnf6x0w/wZqlxP4rDl+N5SyPe83nI92+TSQrSsY3zRfSsIjWmxwqYy/3sDfdqtBOS4ROUdtlf16S87S8qcofhAPr2vUO+kRnX8Uqvab1/2dNZvEUhMb5tdBybLJonklTNxnJuxMRSWEfTvBzC7vhkxPc67qi7ts8MIzjCPMgrNW/8zBKOWi+lNkeqXY7vFZExa5Ia9GBWYJ9VxEsX4b3NhtQm2d5dc3S9pRhGKi8s7jjLEcP1Ga6LiGwdV0csNb+79RoUNL5ZVjy7VdKEFfNbv0QIyvE5uy3mHjuoahmWRBReGSJqB9nDj0FZYmYK6zKtGThbuTIh3G/dTEXIiEscDJ9f7LUlyvc/TirhfAa40PAR2XLrIOta18djWfjlefKZBc4QC7Q1GdZOBXcMA235tlchXUN4lzJxiVwxSqWQ7chayO36sjdWpaVKIYPPMWbohUf1uOvhi6nlNQsQ1VqyPQNokmbaAPx+/ImBfxN2jOHlovQ7ZImZzNegW/k/aH1pbQIUhh8lVoh3+s9UTyxrDh54RcL6SuOwIh+55iw8XEb1dQiMVxRfHG4hZ161tJTZaQZ2vEOZemFyDO/K4iqw8TQ/25AikfUD+9usgjkz4yn30Z734CvaEjgg4luTN6a5tElRXGZc82pGvhD9EzfkrP6LLruiN23+cF/qduGJqehr44WVCk+CQrgTVWiy49zVkO1eC0SsV2VXlWDACi5xIT4oItiJF8BXBmYa36Rih</CipherValue>
+      </CipherData>
+    </EncryptedData>
+  </connectionStrings>
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/></startup><system.serviceModel>
+    <bindings>
+      <basicHttpBinding>
+        <binding name="LoginCmsSoapBinding">
+          <security mode="Transport" />
+        </binding>
+        <binding name="LoginCmsSoapBinding1" />
+        <binding name="LoginCmsSoapBinding2">
+          <security mode="Transport" />
+        </binding>
+        <binding name="LoginCmsSoapBinding3" />
+      </basicHttpBinding>
+    </bindings>
+    <client>
+      <endpoint address="https://wsaahomo.afip.gov.ar/ws/services/LoginCms"
+        binding="basicHttpBinding" bindingConfiguration="LoginCmsSoapBinding"
+        contract="WSAA_testing.LoginCMS" name="LoginCms" />
+      <endpoint address="https://wsaa.afip.gov.ar/ws/services/LoginCms"
+        binding="basicHttpBinding" bindingConfiguration="LoginCmsSoapBinding2"
+        contract="WSAA_produccion.LoginCMS" name="LoginCms1" />
+    </client>
+  </system.serviceModel>
+  <applicationSettings>
+    <StockVentas.Properties.Settings>
+      <setting name="StockVentas_localhost_tratarImagen_SimpleService"
+        serializeAs="String">
+        <value>http://localhost/Ecommerce/trunk/public_html/servicio_1.php</value>
+      </setting>
+      <setting name="StockVentas_com_karminna_tratarImagenes_TratarImagenesService"
+        serializeAs="String">
+        <value>http://karminna.com/tratar_imagenes_service.php</value>
+      </setting>
+      <setting name="StockVentas_com_karminna_TratarImagenesService"
+        serializeAs="String">
+        <value>http://karminna.com/tratar_imagenes_service.php</value>
+      </setting>
+      <setting name="StockVentas_localhost_karminna_TratarImagenesService"
+        serializeAs="String">
+        <value>http://localhost/ecommerce/trunk/public_html/tratar_imagenes_service.php</value>
+      </setting>
+    </StockVentas.Properties.Settings>
+  </applicationSettings>
+</configuration>

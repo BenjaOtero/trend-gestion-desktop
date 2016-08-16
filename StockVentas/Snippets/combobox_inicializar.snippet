@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ComboBox.Inicializar</Title>
+    <Author>autor</Author>
+    <Shortcut>snptComboBoxInicializar</Shortcut>
+    <Description>Setea un ComboBox</Description>
+    <SnippetTypes>
+      <SnippetType>SurroundsWith</SnippetType>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>nombre</ID>
+        <Default>valor</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="CSharp">
+      <![CDATA[
+            tblCondicionIva = BL.CondicionIvaBLL.GetCondicionIva();
+            cmbCondicionIvaCLI.DataSource = tblCondicionIva;
+            cmbCondicionIvaCLI.DisplayMember = "DescripcionCIVA";
+            cmbCondicionIvaCLI.ValueMember = "IdCondicionIvaCIVA";
+            AutoCompleteStringCollection condicionColection = new AutoCompleteStringCollection();
+            foreach (DataRow row in tblCondicionIva.Rows)
+            {
+                condicionColection.Add(Convert.ToString(row["DescripcionCIVA"]));
+            }
+            cmbCondicionIvaCLI.AutoCompleteCustomSource = condicionColection;
+            cmbCondicionIvaCLI.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbCondicionIvaCLI.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            cmbCondicionIvaCLI.Validating += new System.ComponentModel.CancelEventHandler(BL.Utilitarios.ValidarComboBox);  
+            ]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>

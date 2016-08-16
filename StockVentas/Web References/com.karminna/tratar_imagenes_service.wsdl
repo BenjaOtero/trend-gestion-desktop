@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://karminna.com/soap/TratarImagenesService" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://karminna.com/soap/TratarImagenesService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://karminna.com/soap/TratarImagenesService">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="TratarImagenesRequest">
+    <wsdl:part name="name" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="TratarImagenesResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="BorrarImagenesRequest">
+    <wsdl:part name="name" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="BorrarImagenesResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="TratarImagenesServicePortType">
+    <wsdl:operation name="TratarImagenes">
+      <documentation>Redimensiona las imagenes.</documentation>
+      <wsdl:input message="tns:TratarImagenesRequest" />
+      <wsdl:output message="tns:TratarImagenesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="BorrarImagenes">
+      <documentation>Borra imagenes en el servidor.</documentation>
+      <wsdl:input message="tns:BorrarImagenesRequest" />
+      <wsdl:output message="tns:BorrarImagenesResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TratarImagenesServiceBinding" type="tns:TratarImagenesServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="TratarImagenes">
+      <soap:operation soapAction="http://karminna.com/tratar_imagenes_service.php/TratarImagenes" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://localhost/Ecommerce/trunk/public_html/nusoap/lib" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://localhost/Ecommerce/trunk/public_html/nusoap/lib" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BorrarImagenes">
+      <soap:operation soapAction="http://karminna.com/tratar_imagenes_service.php/BorrarImagenes" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://localhost/Ecommerce/trunk/public_html/nusoap/lib" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://localhost/Ecommerce/trunk/public_html/nusoap/lib" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TratarImagenesService">
+    <wsdl:port name="TratarImagenesServicePort" binding="tns:TratarImagenesServiceBinding">
+      <soap:address location="http://karminna.com/tratar_imagenes_service.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
