@@ -39,7 +39,7 @@ namespace DAL
             connectionString += "Pwd=" + pass;
             connectionString = ConfigurationManager.ConnectionStrings["DBMainLocal"].ConnectionString;        
             objCon = new MySqlConnection(connectionString);
-abrirConexion:
+        abrirConexion:
             try
             {
                 objCon.Open();
@@ -52,44 +52,26 @@ abrirConexion:
                     {
                         if (ExisteServicioMySQL())
                         {
-                            //    IniciarServicioMysql();
+                         //   IniciarServicioMysql();
                             intentos++;
                             goto abrirConexion;
                         }
                     }
                     else
-                    {
-                        
-                        MessageBox.Show("", "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    {                        
                         intentos = 0;
-                      //  throw new ServidorInaccesibleException("No se pudo conectar con el servidor de base de datos.", ex);
-                        //  this.Visible = false;
-                           
-
+                        throw new ServidorMysqlInaccesibleException("No se pudo conectar con el servidor de base de datos.", ex);
                     }
-
                 }
             }
             return objCon;
         }
 
-        public static MySqlConnection GetConnection(string origen)
+        public static MySqlConnection GetDumpAdminConnection()
         {
-            const string server = "ns21a.cyberneticos.com";
-            const string user = "ncsoftwa_re";
-            string db = ConfigurationManager.ConnectionStrings["DBMain"].ConnectionString;
-            const string pass = "8953#AFjn";
-
-            // "server=ns21a.cyberneticos.com;User Id=ncsoftwa_re;Persist Security Info=False;database=ncsoftwa_trend;Pwd=8953#AFjn" />
-
             string connectionString;
             MySqlConnection objCon;
-            connectionString = "server=" + server + ";";
-            connectionString += "User Id=" + user + ";";
-            connectionString += "Persist Security Info=False;";
-            connectionString += "database=" + db + ";";
-            connectionString += "Pwd=" + pass;
-            connectionString = ConfigurationManager.ConnectionStrings["DBMainLocal"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["DBDumpAdmin"].ConnectionString;
             objCon = new MySqlConnection(connectionString);
         abrirConexion:
             try
@@ -104,33 +86,18 @@ abrirConexion:
                     {
                         if (ExisteServicioMySQL())
                         {
-                            //    IniciarServicioMysql();
+                            IniciarServicioMysql();
                             intentos++;
                             goto abrirConexion;
                         }
                     }
                     else
                     {
-
-                        MessageBox.Show("", "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         intentos = 0;
-                        //  throw new ServidorInaccesibleException("No se pudo conectar con el servidor de base de datos.", ex);
-                        //  this.Visible = false;
-
-
+                        throw new ServidorMysqlInaccesibleException("No se pudo conectar con el servidor de base de datos.", ex);
                     }
-
                 }
             }
-            return objCon;
-        }
-
-        public static MySqlConnection GetDumpAdminConnection()
-        {
-            string connectionString;
-            MySqlConnection objCon;
-            connectionString = ConfigurationManager.ConnectionStrings["DBDumpAdmin"].ConnectionString;
-            objCon = new MySqlConnection(connectionString);
             return objCon;
         }
 
@@ -176,23 +143,6 @@ abrirConexion:
                 }
             }
             return existeServicio;
-        }
-    }
-
-    public class ServidorInaccesibleException : Exception
-    {
-        public ServidorInaccesibleException()
-        {
-        }
-
-        public ServidorInaccesibleException(string message)
-            : base(message)
-        {
-        }
-
-        public ServidorInaccesibleException(string message, Exception inner)
-            : base(message, inner)
-        {
         }
     }
 

@@ -115,7 +115,7 @@ namespace DAL
         public static void BorrarByPK(int PK)
         {
             MySqlConnection SqlConnection1 = DALBase.GetConnection();
-            SqlConnection1.Open();
+            
             SqlDataAdapter1 = new MySqlDataAdapter();
             SqlDeleteCommand1 = new MySqlCommand("StockMov_Borrar", SqlConnection1);
             SqlDataAdapter1.DeleteCommand = SqlDeleteCommand1;

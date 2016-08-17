@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using DAL;
 
 namespace StockVentas
 {
@@ -58,7 +59,15 @@ namespace StockVentas
             nombreLocal = lstLocales.Text;
             idPc = Convert.ToInt32(lstPc.SelectedValue.ToString());
             frmProgress frm = new frmProgress(fecha, idLocal, nombreLocal, idPc, "frmArqueoInter", "cargar");
-            frm.Show();
+            try
+            {
+                frm.Show();
+            }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                MessageBox.Show(ex.Message, "Trend Gestión",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }              
         }
 
         private void lstLocales_SelectedValueChanged(object sender, EventArgs e)

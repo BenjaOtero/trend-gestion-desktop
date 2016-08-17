@@ -16,7 +16,7 @@ namespace DAL
         public static void Mantenimiento()
         {
             MySqlConnection SqlConnection1 = DALBase.GetConnection();
-            SqlConnection1.Open();
+            
             MySqlDataAdapter SqlDataAdapter1 = new MySqlDataAdapter();
             MySqlCommand SqlSelectCommand1 = new MySqlCommand("DatosServer_Borrar", SqlConnection1);
             SqlDataAdapter1.SelectCommand = SqlSelectCommand1;

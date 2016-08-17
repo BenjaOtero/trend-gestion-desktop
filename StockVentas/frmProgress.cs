@@ -13,6 +13,7 @@ using System.IO;
 using BL;
 using StockVentas.com.karminna;
 using System.Net;
+using DAL;
 
 
 namespace StockVentas
@@ -673,7 +674,7 @@ namespace StockVentas
                     switch (origen)
                     {
                         case "ExportarDatos":
-                            BL.RazonSocialBLL.ActualizarDatos();
+                            BL.RazonSocialBLL.SetActualizarDatos();
                             break;
                         case "frmStockMov":
                             break;

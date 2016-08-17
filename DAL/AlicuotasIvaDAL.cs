@@ -57,7 +57,7 @@ namespace DAL
             string stringCommand;
             stringCommand = "UPDATE alicuotasiva SET Imagen = @Image";
             MySqlConnection SqlConnection1 = DALBase.GetConnection();
-            SqlConnection1.Open();
+            
             MySqlCommand command = new MySqlCommand(stringCommand, SqlConnection1);
             command.Parameters.AddWithValue("@Image", ImageData); 
             command.ExecuteNonQuery();
@@ -70,7 +70,7 @@ namespace DAL
             string stringCommand;
             stringCommand = "SELECT * FROM alicuotasiva";
             MySqlConnection SqlConnection1 = DALBase.GetConnection();
-            SqlConnection1.Open();
+            
             MySqlCommand command = new MySqlCommand(stringCommand, SqlConnection1);
             SqlDataAdapter1.SelectCommand = command;
             DataTable tbl = new DataTable();

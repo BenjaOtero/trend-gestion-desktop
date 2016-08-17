@@ -27,7 +27,7 @@ namespace BL
         {
             MySqlTransaction tr = null;
             MySqlConnection SqlConnection1 = DALBase.GetConnection();
-            SqlConnection1.Open();
+            
             tr = SqlConnection1.BeginTransaction();
             DAL.TesoreriaMovimientosDAL.GrabarDB(dt, SqlConnection1, tr);
             tr.Commit();

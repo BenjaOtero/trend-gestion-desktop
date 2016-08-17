@@ -87,11 +87,11 @@ namespace DAL
             return actualizar;
         }
 
-        public static void ActualizarDatos()
+        public static void SetActualizarDatos()
         {
             using (MySqlConnection SqlConnection1 = DALBase.GetConnection())
             {
-                SqlConnection1.Open();
+                
                 MySqlDataAdapter SqlDataAdapter1 = new MySqlDataAdapter();
                 MySqlCommand SqlUpdateCommand1 = new MySqlCommand("RazonSocial_ActualizarDatos", SqlConnection1);
                 SqlDataAdapter1.UpdateCommand = SqlUpdateCommand1;

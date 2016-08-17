@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DAL;
 
 namespace StockVentas
 {
@@ -38,7 +39,7 @@ namespace StockVentas
 
         public frmAlicuotasIva()
         {
-            InitializeComponent();
+            InitializeComponent();            
             tblAlicuotasIva = BL.GetDataBLL.AlicuotasIva();
             BL.Utilitarios.AddEventosABM(grpCampos, ref btnGrabar, ref tblAlicuotasIva);
             bindingSource1.BindingComplete += new BindingCompleteEventHandler(bindingSource1_BindingComplete);
@@ -224,8 +225,13 @@ namespace StockVentas
                     MessageBox.Show(mensaje, "Trend", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnCancelar.PerformClick();
                 }
-
             }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                MessageBox.Show(ex.Message, "Trend Gestión",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tblAlicuotasIva.RejectChanges();
+            }  
         }
 
         private void bindingSource1_BindingComplete(object sender, BindingCompleteEventArgs e)

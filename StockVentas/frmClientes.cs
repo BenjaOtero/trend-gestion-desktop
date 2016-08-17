@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using BL;
 using System.Text.RegularExpressions;
 using System.Drawing.Drawing2D;
+using DAL;
 
 namespace StockVentas
 {
@@ -17,7 +18,6 @@ namespace StockVentas
         frmVentas instanciaVentas = null;
         DataSet dsClientes;
         private DataTable tblClientes;
-        DataTable tblFallidas;
         bool editando;
         bool insertando;
         string buscado = string.Empty;
@@ -71,16 +71,19 @@ namespace StockVentas
             this.Icon = ico;
             this.ControlBox = true;
             this.MaximizeBox = false;
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            dsClientes = BL.ClientesBLL.GetClientes(1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;            
+            try
+            {
+                dsClientes = BL.ClientesBLL.GetClientes(1);
+            }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                MessageBox.Show(ex.Message, "Trend Gestión",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }   
             tblClientes = dsClientes.Tables[0];
             BL.Utilitarios.AddEventosABM(grpCampos, ref btnGrabar, ref tblClientes);
-            tblFallidas = new DataTable();
-            tblFallidas.TableName = "ClientesFallidas";
-            tblFallidas.Columns.Add("Id", typeof(int));
-            tblFallidas.Columns.Add("Accion", typeof(string));
-            tblFallidas.Columns["Id"].Unique = true;
-            tblFallidas.PrimaryKey = new DataColumn[] { tblFallidas.Columns["Id"] };
             DataView viewClientes = new DataView(tblClientes);
             bindingSource1.DataSource = tblClientes;
             bindingNavigator1.BindingSource = bindingSource1;
@@ -239,6 +242,12 @@ namespace StockVentas
                     bindingSource1.CancelEdit();
                 }
             }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                MessageBox.Show(ex.Message, "Trend Gestión",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tblClientes.RejectChanges();
+            }   
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

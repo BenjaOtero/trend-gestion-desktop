@@ -160,7 +160,7 @@ namespace DAL
         public static void ActualizarPrecios(string id, decimal precio)
         {
             MySqlConnection SqlConnection1 = DALBase.GetConnection();
-            SqlConnection1.Open();
+            
             MySqlDataAdapter SqlDataAdapter1 = new MySqlDataAdapter();
             MySqlCommand SqlDeleteCommand1 = new MySqlCommand("Articulos_Actualizar_Precio", SqlConnection1);
             SqlDataAdapter1.DeleteCommand = SqlDeleteCommand1;
@@ -178,7 +178,7 @@ namespace DAL
             stringCommand = "UPDATE articulos SET IdArticuloART = '" + id + "' WHERE IdArticuloART = '" + oldId + "'";
           //  UPDATE articulos SET IdArticuloART = '0030031803' WHERE IdArticuloART = '030031803';
             MySqlConnection SqlConnection1 = DALBase.GetConnection();
-            SqlConnection1.Open();
+            
             MySqlCommand command = new MySqlCommand(stringCommand, SqlConnection1);
             command.ExecuteNonQuery();
             SqlConnection1.Close();

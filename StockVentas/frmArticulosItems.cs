@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using BL;
 using System.Data.Objects.DataClasses;
 using DAL;
+using System.Threading;
+
 
 namespace StockVentas
 {
@@ -173,9 +175,9 @@ namespace StockVentas
         private void Grabar()
         {
             Cursor.Current = Cursors.WaitCursor;
+            bindingSource1.EndEdit();
             try
             {
-                bindingSource1.EndEdit();
                 if (tblArticulosItems.GetChanges() != null)
                 {
                     BL.ArticulosItemsBLL.GrabarDB(tblArticulosItems);
@@ -201,15 +203,16 @@ namespace StockVentas
                     bindingSource1.CancelEdit();
                 }
             }
-            catch (ServidorInaccesibleException ex)
-            {
-                MessageBox.Show(ex.Message, "Trend Gestión",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                catch (ServidorMysqlInaccesibleException ex)
+                {
+                    MessageBox.Show(ex.Message, "Trend Gestión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tblArticulosItems.RejectChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             Cursor.Current = Cursors.Arrow;
         }
 
@@ -325,7 +328,6 @@ namespace StockVentas
                 editando = true;
             }
         }
-
 
     }
 }

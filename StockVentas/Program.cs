@@ -15,10 +15,15 @@ namespace StockVentas
         static void Main()
         {
             Application.ThreadException += new ThreadExceptionEventHandler(ThreadExceptionHandler);
+            Application.ThreadException += new ThreadExceptionEventHandler(frmInicio.Form1_UIThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(UnhandledExceptionHandler);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmInicio());
+
+            // Set the unhandled exception mode to force all Windows Forms errors to go through
+            // our handler.
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
         }
 
         private static void ThreadExceptionHandler(object sender, ThreadExceptionEventArgs args)

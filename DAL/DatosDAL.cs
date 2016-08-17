@@ -14,7 +14,7 @@ namespace DAL
         public static void InsertarMovimientos()
         {
             MySqlConnection SqlConnection1 = DALBase.GetConnection();
-            SqlConnection1.Open();
+            
             MySqlCommand SqlSelectCommand1 = new MySqlCommand("Exportar_Insertar_Movimientos", SqlConnection1);
             SqlSelectCommand1.CommandType = CommandType.StoredProcedure;
             SqlSelectCommand1.ExecuteNonQuery();
@@ -57,7 +57,7 @@ namespace DAL
         public static void DeleteAll()
         {
             MySqlConnection SqlConnection1 = DALBase.GetDumpAdminConnection();
-            SqlConnection1.Open();
+            
             MySqlDataAdapter SqlDataAdapter1 = new MySqlDataAdapter();
             MySqlCommand SqlDeleteCommand1 = new MySqlCommand("DatosPos_Borrar", SqlConnection1);
             SqlDataAdapter1.DeleteCommand = SqlDeleteCommand1;

@@ -11,6 +11,7 @@ using BL;
 using Entities;
 using System.Media;
 using Microsoft.VisualBasic;
+using DAL;
 
 namespace StockVentas
 {
@@ -469,25 +470,23 @@ namespace StockVentas
         private void grabar()
         {
             Cursor.Current = Cursors.WaitCursor;
-            rowView.EndEdit();
-            BL.TransaccionesBLL.GrabarStockMovimientos(dsStockMov, ref codigoError);
-            Cursor.Current = Cursors.WaitCursor;
-            switch (codigoError)
+            rowView.EndEdit();            
+            try
             {
-                case null:
-                    break;
-                case 0:
-                    MessageBox.Show("Procedure or function cannot be found in database. No se grabaron los datos. Consulte al administrador del sistema.", "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case 1042:
-                    MessageBox.Show("Unable to connect to any of the specified MySQL hosts. No se grabaron los datos. Consulte al administrador del sistema.", "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                default:
-                    MessageBox.Show("Se produjo un error inesperado. No se grabaron los datos. Consulte al administrador del sistema."
-                                    , "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                BL.TransaccionesBLL.GrabarStockMovimientos(dsStockMov, ref codigoError);
             }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                MessageBox.Show(ex.Message, "Trend Gestión",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dsStockMov.RejectChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }            
             ResetForm();
+            Cursor.Current = Cursors.WaitCursor;
         }
 
         private void ResetForm()

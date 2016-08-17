@@ -64,6 +64,7 @@
     <Compile Include="EmpleadosDAL.cs" />
     <Compile Include="EmpleadosMovDAL.cs" />
     <Compile Include="EmpleadosMovTiposDAL.cs" />
+    <Compile Include="Excepciones.cs" />
     <Compile Include="GetDataDAL.cs">
       <SubType>Code</SubType>
     </Compile>

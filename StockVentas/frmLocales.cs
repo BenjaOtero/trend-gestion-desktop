@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DAL;
 
 namespace StockVentas
 {
@@ -172,6 +173,12 @@ namespace StockVentas
                     bindingSource1.CancelEdit();
                 }
             }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                MessageBox.Show(ex.Message, "Trend Gestión",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tblLocales.RejectChanges();
+            }    
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

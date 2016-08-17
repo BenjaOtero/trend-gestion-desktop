@@ -449,8 +449,18 @@ namespace StockVentas
             {
                 fs.CopyTo(ms);
             }
-            BL.Utilitarios.UploadFromMemoryStream(ms, fileSilenceBck, "trendsistemas");
-            if (File.Exists("c:\\Windows\\Temp\\backup.bat")) File.Delete("c:\\Windows\\Temp\\backup.bat");
+            try
+            {
+                BL.Utilitarios.UploadFromMemoryStream(ms, fileSilenceBck, "trendsistemas");
+            }
+            catch (WebException)
+            {
+                return;
+            }
+            finally
+            {
+                if (File.Exists("c:\\Windows\\Temp\\backup.bat")) File.Delete("c:\\Windows\\Temp\\backup.bat");
+            }            
         }
 
         private void exportarDatosToolStripMenuItem_Click(object sender, EventArgs e)

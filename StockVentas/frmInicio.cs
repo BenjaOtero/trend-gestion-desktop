@@ -29,7 +29,6 @@ namespace StockVentas
         public static DataSet ds;
         public static DataTable tblArticulos;
         public static DataTable tblArticulosCons;
-        string razonSocial;
         bool seExportaronDatos = false;
 
         public frmInicio()
@@ -77,7 +76,6 @@ namespace StockVentas
             }*/
             // despues de descomentar lo de arriba borrar lo siguiente
             this.Visible = true;
-            label1.Text = "Comprobando conexión de red. . .";
             bckIniciarComponetes = new BackgroundWorker();
             bckIniciarComponetes.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bckIniciarComponetes_DoWork);
             bckIniciarComponetes.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bckIniciarComponetes_RunWorkerCompleted);
@@ -87,102 +85,45 @@ namespace StockVentas
 
         private void bckIniciarComponetes_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (BL.Utilitarios.HayInternet())
+            if (!ExisteServicioMySQL())
             {
-                label1.Text = "Obteniendo datos del servidor . . .";
-                try
-                {
-                    if (!ExisteServicioMySQL())
-                    {
-                        label1.Text = "Configurando servidor de base de datos . . .";
-                        ConfigurarMySQL();
-                    }
-                    ds = BL.GetDataBLL.GetData();
-                    BL.DatosBLL.GetDataPOS();
-                    label1.Text = "Exportando datos . . .";
-                    BL.DatosBLL.ExportarDatos();
-                    try
-                    {
-                        string idRazonSocial = BL.GetDataBLL.RazonSocial().Rows[0][0].ToString();
-                    }
-                    catch (IndexOutOfRangeException)
-                    {
-                        DataTable tblRazon = BL.GetDataBLL.RazonSocial();
-                        DataRow row = tblRazon.NewRow();
-                        Random rand = new Random();
-                        int clave = rand.Next(147483647, 2147483647);
-                        row["IdRazonSocialRAZ"] = clave;
-                        row["RazonSocialRAZ"] = "";
-                        row["NombreFantasiaRAZ"] = "";
-                        row["DomicilioRAZ"] = "";
-                        row["LocalidadRAZ"] = "";
-                        row["ProvinciaRAZ"] = "";
-                        row["IdCondicionIvaRAZ"] = DBNull.Value;
-                        row["CuitRAZ"] = "";
-                        row["IngresosBrutosRAZ"] = "";
-                        row["InicioActividadRAZ"] = DBNull.Value;
-                        tblRazon.Rows.Add(row);
-                        BL.RazonSocialBLL.GrabarDB(tblRazon);
-                    }                    
-                }
-                catch (ServidorInaccesibleException ex)
-                {
-                    this.Invoke((Action)delegate
-                    {
-                      //  this.Visible = false;
-                        MessageBox.Show(ex.Message,"Trend Gestión",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);                        
-                    });
-                    System.Environment.Exit(1);
-                }
-                catch (System.TimeoutException)
-                {
-                    this.Invoke((Action)delegate
-                    {
-                        this.Visible = false;
-                        MessageBox.Show("El tiempo de conexión con el servidor ha expirado. Intente nuevamente.", "Trend Gestión",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Application.Exit();
-                    });
-                }
-                catch (WebException)
-                {
-                    this.Invoke((Action)delegate
-                    {
-                        this.Visible = false;
-                        MessageBox.Show("No se pudo establecer conexión con el servidor remoto. No se actualizaron los datos.", "Trend Gestión",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    });
-                }
-                catch(Exception ex)
-                {
-                    this.Invoke((Action)delegate
-                    {
-                        this.Visible = false;
-                        string error = ex.Message;                        
-                        MessageBox.Show(error, "Trend Gestión",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    });
-                }
-                Mantenimiento();
+                label1.Text = "Configurando servidor de base de datos . . .";
+                ConfigurarMySQL();
             }
-            else
+            label1.Text = "Obteniendo datos del servidor . . .";
+        reiniciar:
+            try
             {
-                if (this.InvokeRequired) //si da true es porque estoy en un subproceso distinto al hilo principal
+                ds = BL.GetDataBLL.GetData();                
+                string idRazonSocial = BL.GetDataBLL.RazonSocial().Rows[0][0].ToString();
+                Mantenimiento();
+                label1.Text = "Exportando datos . . .";
+                BL.DatosBLL.ExportarDatos();
+                BL.DatosBLL.GetDataPOS();
+            }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                this.Invoke((Action)delegate
                 {
-                    string mensaje = "Comprueba la conexión a internet. No se actualizaron los datos.";
-                    //invoca al hilo principal através de un delegado
-                    this.Invoke((Action)delegate
-                    {
-                        MessageBox.Show(this, mensaje, "Trend Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    });
-                }
-                ds = BL.GetDataBLL.GetData();
+                    this.Visible = false;
+                    MessageBox.Show(ex.Message, "Trend Gestión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                });
+                System.Environment.Exit(1);
+            }
+            catch (System.TimeoutException)
+            {
+                this.Invoke((Action)delegate
+                {
+                    this.Visible = false;
+                    MessageBox.Show("El tiempo de conexión con el servidor ha expirado. Intente nuevamente.", "Trend Gestión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Environment.Exit(1);
+                });
+            }
+            catch (IndexOutOfRangeException) // se produce la excepción si no existe el registro en la tabla. Lo agrego 
+            {
                 try
-                {
-                    string idRazonSocial = BL.GetDataBLL.RazonSocial().Rows[0][0].ToString();
-                }
-                catch (IndexOutOfRangeException)
                 {
                     DataTable tblRazon = BL.GetDataBLL.RazonSocial();
                     DataRow row = tblRazon.NewRow();
@@ -200,7 +141,37 @@ namespace StockVentas
                     row["InicioActividadRAZ"] = DBNull.Value;
                     tblRazon.Rows.Add(row);
                     BL.RazonSocialBLL.GrabarDB(tblRazon);
-                } 
+                }
+                catch (ServidorMysqlInaccesibleException ex)
+                {
+                    this.Invoke((Action)delegate
+                    {
+                        this.Visible = false;
+                        MessageBox.Show(ex.Message, "Trend Gestión",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    });
+                    System.Environment.Exit(1);
+                }
+                goto reiniciar;
+            }
+            catch (WebException)
+            {
+                this.Invoke((Action)delegate
+                {
+                    this.Visible = false;
+                    MessageBox.Show("No se pudo establecer conexión con el servidor remoto. No se actualizaron los datos.", "Trend Gestión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                });
+            }
+            catch (Exception ex)
+            {
+                this.Invoke((Action)delegate
+                {
+                    this.Visible = false;
+                    string error = ex.Message;
+                    MessageBox.Show(error, "Trend Gestión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                });
             }
         }
 
@@ -213,14 +184,8 @@ namespace StockVentas
 
         private void Mantenimiento()
         {
-            try
-            {
-                BL.MantenimientoBLL.Mantenimiento();
-                BL.VentasBLL.VentasHistoricasMantener();
-            }
-            catch (Exception)
-            { 
-            }
+            BL.MantenimientoBLL.Mantenimiento();
+            BL.VentasBLL.VentasHistoricasMantener();
         }
 
         private bool ExisteServicioMySQL()
@@ -241,6 +206,7 @@ namespace StockVentas
 
         private void ConfigurarMySQL()
         {
+            if (File.Exists("c:\\Windows\\Temp\\config_mysql.bat")) File.Delete("c:\\Windows\\Temp\\config_mysql.bat");
             System.IO.StreamWriter sw = System.IO.File.CreateText("c:\\Windows\\Temp\\config_mysql.bat"); // creo el archivo .bat
             sw.Close();
             string programFiles;
@@ -296,26 +262,92 @@ namespace StockVentas
         private void frmInicio_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (seExportaronDatos) return;
-            bool actualizar = BL.RazonSocialBLL.GetActualizarDatos();
-            if (actualizar)
+            try
             {
-                e.Cancel = true;
-                this.Visible = true;
-                label1.Text = "Exportando datos. . .";
-                backgroundWorker1.RunWorkerAsync();
+                if (BL.RazonSocialBLL.GetActualizarDatos())
+                {
+                    e.Cancel = true;
+                    this.Visible = true;
+                    label1.Text = "Exportando datos. . .";
+                    backgroundWorker1.RunWorkerAsync();
+                }
             }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                this.Invoke((Action)delegate
+                {
+                    MessageBox.Show(ex.Message, "Trend Gestión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                });
+                System.Environment.Exit(1);
+            }            
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            BL.DatosBLL.ExportarDatos();
+        {            
+            try
+            {
+                BL.DatosBLL.ExportarDatos();
+            }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                this.Invoke((Action)delegate
+                {
+                    //  this.Visible = false;
+                    MessageBox.Show(ex.Message, "Trend Gestión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                });
+                System.Environment.Exit(1);
+            }
+            catch (WebException)
+            {
+                this.Invoke((Action)delegate
+                {
+                    this.Visible = false;
+                    MessageBox.Show("No se pudo establecer conexión con el servidor remoto. No se exportaron los datos.", "Trend Gestión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Environment.Exit(1);  // cierro la aplicacion así no ejecuta backgroundWorker1_RunWorkerCompleted
+                });
+            }
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            BL.RazonSocialBLL.ActualizarDatos();
+        {            
+            try
+            {
+                BL.RazonSocialBLL.SetActualizarDatos();
+            }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                System.Environment.Exit(1);
+            }
             seExportaronDatos = true;
-            Application.Exit();
+            System.Environment.Exit(1);
+        }
+
+        public static void Form1_UIThreadException(object sender, ThreadExceptionEventArgs t)
+        {
+            DialogResult result = DialogResult.Cancel;
+            try
+            {
+               // result = ShowThreadExceptionDialog("Windows Forms Error", t.Exception);
+            }
+            catch
+            {
+                try
+                {
+                    MessageBox.Show("Fatal Windows Forms Error",
+                        "Fatal Windows Forms Error", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Stop);
+                }
+                finally
+                {
+                    Application.Exit();
+                }
+            }
+
+            // Exits the program when the user clicks Abort.
+            if (result == DialogResult.Abort)
+                Application.Exit();
         }
 
     }

@@ -76,7 +76,7 @@ namespace DAL
         {
             using (MySqlConnection SqlConnection1 = DALBase.GetConnection())
             {
-                SqlConnection1.Open();
+                
                 MySqlDataAdapter SqlDataAdapter1 = new MySqlDataAdapter();
                 MySqlCommand SqlDeleteCommand1 = new MySqlCommand("FondoCaja_BorrarByPk", SqlConnection1);
                 SqlDataAdapter1.DeleteCommand = SqlDeleteCommand1;

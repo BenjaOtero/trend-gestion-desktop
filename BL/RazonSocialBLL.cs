@@ -25,9 +25,9 @@ namespace BL
             return actualizar;
         }
 
-        public static void ActualizarDatos()
+        public static void SetActualizarDatos()
         {
-            DAL.RazonSocialDAL.ActualizarDatos();
+            DAL.RazonSocialDAL.SetActualizarDatos();
         }
     }
 }

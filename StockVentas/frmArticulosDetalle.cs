@@ -174,7 +174,7 @@ namespace StockVentas
                     Grabar();
                 }
             }
-            catch (Exception)
+            catch (WebException)
             {
                 MessageBox.Show("Se produjo un error al subir las imagenes al servidor", "Trend");
             }

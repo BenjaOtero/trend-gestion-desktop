@@ -14,6 +14,7 @@ using System.Media;
 using Microsoft.VisualBasic;
 using System.IO;
 using System.Threading;
+using DAL;
 
 namespace StockVentas
 {
@@ -421,24 +422,22 @@ namespace StockVentas
                 }
             }
             rowView.EndEdit();
-            if (tblEntradasDetalle.GetChanges() == null) return;
-            BL.TransaccionesBLL.GrabarStockMovimientos(dsStockMov, ref codigoError);
-            Cursor.Current = Cursors.WaitCursor;
-            switch (codigoError)
+            if (tblEntradasDetalle.GetChanges() == null) return;            
+            try
             {
-                case null:
-                    break;
-                case 0:
-                    MessageBox.Show("Procedure or function cannot be found in database. No se grabaron los datos. Consulte al administrador del sistema.", "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case 1042:
-                    MessageBox.Show("Unable to connect to any of the specified MySQL hosts. No se grabaron los datos. Consulte al administrador del sistema.", "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                default:
-                    MessageBox.Show("Se produjo un error inesperado. No se grabaron los datos. Consulte al administrador del sistema."
-                                    , "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                BL.TransaccionesBLL.GrabarStockMovimientos(dsStockMov, ref codigoError);
             }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                MessageBox.Show(ex.Message, "Trend Gestión",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dsStockMov.RejectChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            Cursor.Current = Cursors.WaitCursor;
         }
 
         private bool ImprimirEtiquetas()

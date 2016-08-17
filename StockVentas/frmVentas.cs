@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.VisualBasic;
+using DAL;
 
 namespace StockVentas
 {
@@ -460,24 +461,18 @@ namespace StockVentas
 
         private void Grabar()
         {
-            Cursor.Current = Cursors.WaitCursor;
-            BL.TransaccionesBLL.GrabarVentas(dsVentas, ref codigoError);
-            Cursor.Current = Cursors.WaitCursor;
-            switch (codigoError)
+            Cursor.Current = Cursors.WaitCursor;            
+            try
             {
-                case null:
-                    break;
-                case 0:
-                    MessageBox.Show("Procedure or function cannot be found in database. No se grabaron los datos. Consulte al administrador del sistema.", "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case 1042:
-                    MessageBox.Show("Unable to connect to any of the specified MySQL hosts. No se grabaron los datos. Consulte al administrador del sistema.", "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                default:
-                    MessageBox.Show("Se produjo un error inesperado. No se grabaron los datos. Consulte al administrador del sistema."
-                                    , "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                BL.TransaccionesBLL.GrabarVentas(dsVentas, ref codigoError);
             }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                MessageBox.Show(ex.Message, "Trend Gestión",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dsVentas.RejectChanges();
+            }   
+            Cursor.Current = Cursors.WaitCursor;
         }
 
         private void ValidarMaestro(object sender, EventArgs e)
@@ -591,9 +586,19 @@ namespace StockVentas
         }
 
         public void CargarComboClientes()
-        {
-            DataSet dsClientes = BL.ClientesBLL.GetClientes(0);
-            tblClientes = dsClientes.Tables[0];
+        {            
+            DataSet dsClientes;
+            try
+            {
+                dsClientes = BL.ClientesBLL.GetClientes(0);
+                tblClientes = dsClientes.Tables[0];
+            }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                MessageBox.Show(ex.Message, "Trend Gestión",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }   
             tblClientes.DefaultView.Sort = "NombreCompletoCLI";
             cmbCliente.ValueMember = "IdClienteCLI";
             cmbCliente.DisplayMember = "NombreCompletoCLI";
