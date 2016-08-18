@@ -234,6 +234,13 @@ namespace StockVentas
             Cursor.Current = Cursors.Arrow;
             if(tblArticulos.GetChanges() != null)
             {
+                if (!BL.Utilitarios.ValidarServicioMysql())
+                {
+                    MessageBox.Show("No se pudo conectar con el servidor de base de datos."
+                            + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    return;
+                }
                 frmProgress frm = new frmProgress(tblArticulos, tblStock, "frmArticulosAgrupar", "grabar", instanciaArticulosAgrupar);
                 frm.FormClosed += frmProgress_FormClosed;
                 frm.ShowDialog();
@@ -255,16 +262,6 @@ namespace StockVentas
                 Close();
                 return;
             }
-        }
-
-        private void dgvDatosOrigen_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            return;
-        }
-
-        private void dgvDatosDestino_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            return;
         }
 
     }

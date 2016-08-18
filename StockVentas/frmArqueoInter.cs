@@ -61,13 +61,19 @@ namespace StockVentas
             frmProgress frm = new frmProgress(fecha, idLocal, nombreLocal, idPc, "frmArqueoInter", "cargar");
             try
             {
-                frm.Show();
+                frm.ShowDialog();
+                if (frm.servidorCaidoExcepcion != null)
+                {
+                    MessageBox.Show(frm.servidorCaidoExcepcion.Message, "Trend Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    frm.Close();
+                    this.Close();
+                    return;
+                }
             }
-            catch (ServidorMysqlInaccesibleException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Trend Gestión",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }              
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void lstLocales_SelectedValueChanged(object sender, EventArgs e)

@@ -223,15 +223,16 @@ namespace StockVentas
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            frmProgress frm = new frmProgress(tblArticulos, "frmArticulosBorrar", "cargar");            
+            frmProgress frm = new frmProgress(tblArticulos, "frmArticulosBorrar", "cargar");
             try
             {
-                frm.Show();
-            }
-            catch (ServidorMysqlInaccesibleException ex)
-            {
-                MessageBox.Show(ex.Message, "Trend Gestión",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frm.ShowDialog();
+                if (frm.servidorCaidoExcepcion != null)
+                {
+                    MessageBox.Show(frm.servidorCaidoExcepcion.Message, "Trend Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    frm.Close();
+                    return;
+                }
             }
             catch (Exception ex)
             {
@@ -262,7 +263,23 @@ namespace StockVentas
         private void btnAgrupar_Click(object sender, EventArgs e)
         {
             frmProgress frm = new frmProgress("frmArticulosAgrupar", "cargar");
-            frm.Show();
+            try
+            {
+                frm.ShowDialog();
+                if (frm.servidorCaidoExcepcion != null)
+                {
+                    MessageBox.Show(frm.servidorCaidoExcepcion.Message, "Trend Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                frm.Close();
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

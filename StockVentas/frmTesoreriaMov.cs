@@ -155,7 +155,9 @@ namespace StockVentas
                     progreso.ShowDialog();
                     if (progreso.servidorCaidoExcepcion != null)
                     {
-                        MessageBox.Show(progreso.servidorCaidoExcepcion.Message);                        
+                        MessageBox.Show(progreso.servidorCaidoExcepcion.Message, "Trend Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        progreso.Close();
+                        tblTesoreriaMov.RejectChanges();
                     }
                 }
                 catch (ServidorMysqlInaccesibleException ex)

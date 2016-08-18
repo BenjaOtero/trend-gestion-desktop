@@ -68,7 +68,6 @@
             this.dgvDatosOrigen.Name = "dgvDatosOrigen";
             this.dgvDatosOrigen.Size = new System.Drawing.Size(869, 270);
             this.dgvDatosOrigen.TabIndex = 3;
-            this.dgvDatosOrigen.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvDatosOrigen_DataError);
             // 
             // label1
             // 
@@ -99,7 +98,6 @@
             this.dgvDatosDestino.Name = "dgvDatosDestino";
             this.dgvDatosDestino.Size = new System.Drawing.Size(868, 223);
             this.dgvDatosDestino.TabIndex = 1;
-            this.dgvDatosDestino.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvDatosDestino_DataError);
             // 
             // groupBox1
             // 

@@ -580,12 +580,17 @@ namespace StockVentas
             }
             catch (ServidorMysqlInaccesibleException)
             {
-                servidorCaidoExcepcion = new ServidorMysqlInaccesibleException("No se pudo conectar con el servidor de base de datos.");
+                servidorCaidoExcepcion = new ServidorMysqlInaccesibleException("No se pudo conectar con el servidor de base de datos."
+                            + '\r' + "Consulte al administrador del sistema.");
             }
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (servidorCaidoExcepcion != null)
+            {
+                this.Visible = false;
+            }
 
             if (codigoError != null && origen == "frmStockMov")
             {
@@ -608,70 +613,70 @@ namespace StockVentas
                 }
                 this.Close();
             }
-                if (accion == "cargar")
+            if (accion == "cargar" && servidorCaidoExcepcion == null)
+            {
+                switch (origen)
                 {
-                    switch (origen)
-                    {
-                         case "backup":
+                        case "backup":
+                        this.Close();
+                        if (File.Exists("c:\\Windows\\Temp\\backup.bat"))
+                        {
+                            File.Delete("c:\\Windows\\Temp\\backup.bat");
+                        }  
+                        break;
+                    case "frmArqueoInter":
+                        if (frmInstanciaArqueo == null) // Estoy abriendo frmArqueoCajaAdmin desde el menú
+                        {
                             this.Close();
-                            if (File.Exists("c:\\Windows\\Temp\\backup.bat"))
-                            {
-                                File.Delete("c:\\Windows\\Temp\\backup.bat");
-                            }  
-                            break;
-                        case "frmArqueoInter":
-                            if (frmInstanciaArqueo == null) // Estoy abriendo frmArqueoCajaAdmin desde el menú
-                            {
-                                this.Close();
-                                frmArqueoCajaAdmin frmArqueo = new frmArqueoCajaAdmin(dsArqueo, fecha, idLocal, nombreLocal, idPc);
-                                frmArqueo.ShowDialog();
-                            }
-                            else // Estoy actualizando frmArqueoCajaAdmin despues de editar una venta
-                            {
-                                frmInstanciaArqueo.dt = dsArqueo;
-                                frmInstanciaArqueo.OrganizarTablas();
-                                frmInstanciaArqueo.CargarDatos();
-                            }
-                            break;
-                        case "frmArticulosAgrupar":
-                            this.Close();
-                            frmArticulosAgrupar frm = new frmArticulosAgrupar(tabla, tblArticulosStock);
-                            frm.ShowDialog();
-                            break;
-                        case "frmArticulosBorrar":
-                            this.Close();
-                            frmArticulosBorrar articulosBorrar = new frmArticulosBorrar(tblArticulosBorrar, tabla);
-                            articulosBorrar.ShowDialog();
-                            break;
-                        case "frmFondoCajaCons":
-                            frmFondoCajaCons fondo = new frmFondoCajaCons(dt);
-                            fondo.Show();
-                            break;
-                        case "VentasHistoricasUpdate":    
-                            DataTable tbl = dt.Tables[0];
-                            string registros = tbl.Rows[0][0].ToString();
-                            MessageBox.Show("Se actualizaron " + registros + " registros", "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Cursor.Current = Cursors.Arrow;
-                            break;
-                    }
-                }
-                else // grabar
-                {
-                    switch (origen)
-                    {
-                        case "ExportarDatos":
-                            BL.RazonSocialBLL.SetActualizarDatos();
-                            break;
-                        case "frmStockMov":
-                            break;
-                        case "frmVentas":
-                            break;
-                    }
+                            frmArqueoCajaAdmin frmArqueo = new frmArqueoCajaAdmin(dsArqueo, fecha, idLocal, nombreLocal, idPc);
+                            frmArqueo.ShowDialog();
+                        }
+                        else // Estoy actualizando frmArqueoCajaAdmin despues de editar una venta
+                        {
+                            frmInstanciaArqueo.dt = dsArqueo;
+                            frmInstanciaArqueo.OrganizarTablas();
+                            frmInstanciaArqueo.CargarDatos();
+                        }
+                        break;
+                    case "frmArticulosAgrupar":
+                        Form f = BL.Utilitarios.getForm<frmPrincipal>();
+                        this.Visible = false;
+                        frmArticulosAgrupar frm = new frmArticulosAgrupar(tabla, tblArticulosStock);
+                        frm.ShowDialog();
+                      //  frm.MdiParent = f;
+                        break;
+                    case "frmArticulosBorrar":
+                        this.Close();
+                        frmArticulosBorrar articulosBorrar = new frmArticulosBorrar(tblArticulosBorrar, tabla);
+                        articulosBorrar.Show();
+                        break;
+                    case "frmFondoCajaCons":
+                        frmFondoCajaCons fondo = new frmFondoCajaCons(dt);
+                        fondo.Show();
+                        break;
+                    case "VentasHistoricasUpdate":    
+                        DataTable tbl = dt.Tables[0];
+                        string registros = tbl.Rows[0][0].ToString();
+                        MessageBox.Show("Se actualizaron " + registros + " registros", "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Cursor.Current = Cursors.Arrow;
+                        break;
                 }
                 this.Close();
-
-
-
+            }
+            else if (accion == "grabar" && servidorCaidoExcepcion == null)
+            {
+                switch (origen)
+                {
+                    case "ExportarDatos":
+                        BL.RazonSocialBLL.SetActualizarDatos();
+                        break;
+                    case "frmStockMov":
+                        break;
+                    case "frmVentas":
+                        break;
+                }
+                this.Close();
+            }
         }
 
         private void DeshacerCambios()

@@ -59,7 +59,8 @@ namespace DAL
                     else
                     {                        
                         intentos = 0;
-                        throw new ServidorMysqlInaccesibleException("No se pudo conectar con el servidor de base de datos.", ex);
+                        throw new ServidorMysqlInaccesibleException("No se pudo conectar con el servidor de base de datos." 
+                            + '\r' + "Consulte al administrador del sistema.", ex);
                     }
                 }
             }
@@ -142,6 +143,21 @@ namespace DAL
                 }
             }
             return existeServicio;
+        }
+
+        public static bool ValidarServicioMysql()
+        {
+            bool funcionando = true;
+            ServiceController sc = new ServiceController("MySQL");
+            if ((sc.Status.Equals(ServiceControllerStatus.Stopped)) || (sc.Status.Equals(ServiceControllerStatus.StopPending)))
+            {
+                sc.Start();
+                if ((sc.Status.Equals(ServiceControllerStatus.Stopped)) || (sc.Status.Equals(ServiceControllerStatus.StopPending)))
+                {
+                    funcionando = false;
+                }                
+            }
+            return funcionando;
         }
     }
 

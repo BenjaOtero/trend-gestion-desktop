@@ -503,5 +503,16 @@ namespace BL
             return ((file1byte - file2byte) == 0);
         }
 
+        public static TForm getForm<TForm>() where TForm : Form
+        {
+            return (TForm)Application.OpenForms.OfType<TForm>().FirstOrDefault();
+        }
+
+        public static bool ValidarServicioMysql()
+        {
+            bool funcionando = DAL.DALBase.ValidarServicioMysql();
+            return funcionando;
+        }
+
     }
 }
