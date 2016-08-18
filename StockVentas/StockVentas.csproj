@@ -73,6 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionStringManager.cs" />
+    <Compile Include="frmArqueoCajaAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmArqueoCajaAdmin.Designer.cs">
+      <DependentUpon>frmArqueoCajaAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmArticulosBorradoMasivo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,12 +197,6 @@
     </Compile>
     <Compile Include="frmColores.Designer.cs">
       <DependentUpon>frmColores.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmArqueoCajaAdmin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmArqueoCajaAdmin.Designer.cs">
-      <DependentUpon>frmArqueoCajaAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="frmArqueoInter.cs">
       <SubType>Form</SubType>
@@ -481,6 +481,10 @@
     <EmbeddedResource Include="bin\Debug\Informes\StockCompPesos.rdlc" />
     <EmbeddedResource Include="bin\Debug\Informes\StockMov.rdlc" />
     <EmbeddedResource Include="bin\Debug\Informes\VentasDetalle.rdlc" />
+    <EmbeddedResource Include="frmArqueoCajaAdmin.resx">
+      <DependentUpon>frmArqueoCajaAdmin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmArticulosDetalle.resx">
       <DependentUpon>frmArticulosDetalle.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -550,10 +554,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmColores.resx">
       <DependentUpon>frmColores.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmArqueoCajaAdmin.resx">
-      <DependentUpon>frmArqueoCajaAdmin.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmArqueoInter.resx">

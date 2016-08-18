@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using MySql.Data;
 using BL;
+using DAL;
 using Entities;
 
 namespace StockVentas
@@ -222,8 +223,20 @@ namespace StockVentas
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            frmProgress frm = new frmProgress(tblArticulos, "frmArticulosBorrar", "cargar");
-            frm.Show();
+            frmProgress frm = new frmProgress(tblArticulos, "frmArticulosBorrar", "cargar");            
+            try
+            {
+                frm.Show();
+            }
+            catch (ServidorMysqlInaccesibleException ex)
+            {
+                MessageBox.Show(ex.Message, "Trend Gestión",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }        
 
         private void btnEditarNuevos_Click(object sender, EventArgs e)

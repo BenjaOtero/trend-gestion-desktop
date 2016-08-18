@@ -34,7 +34,6 @@ namespace StockVentas
         public int? idCliente = null;
         public bool formClosing = false;
         string articuloOld = string.Empty;
-        private int? codigoError = null;
 
         public enum FormState
         {
@@ -464,7 +463,7 @@ namespace StockVentas
             Cursor.Current = Cursors.WaitCursor;            
             try
             {
-                BL.TransaccionesBLL.GrabarVentas(dsVentas, ref codigoError);
+                BL.TransaccionesBLL.GrabarVentas(dsVentas);
             }
             catch (ServidorMysqlInaccesibleException ex)
             {

@@ -74,6 +74,7 @@ namespace StockVentas
         string imagenesBorrar;
         string idAlicuota;
         string oldIdAlicuota;
+        public Exception servidorCaidoExcepcion;
 
         private const int CP_NOCLOSE_BUTTON = 0x200;  //junto con protected override CreateParams inhabilitan el boton cerrar de frmProgress
         protected override CreateParams CreateParams
@@ -429,7 +430,7 @@ namespace StockVentas
                                     DataRow[] rowArticulo = tblArticulos.Select("IdArticuloART LIKE '" + articulos + "*'");
                                     foreach (DataRow rowBorrar in rowArticulo)
                                     {
-                                        rowBorrar.Delete();                                    
+                                        rowBorrar.Delete();
                                     }
                                 }
                             }
@@ -457,7 +458,7 @@ namespace StockVentas
                                 {
                                     foreach (DataRow rowBorrar in rowfound)
                                     {
-                                      rowBorrar.Delete();                                    
+                                        rowBorrar.Delete();
                                     }
                                 }
                             }
@@ -569,7 +570,7 @@ namespace StockVentas
                             BL.TransaccionesBLL.GrabarStockMovimientos(dsStockMov);
                             break;
                         case "frmVentas":
-                            BL.TransaccionesBLL.GrabarVentas(dsVentas, ref codigoError);
+                            BL.TransaccionesBLL.GrabarVentas(dsVentas);
                             break;
                         case "frmTesoreriaMov":
                             BL.TesoreriaMovimientosBLL.GrabarDB(dsTesoreriaMov);
@@ -577,39 +578,15 @@ namespace StockVentas
                     }
                 }
             }
-            catch (MySqlException ex)
+            catch (ServidorMysqlInaccesibleException)
             {
-                codigoError = ex.Number;
-            }
-            catch (TimeoutException)
-            {
-                codigoError = 8953; // El número 8953 lo asigné al azar
-            }
-            catch (NullReferenceException)
-            {
-                codigoError = 8954; // El número 8954 lo asigné al azar
-            }
-            catch (WebException)
-            {
-                this.Invoke((Action)delegate
-                {
-                    this.Visible = false;
-                    MessageBox.Show("No se pudo establecer conexión con el servidor remoto. No se actualizaron los datos.", "Trend Gestión",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                });
-            }
-            catch (Exception)
-            {
-                codigoError = 8955; // El número 8955 lo asigné al azar
-            }
-            finally
-            {
-                if (accion == "grabar") DeshacerCambios();
+                servidorCaidoExcepcion = new ServidorMysqlInaccesibleException("No se pudo conectar con el servidor de base de datos.");
             }
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+
             if (codigoError != null && origen == "frmStockMov")
             {
                 if (instaciaStockComp != null) instaciaStockComp.GrabacionCorrecta = false;
@@ -619,9 +596,18 @@ namespace StockVentas
             {
                 if (instanciaArticulosAgrupar != null) instanciaArticulosAgrupar.grabacionCorrecta = false;             
             }
-            
-            if (codigoError == null)
+            if (codigoError == 1062) //Clave principal duplicada
             {
+                this.Visible = false;
+                switch (origen)
+                {
+                    case "frmFondoCaja":
+                        MessageBox.Show("Ya existe un fondo de caja para dicha fecha. No se guardaron los cambios.",
+                        "Trend Gestion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
+                this.Close();
+            }
                 if (accion == "cargar")
                 {
                     switch (origen)
@@ -683,71 +669,9 @@ namespace StockVentas
                     }
                 }
                 this.Close();
-            }
-            else if (codigoError == 1042) //Unable to connect to any of the specified MySQL hosts.
-            {
-                this.Visible = false;
-                if (accion == "grabar")
-                {
-                    MessageBox.Show("No se pudo establecer la conexión con el servidor (verifique la conexión a internet). No se guardaron los cambios.",
-                        "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo establecer la conexión con el servidor (verifique la conexión a internet).",
-                            "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                this.Close();
-            }
-            else if (codigoError == 1062) //Clave principal duplicada
-            {
-                this.Visible = false;
-                switch (origen)
-                {
-                    case "frmFondoCaja":
-                        MessageBox.Show("Ya existe un fondo de caja para dicha fecha. No se guardaron los cambios.",
-                        "Trend Gestion", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                }
-                this.Close();
-            }
-            else if (codigoError == 0) // Procedure or function cannot be found in database 
-            {
-                this.Visible = false;
-                if (accion == "grabar")
-                {
-                    MessageBox.Show("Ocurrió un error al ejecutar la consulta MySQL (consulte al administrador del sistema). No se guardaron los cambios.",
-                        "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MessageBox.Show("Ocurrió un error al ejecutar la consulta MySQL (consulte al administrador del sistema).",
-                        "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                this.Close();
-            }
-            else if (codigoError == 8953) //TimeOutException
-            {
-                this.Visible = false;
-                if (accion == "grabar")
-                {
-                    MessageBox.Show("Se excedió el tiempo de espera para la consulta al servidor. Intente nuevamente. No se guardaron los cambios.",
-                        "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MessageBox.Show("Se excedió el tiempo de espera para la consulta al servidor. Intente nuevamente.",
-                        "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                this.Close();
-            }
-            else
-            {
-                this.Visible = false;
-                MessageBox.Show("Se produjo un error inesperado. Consulte al administrador del sistema",
-                "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-            }
+
+
+
         }
 
         private void DeshacerCambios()

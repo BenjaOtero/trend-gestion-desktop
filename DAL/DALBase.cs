@@ -9,7 +9,6 @@ using System.Data.OleDb;
 using System.ServiceProcess;
 using System.Windows.Forms;
 
-
 namespace DAL
 {
     public class DALBase

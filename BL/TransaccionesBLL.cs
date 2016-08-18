@@ -76,7 +76,7 @@ namespace BL
             }
         }
 
-        public static void GrabarVentas(DataSet dtVentas, ref int? codigoError)
+        public static void GrabarVentas(DataSet dtVentas)
         {
             MySqlTransaction tr = null;
             try
@@ -94,34 +94,14 @@ namespace BL
                 switch (ex.Number)
                 {
                     case 1042: //Unable to connect to any of the specified MySQL hosts.
-                        dtVentas.RejectChanges();
-                        codigoError = 1042;
-                        break;
-                    case 0: // Procedure or function cannot be found in database 
-                        dtVentas.RejectChanges();
-                        codigoError = ex.Number;
-                        break;
-                    default:
-                        dtVentas.RejectChanges();
                         if (tr != null)
                         {
                             tr.Rollback();
+                            dtVentas.RejectChanges();
+                            throw new ServidorMysqlInaccesibleException("No se pudo conectar con el servidor de base de datos.", ex);
                         }
-                        codigoError = ex.Number;
                         break;
                 }
-            }
-            catch (TimeoutException)
-            {
-                codigoError = 8953; // El número 8953 lo asigné al azar
-            }
-            catch (NullReferenceException)
-            {
-                codigoError = 8954; // El número 8954 lo asigné al azar
-            }
-            catch (Exception)
-            {
-                codigoError = 8955; // El número 8955 lo asigné al azar
             }
         }
 

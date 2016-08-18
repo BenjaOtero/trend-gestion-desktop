@@ -29,6 +29,10 @@ namespace StockVentas
             cmbGenero.Validating += new System.ComponentModel.CancelEventHandler(BL.Utilitarios.ValidarComboBox);
             cmbGenero.KeyDown += new System.Windows.Forms.KeyEventHandler(BL.Utilitarios.EnterTab);
             DataTable tblGeneros = BL.GetDataBLL.Generos();
+            DataRow rowTodos = tblGeneros.NewRow();
+            rowTodos["IdGeneroGEN"] = 99;
+            rowTodos["DescripcionGEN"] = "TODOS";
+            tblGeneros.Rows.Add(rowTodos);
             cmbGenero.ValueMember = "IdGeneroGEN";
             cmbGenero.DisplayMember = "DescripcionGEN";
             cmbGenero.DropDownStyle = ComboBoxStyle.DropDown;

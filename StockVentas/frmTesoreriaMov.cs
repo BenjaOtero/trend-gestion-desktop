@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using DAL;
 
 namespace StockVentas
 {
@@ -148,8 +149,24 @@ namespace StockVentas
             {
                 string formularioOrigen = "frmTesoreriaMov";
                 string accionProgress = "grabar";
-                frmProgress progreso = new frmProgress(dsTesoreriaMov, formularioOrigen, accionProgress);
-                progreso.ShowDialog();
+                frmProgress progreso = new frmProgress(dsTesoreriaMov, formularioOrigen, accionProgress);                
+                try
+                {
+                    progreso.ShowDialog();
+                    if (progreso.servidorCaidoExcepcion != null)
+                    {
+                        MessageBox.Show(progreso.servidorCaidoExcepcion.Message);                        
+                    }
+                }
+                catch (ServidorMysqlInaccesibleException ex)
+                {
+                    MessageBox.Show(ex.Message, "Trend Gestión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
