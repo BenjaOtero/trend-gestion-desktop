@@ -108,6 +108,13 @@ namespace StockVentas
                  "Si elimina este artículo/s, se eliminarán las ventas, movimientos de stock y stock relacionados. ¿Desea continuar?",
                  "Trend", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
+                    if (!BL.Utilitarios.ValidarServicioMysql())
+                    {
+                        MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                                + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                        return;
+                    }
                     string oldBorrado = string.Empty;
                     string imagenesBorrar = string.Empty;
                     viewArticulos = new DataView(tblArticulos);
@@ -155,11 +162,6 @@ namespace StockVentas
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void dgvDatos_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            return;
         }
 
     }

@@ -40,9 +40,9 @@ namespace StockVentas
             this.tblArticulos = tablaArticulos;
             BL.Utilitarios.AddEventosABM(grpCampos, ref btnGrabar, ref tblArticulos);
             cmbGenero.Validating += new System.ComponentModel.CancelEventHandler(BL.Utilitarios.ValidarComboBox);
-            cmbGenero.KeyDown += new System.Windows.Forms.KeyEventHandler(BL.Utilitarios.EnterTab);
+       //     cmbGenero.KeyDown += new System.Windows.Forms.KeyEventHandler(BL.Utilitarios.EnterTab);
             cmbProveedor.Validating += new System.ComponentModel.CancelEventHandler(BL.Utilitarios.ValidarComboBox);
-            cmbProveedor.KeyDown += new System.Windows.Forms.KeyEventHandler(BL.Utilitarios.EnterTab);
+      //      cmbProveedor.KeyDown += new System.Windows.Forms.KeyEventHandler(BL.Utilitarios.EnterTab);
             txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(BL.Utilitarios.SoloNumerosConComa);
             txtPublico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(BL.Utilitarios.SoloNumerosConComa);
             txtMayor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(BL.Utilitarios.SoloNumerosConComa);
@@ -111,6 +111,7 @@ namespace StockVentas
                 Binding bind = new Binding("Checked", fila, "ActivoWebART", false, DataSourceUpdateMode.OnPropertyChanged);
                 bind.Format += new ConvertEventHandler(binding_Format);
                 bind.Parse += new ConvertEventHandler(binding_Parse);
+                txtIdArticulo.Focus();
 
             }
         }
@@ -120,6 +121,14 @@ namespace StockVentas
             MemoryStream ms;
             bool tratarImagenesServer = false;
             Cursor.Current = Cursors.WaitCursor;
+            if (!BL.Utilitarios.ValidarServicioMysql())
+            {
+                MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                        + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                tblArticulos.RejectChanges();
+                return;
+            }
             try
             {
                 if (strFileName != null)
@@ -278,6 +287,14 @@ namespace StockVentas
                 switch (respuesta)
                 {
                     case DialogResult.Yes:
+                        if (!BL.Utilitarios.ValidarServicioMysql())
+                        {
+                            MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                                    + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                            tblArticulos.RejectChanges();
+                            return;
+                        }
                         Grabar();
                         break;
                     case DialogResult.No:

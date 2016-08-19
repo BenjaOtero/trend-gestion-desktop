@@ -7,13 +7,14 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data.OleDb;
 using System.ServiceProcess;
-using System.Windows.Forms;
+using System.Threading;
 
 namespace DAL
 {
     public class DALBase
     {
         static int intentos = 0;
+        static ServiceController sc;
 
         public DALBase()
         {
@@ -51,7 +52,7 @@ namespace DAL
                     {
                         if (ExisteServicioMySQL())
                         {
-                         //   IniciarServicioMysql();
+                            IniciarServicioMysql();
                             intentos++;
                             goto abrirConexion;
                         }
@@ -148,10 +149,11 @@ namespace DAL
         public static bool ValidarServicioMysql()
         {
             bool funcionando = true;
-            ServiceController sc = new ServiceController("MySQL");
+            sc = new ServiceController("MySQL");
             if ((sc.Status.Equals(ServiceControllerStatus.Stopped)) || (sc.Status.Equals(ServiceControllerStatus.StopPending)))
-            {
-                sc.Start();
+            {                
+             //   sc.Start();
+                sc = new ServiceController("MySQL");
                 if ((sc.Status.Equals(ServiceControllerStatus.Stopped)) || (sc.Status.Equals(ServiceControllerStatus.StopPending)))
                 {
                     funcionando = false;

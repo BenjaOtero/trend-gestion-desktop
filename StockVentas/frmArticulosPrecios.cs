@@ -155,6 +155,14 @@ namespace StockVentas
 
         private void Grabar()
         {
+            if (!BL.Utilitarios.ValidarServicioMysql())
+            {
+                MessageBox.Show("NO SE ACTUALIZARON LOS PRECIOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                        + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                tblArticulos.RejectChanges();
+                return;
+            }
             foreach (DataGridViewRow row in dgvDatos.Rows)
             {
                 if (row.Cells["Actualizar"].Value != null)

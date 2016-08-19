@@ -238,6 +238,10 @@ namespace StockVentas
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                frm.Close();
+            }
         }        
 
         private void btnEditarNuevos_Click(object sender, EventArgs e)

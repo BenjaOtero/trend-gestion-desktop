@@ -646,9 +646,9 @@ namespace StockVentas
                       //  frm.MdiParent = f;
                         break;
                     case "frmArticulosBorrar":
-                        this.Close();
+                        this.Visible = false;
                         frmArticulosBorrar articulosBorrar = new frmArticulosBorrar(tblArticulosBorrar, tabla);
-                        articulosBorrar.Show();
+                        articulosBorrar.ShowDialog();
                         break;
                     case "frmFondoCajaCons":
                         frmFondoCajaCons fondo = new frmFondoCajaCons(dt);

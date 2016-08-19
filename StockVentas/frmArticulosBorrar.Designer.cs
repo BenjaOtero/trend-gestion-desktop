@@ -48,7 +48,7 @@
             // 
             this.groupBox1.Controls.Add(this.txtParametros);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.groupBox1.Location = new System.Drawing.Point(822, 86);
+            this.groupBox1.Location = new System.Drawing.Point(879, 86);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(173, 54);
             this.groupBox1.TabIndex = 0;
@@ -68,7 +68,7 @@
             this.groupBox3.Controls.Add(this.radioButton2);
             this.groupBox3.Controls.Add(this.rdArticulo);
             this.groupBox3.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.groupBox3.Location = new System.Drawing.Point(822, 5);
+            this.groupBox3.Location = new System.Drawing.Point(879, 5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(173, 75);
             this.groupBox3.TabIndex = 2;
@@ -104,7 +104,7 @@
             this.groupBox2.Controls.Add(this.btnSalir);
             this.groupBox2.Controls.Add(this.btnBorrar);
             this.groupBox2.Controls.Add(this.btnBuscar);
-            this.groupBox2.Location = new System.Drawing.Point(823, 145);
+            this.groupBox2.Location = new System.Drawing.Point(880, 145);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(173, 358);
             this.groupBox2.TabIndex = 1;
@@ -147,15 +147,14 @@
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Location = new System.Drawing.Point(12, 5);
             this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.Size = new System.Drawing.Size(798, 496);
+            this.dgvDatos.Size = new System.Drawing.Size(853, 496);
             this.dgvDatos.TabIndex = 8;
-            this.dgvDatos.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvDatos_DataError);
             // 
             // frmArticulosBorrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 511);
+            this.ClientSize = new System.Drawing.Size(1064, 511);
             this.ControlBox = false;
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.groupBox1);
@@ -171,7 +170,6 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion

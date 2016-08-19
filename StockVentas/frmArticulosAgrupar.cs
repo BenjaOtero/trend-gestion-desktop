@@ -165,6 +165,14 @@ namespace StockVentas
                 txtParametrosDestino.Focus();
                 return;
             }
+            if (!BL.Utilitarios.ValidarServicioMysql())
+            {
+                MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                        + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                tblArticulos.RejectChanges();
+                return;
+            }
             if (MessageBox.Show("La agrupación de artículos eliminará los artículos de origen. ¿Desea continuar?", "Trend", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
                 == DialogResult.No) return;
             Cursor.Current = Cursors.WaitCursor;
@@ -234,13 +242,6 @@ namespace StockVentas
             Cursor.Current = Cursors.Arrow;
             if(tblArticulos.GetChanges() != null)
             {
-                if (!BL.Utilitarios.ValidarServicioMysql())
-                {
-                    MessageBox.Show("No se pudo conectar con el servidor de base de datos."
-                            + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    return;
-                }
                 frmProgress frm = new frmProgress(tblArticulos, tblStock, "frmArticulosAgrupar", "grabar", instanciaArticulosAgrupar);
                 frm.FormClosed += frmProgress_FormClosed;
                 frm.ShowDialog();

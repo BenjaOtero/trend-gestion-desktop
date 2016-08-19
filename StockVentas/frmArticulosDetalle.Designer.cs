@@ -62,6 +62,7 @@
             this.txtIdArticulo.ReadOnly = true;
             this.txtIdArticulo.Size = new System.Drawing.Size(344, 20);
             this.txtIdArticulo.TabIndex = 0;
+            this.txtIdArticulo.TabStop = false;
             // 
             // groupBox2
             // 
@@ -239,7 +240,7 @@
             this.cmbAlicuota.Location = new System.Drawing.Point(126, 208);
             this.cmbAlicuota.Name = "cmbAlicuota";
             this.cmbAlicuota.Size = new System.Drawing.Size(344, 21);
-            this.cmbAlicuota.TabIndex = 1;
+            this.cmbAlicuota.TabIndex = 7;
             // 
             // cmbGenero
             // 
@@ -255,7 +256,7 @@
             this.cmbProveedor.Location = new System.Drawing.Point(126, 235);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(344, 21);
-            this.cmbProveedor.TabIndex = 7;
+            this.cmbProveedor.TabIndex = 8;
             // 
             // label10
             // 
