@@ -39,6 +39,13 @@ namespace StockVentas
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (!BL.Utilitarios.ValidarServicioMysql())
+            {
+                MessageBox.Show("No se pudo conectar con el servidor de base de datos."
+                        + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                return;
+            }
             DataRow selectedDataRow = ((DataRowView)lstLocales.SelectedItem).Row;
             int idLocal = Convert.ToInt32(selectedDataRow["IdLocalLOC"]);
             string strFechaDesde = dateTimeDesde.Value.ToString("yyyy-MM-dd 00:00:00");

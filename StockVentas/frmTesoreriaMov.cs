@@ -147,23 +147,19 @@ namespace StockVentas
             bindingSource1.EndEdit();
             if (tblTesoreriaMov.GetChanges() != null)
             {
+                if (!BL.Utilitarios.ValidarServicioMysql())
+                {
+                    MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                            + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    return;
+                }
                 string formularioOrigen = "frmTesoreriaMov";
                 string accionProgress = "grabar";
                 frmProgress progreso = new frmProgress(dsTesoreriaMov, formularioOrigen, accionProgress);                
                 try
                 {
                     progreso.ShowDialog();
-                    if (progreso.servidorCaidoExcepcion != null)
-                    {
-                        MessageBox.Show(progreso.servidorCaidoExcepcion.Message, "Trend Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        progreso.Close();
-                        tblTesoreriaMov.RejectChanges();
-                    }
-                }
-                catch (ServidorMysqlInaccesibleException ex)
-                {
-                    MessageBox.Show(ex.Message, "Trend Gestión",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {

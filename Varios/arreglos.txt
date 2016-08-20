@@ -9,9 +9,9 @@
 -frmAlicuotasIva, txtPorcentajeALI_KeyPress (permitir un solo punto y dos decimales)
 
 
-prever caida servicio mysql y reiniciarlo
 probar importar datos
 probar y refactorizar exportar datos
+
 
 
 

@@ -286,6 +286,13 @@ namespace StockVentas
         {
             origen = "frmFondoCajaCons";
             accion = "cargar";
+            if (!BL.Utilitarios.ValidarServicioMysql())
+            {
+                MessageBox.Show("No se pudo conectar con el servidor de base de datos."
+                        + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                return;
+            }
             frmProgress newMDIChild = new frmProgress(origen, accion);
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
@@ -465,8 +472,23 @@ namespace StockVentas
 
         private void exportarDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!BL.Utilitarios.ValidarServicioMysql())
+            {
+                MessageBox.Show("No se pudo conectar con el servidor de base de datos."
+                        + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                return;
+            }
             frmProgress frm = new frmProgress("ExportarDatos", "grabar");
-            frm.ShowDialog();
+            try
+            {
+                frm.ShowDialog();
+            }
+            catch (WebException)
+            {
+                MessageBox.Show("No se pudo establecer conexión con el servidor remoto. No se exportaron los datos.", "Trend Gestión",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
         }
 
         private void borradoMasivoArtículosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -483,14 +505,23 @@ namespace StockVentas
 
         private void importarDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (BL.Utilitarios.HayInternet())
+            if (!BL.Utilitarios.ValidarServicioMysql())
             {
-                frmProgress frm = new frmProgress("ImportarDatos", "grabar");
-                frm.ShowDialog();
-
+                MessageBox.Show("No se pudo conectar con el servidor de base de datos."
+                        + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                return;
             }
-            else
-                MessageBox.Show("Verifique la conexión a internet. No se importaron datos.", "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            frmProgress frm = new frmProgress("ImportarDatos", "grabar");
+            try
+            {
+                frm.ShowDialog();
+            }
+            catch (WebException)
+            {
+                MessageBox.Show("No se pudo establecer conexión con el servidor remoto. No se actualizaron los datos.", "Trend Gestión",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }                
         }
 
         private void RestaurarDatos(string archivo)

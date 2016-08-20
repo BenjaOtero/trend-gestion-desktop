@@ -37,6 +37,13 @@ namespace StockVentas
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (!BL.Utilitarios.ValidarServicioMysql())
+            {
+                MessageBox.Show("No se pudo conectar con el servidor de base de datos."
+                        + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                return;
+            }
             DataRow selectedDataRow = ((DataRowView)lstLocales.SelectedItem).Row;
             int idLocal = Convert.ToInt32(selectedDataRow["IdLocalLOC"]);
             string strFechaDesde = dateTimeDesde.Value.ToString("yyyy-MM-dd 00:00:00");
@@ -45,20 +52,20 @@ namespace StockVentas
             {
                 try
                 {
-                string tipoMov = "compensaciones";
-                string opcMov = "entradas";
-                string articulo = string.Empty;
-                string descripcion = string.Empty;
-                if (rdArticulo.Checked) articulo = txtParametros.Text;
-                else descripcion = txtParametros.Text;
-                string formularioOrigen = "frmStockMovInforme";
-                string accionProgress = "cargar";
-                frmProgress progreso = new frmProgress(strFechaDesde, strFechaHasta, idLocal, tipoMov, opcMov, formularioOrigen, accionProgress, 
-                    articulo, descripcion);
-                progreso.ShowDialog();
-                DataSet dsStockMov = frmProgress.dsStockMovCons;
-                    frmStockMovInforme frm = new frmStockMovInforme(dsStockMov, tipoMov, articulo, descripcion);
-                    frm.Show();
+                    string tipoMov = "compensaciones";
+                    string opcMov = "entradas";
+                    string articulo = string.Empty;
+                    string descripcion = string.Empty;
+                    if (rdArticulo.Checked) articulo = txtParametros.Text;
+                    else descripcion = txtParametros.Text;
+                    string formularioOrigen = "frmStockMovInforme";
+                    string accionProgress = "cargar";
+                    frmProgress progreso = new frmProgress(strFechaDesde, strFechaHasta, idLocal, tipoMov, opcMov, formularioOrigen, accionProgress, 
+                        articulo, descripcion);
+                    progreso.ShowDialog();
+                    DataSet dsStockMov = frmProgress.dsStockMovCons;
+                        frmStockMovInforme frm = new frmStockMovInforme(dsStockMov, tipoMov, articulo, descripcion);
+                        frm.Show();
                 }
                 catch (NullReferenceException)
                 {

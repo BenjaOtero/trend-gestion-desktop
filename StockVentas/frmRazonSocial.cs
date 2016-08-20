@@ -94,6 +94,14 @@ namespace StockVentas
             bindingSource1.EndEdit();
             if (tblRazonSocial.GetChanges() != null)
             {
+                if (!BL.Utilitarios.ValidarServicioMysql())
+                {
+                    MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                            + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    tblRazonSocial.RejectChanges();
+                    return;
+                }
                 frmProgress progreso = new frmProgress(tblRazonSocial, "frmRazonSocial", "grabar");
                 progreso.ShowDialog();
             }

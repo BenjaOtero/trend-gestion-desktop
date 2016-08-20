@@ -93,6 +93,13 @@ namespace StockVentas
                 if (MessageBox.Show("¿Desea borrar este registro y todos los movimientos relacionados?", "Trend Gestión",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.Yes)
                 {
+                    if (!BL.Utilitarios.ValidarServicioMysql())
+                    {
+                        MessageBox.Show("NO SE BORRARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                                + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                        return;
+                    }
                     int PK = Convert.ToInt32(dgvVentas.CurrentRow.Cells["IdVentaVEN"].Value.ToString());
                     frmProgress frm = new frmProgress(PK, "frmArqueoCajaAdmin_borrarVenta", "grabar");
                     frm.FormClosed += progreso_FormClosed;
@@ -116,6 +123,13 @@ namespace StockVentas
                 if (MessageBox.Show("¿Desea borrar este registro?", "Trend Gestión",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.Yes)
                 {
+                    if (!BL.Utilitarios.ValidarServicioMysql())
+                    {
+                        MessageBox.Show("NO SE BORRARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                                + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                        return;
+                    }
                     int PK = Convert.ToInt32(dgvTesoreria.CurrentRow.Cells["IdMovTESM"].Value.ToString());
                     frmProgress frm = new frmProgress(PK, "frmArqueoCajaAdmin_borrarTesoreria", "grabar");
                     frm.FormClosed += progreso_FormClosed;
@@ -130,6 +144,14 @@ namespace StockVentas
             if (formVentas.Tag != null && formVentas.Tag.ToString() == "ActualizarArqueo")
             {
                 DataSet dsVentas = formVentas.dsVentas;
+                if (!BL.Utilitarios.ValidarServicioMysql())
+                {
+                    MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                            + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    dsVentas.RejectChanges();
+                    return;
+                }                
                 frmProgress progreso = new frmProgress(dsVentas, "frmVentas", "grabar");
                 progreso.FormClosed += progreso_FormClosed;
                 progreso.Show();

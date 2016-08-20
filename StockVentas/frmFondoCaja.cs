@@ -99,6 +99,14 @@ namespace StockVentas
             rowView.EndEdit();
             if (tblFondoCaja.GetChanges() != null)
             {
+                if (!BL.Utilitarios.ValidarServicioMysql())
+                {
+                    MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                            + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    tblFondoCaja.RejectChanges();
+                    return;
+                }
                 frmProgress progreso = new frmProgress(tblFondoCaja, "frmFondoCaja", "grabar");
                 progreso.ShowDialog();
                 tblFondoCaja.AcceptChanges();
@@ -132,7 +140,15 @@ namespace StockVentas
                     MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 switch (respuesta)
                 {
-                    case DialogResult.Yes:                        
+                    case DialogResult.Yes:
+                        if (!BL.Utilitarios.ValidarServicioMysql())
+                        {
+                            MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                                    + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                            tblFondoCaja.RejectChanges();
+                            return;
+                        }
                         frmProgress progreso = new frmProgress(tblFondoCaja, "frmFondoCaja", "grabar");
                         progreso.ShowDialog();
                         break;

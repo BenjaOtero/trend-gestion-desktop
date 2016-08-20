@@ -31,7 +31,6 @@ namespace StockVentas
         DataView viewDestino;
         public string PK = string.Empty;
         private bool grabacionCorrecta = true;
-        frmProgress progreso;
         public string idArticulo;
         bool formClosing = false;
         private int? codigoError = null;

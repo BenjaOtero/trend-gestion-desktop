@@ -627,7 +627,7 @@ namespace StockVentas
                     case "frmArqueoInter":
                         if (frmInstanciaArqueo == null) // Estoy abriendo frmArqueoCajaAdmin desde el menú
                         {
-                            this.Close();
+                            this.Visible = false;
                             frmArqueoCajaAdmin frmArqueo = new frmArqueoCajaAdmin(dsArqueo, fecha, idLocal, nombreLocal, idPc);
                             frmArqueo.ShowDialog();
                         }

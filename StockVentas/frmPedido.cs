@@ -62,6 +62,13 @@ namespace StockVentas
                 
             try
             {
+                if (!BL.Utilitarios.ValidarServicioMysql())
+                {
+                    MessageBox.Show("No se pudo conectar con el servidor de base de datos."
+                            + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    return;
+                }
                 strFecha = dateTimeDesde.Value.ToString("yyyy-MM-dd");
                 string genero = cmbGenero.SelectedValue.ToString();
                 frmProgress frm = new frmProgress(strFecha, "frmPedido", "cargar", genero);
@@ -108,8 +115,6 @@ namespace StockVentas
                     i++;
                     r++;
                 }
-
-
                 libros_trabajo.SaveAs(fichero.FileName,
                     Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
                 libros_trabajo.Close(true);

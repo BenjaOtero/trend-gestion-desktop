@@ -69,6 +69,13 @@ namespace StockVentas
             }
             try
             {
+                if (!BL.Utilitarios.ValidarServicioMysql())
+                {
+                    MessageBox.Show("No se pudo conectar con el servidor de base de datos."
+                            + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    return;
+                }
                 int forma = Convert.ToInt32(cmbForma.SelectedValue.ToString());
                 string strDesde = dateTimeDesde.Value.ToString("yyyy-MM-dd 00:00:00");
                 DateTime hasta = dateTimeHasta.Value;

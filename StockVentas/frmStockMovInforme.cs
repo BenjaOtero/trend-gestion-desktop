@@ -148,6 +148,13 @@ namespace StockVentas
             if (MessageBox.Show("¿Desea borrar este registro y todos los movimientos relacionados?", "Trend Gestión",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.Yes)
             {
+                if (!BL.Utilitarios.ValidarServicioMysql())
+                {
+                    MessageBox.Show("NO SE BORRARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                            + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 PK = Convert.ToInt32(dgvStockMov.CurrentRow.Cells["IdMovMSTK"].Value.ToString());
                 progreso = new frmProgress(PK, "frmStockMov_borrar", "grabar");

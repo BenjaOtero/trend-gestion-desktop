@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
-using DAL;
 
 namespace StockVentas
 {
@@ -54,26 +53,19 @@ namespace StockVentas
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (!BL.Utilitarios.ValidarServicioMysql())
+            {
+                MessageBox.Show("No se pudo conectar con el servidor de base de datos."
+                        + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                return;
+            }
             fecha = dateTimePicker1.Value;
             idLocal = Convert.ToInt32(lstLocales.SelectedValue.ToString());
             nombreLocal = lstLocales.Text;
             idPc = Convert.ToInt32(lstPc.SelectedValue.ToString());
             frmProgress frm = new frmProgress(fecha, idLocal, nombreLocal, idPc, "frmArqueoInter", "cargar");
-            try
-            {
-                frm.ShowDialog();
-                if (frm.servidorCaidoExcepcion != null)
-                {
-                    MessageBox.Show(frm.servidorCaidoExcepcion.Message, "Trend Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    frm.Close();
-                    this.Close();
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            frm.Show();
         }
 
         private void lstLocales_SelectedValueChanged(object sender, EventArgs e)

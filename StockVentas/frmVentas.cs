@@ -692,7 +692,14 @@ namespace StockVentas
             return;
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            txtArticulo.Text = "0050013505";
+            txtCantidad.Text = "1";
+            txtPrecio.Text = "50";
+            cmbForma.Text = "EFECTIVO";
 
+        }
 
     }
 }

@@ -76,6 +76,13 @@ namespace StockVentas
                 if (MessageBox.Show("¿Desea borrar este registro?", "Buscar",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    if (!BL.Utilitarios.ValidarServicioMysql())
+                    {
+                        MessageBox.Show("NO SE BORRARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                                + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                        return;
+                    }
                     int PK = Convert.ToInt32(dgvDatos.CurrentRow.Cells["IdFondoFONP"].FormattedValue.ToString());
                     string formularioOrigen = "frmFondoCajaCons";
                     string accionProgress = "grabar";

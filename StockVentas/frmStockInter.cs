@@ -84,6 +84,13 @@ namespace StockVentas
                 MessageBox.Show("Debe seleccionar un local.", "Trend", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (!BL.Utilitarios.ValidarServicioMysql())
+            {
+                MessageBox.Show("No se pudo conectar con el servidor de base de datos."
+                        + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                return;
+            }
             string whereLocales = null;
             string articulo = "";
             string descripcion = "";

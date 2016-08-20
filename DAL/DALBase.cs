@@ -52,7 +52,7 @@ namespace DAL
                     {
                         if (ExisteServicioMySQL())
                         {
-                            IniciarServicioMysql();
+                         //   IniciarServicioMysql();
                             intentos++;
                             goto abrirConexion;
                         }
