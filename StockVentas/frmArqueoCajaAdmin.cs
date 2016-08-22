@@ -158,11 +158,6 @@ namespace StockVentas
             }
         }
 
-        void BorrarVentas_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            ActualizarArqueo();
-        }
-
         void editTesoreria_FormClosed(object sender, FormClosedEventArgs e)
         {
             ActualizarArqueo();
@@ -180,6 +175,13 @@ namespace StockVentas
 
         void ActualizarArqueo()
         {
+            if (!BL.Utilitarios.ValidarServicioMysql())
+            {
+                MessageBox.Show("No se pudo conectar con el servidor de base de datos."
+                        + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                return;
+            }
             frmProgress frm = new frmProgress(fecha, idLocal, nombreLocal, idPc, "frmArqueoInter", "cargar", frmInstanciaArqueo);
             frm.ShowDialog();
         }

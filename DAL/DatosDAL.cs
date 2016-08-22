@@ -38,9 +38,8 @@ namespace DAL
             return registroRestaurado;
         }
 
-        //
         // EXPORTAR DATOS POS
-        //
+
         public static DataSet ControlarUpdate()
         {
             MySqlConnection SqlConnection1 = DALBase.GetDumpAdminConnection();
@@ -56,8 +55,7 @@ namespace DAL
 
         public static void DeleteAll()
         {
-            MySqlConnection SqlConnection1 = DALBase.GetDumpAdminConnection();
-            
+            MySqlConnection SqlConnection1 = DALBase.GetDumpAdminConnection();            
             MySqlDataAdapter SqlDataAdapter1 = new MySqlDataAdapter();
             MySqlCommand SqlDeleteCommand1 = new MySqlCommand("DatosPos_Borrar", SqlConnection1);
             SqlDataAdapter1.DeleteCommand = SqlDeleteCommand1;

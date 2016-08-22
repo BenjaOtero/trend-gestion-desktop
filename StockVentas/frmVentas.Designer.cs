@@ -72,7 +72,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.dgvDatos = new StockVentas.customDgvw();
             this.grpVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
@@ -382,7 +381,6 @@
             // 
             // grpABM
             // 
-            this.grpABM.Controls.Add(this.button1);
             this.grpABM.Controls.Add(this.btnArticulos);
             this.grpABM.Controls.Add(this.chkDev);
             this.grpABM.Controls.Add(this.btnBorrar);
@@ -507,17 +505,6 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "Cantidad";
             // 
-            // button1
-            // 
-            this.button1.CausesValidation = false;
-            this.button1.Location = new System.Drawing.Point(839, 67);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 21);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // dgvDatos
             // 
             this.dgvDatos.AllowUserToResizeRows = false;
@@ -603,6 +590,5 @@
         private System.Windows.Forms.TextBox txtCosto;
         private System.Windows.Forms.Label lblCosto;
         private System.Windows.Forms.Button btnClientes;
-        private System.Windows.Forms.Button button1;
     }
 }
