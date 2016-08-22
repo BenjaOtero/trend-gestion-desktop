@@ -22,9 +22,8 @@ namespace BL
         static int intentosDump = 0;
         static int intentosUpload = 0;
 
-        //
         // IMPORTAR MOVIMIENTOS POS           COMPROBAR
-        //
+
         public static void GetDataPOS()
         {
             List<string> directories = GetDirectoriesFTP();
@@ -204,14 +203,8 @@ namespace BL
             process.StartInfo.CreateNoWindow = false;
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.EnableRaisingEvents = true;  // permite disparar el evento process_Exited
-         //   process.Exited += new EventHandler(ExportarDatos_Exited);
             process.Start();
             process.WaitForExit();
-        }
-
-        private static void ExportarDatos_Exited(object sender, System.EventArgs e)
-        {
-            if (File.Exists("c:\\Windows\\Temp\\backup.bat")) File.Delete("c:\\Windows\\Temp\\backup.bat");
         }
 
         private static bool ComprobarDump()
