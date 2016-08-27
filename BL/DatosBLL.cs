@@ -112,7 +112,7 @@ namespace BL
             string unidad = path.Substring(0, 2);
             sb.AppendLine(unidad);
             sb.AppendLine(@"cd " + path + @"\Mysql");
-            sb.AppendLine(@"gzip -d " + archivo);
+            sb.AppendLine(@"xz -d " + archivo);
             archivo = archivo.Substring(0, archivo.Length - 3);
             sb.AppendLine(@"mysql -u ncsoftwa_re -p8953#AFjn ncsoftwa_re < " + archivo);
             using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\data_import\\restore.bat", true)) // escribo el archivo .bat

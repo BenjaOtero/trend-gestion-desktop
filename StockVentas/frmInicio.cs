@@ -100,7 +100,7 @@ namespace StockVentas
                 label1.Text = "Exportando datos . . .";
                 BL.DatosBLL.ExportarDatos();
                 label1.Text = "Importando datos . . .";
-             //   BL.DatosBLL.GetDataPOS();
+                BL.DatosBLL.GetDataPOS();
             }
             catch (ServidorMysqlInaccesibleException ex)
             {
