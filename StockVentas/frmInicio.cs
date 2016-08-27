@@ -99,7 +99,8 @@ namespace StockVentas
                 Mantenimiento();
                 label1.Text = "Exportando datos . . .";
                 BL.DatosBLL.ExportarDatos();
-                BL.DatosBLL.GetDataPOS();
+                label1.Text = "Importando datos . . .";
+             //   BL.DatosBLL.GetDataPOS();
             }
             catch (ServidorMysqlInaccesibleException ex)
             {
@@ -293,7 +294,7 @@ namespace StockVentas
             {
                 this.Invoke((Action)delegate
                 {
-                    //  this.Visible = false;
+                    this.Visible = false;
                     MessageBox.Show(ex.Message, "Trend Gestión",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 });

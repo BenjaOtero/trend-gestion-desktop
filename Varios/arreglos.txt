@@ -8,9 +8,10 @@
 -desarrollar ayuda
 -frmAlicuotasIva, txtPorcentajeALI_KeyPress (permitir un solo punto y dos decimales)
 
-
+-informe ventasDetalle no muestra movimientos al ser cargadas las ventas desde admin
 probar importar datos
 probar y refactorizar exportar datos
+al instalar restaurar dump_admin
 
 
 
