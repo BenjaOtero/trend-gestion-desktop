@@ -205,14 +205,9 @@ namespace StockVentas
 
         private void Upload(string nombreLocal, string nombreServidor)
         {
-            ftpServerIP = "karminna.com/public_html/images";
-            ftpUserID = "benja@karminna.com";
-            ftpPassword = "8953#AFjn";
-
-            // FTP local
-            /* ftpServerIP = "127.0.0.1:22";
-              ftpUserID = "Benja";
-              ftpPassword = "8953#AFjn";*/
+            ftpServerIP = "";
+            ftpUserID = "alguien@hosting.com";
+            ftpPassword = "1234";
 
             FileInfo fileInf = new FileInfo(nombreLocal);
             string uri = "ftp://" + ftpServerIP + "/" + fileInf.Name;

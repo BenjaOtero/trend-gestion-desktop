@@ -13,7 +13,7 @@
 
 -ver contraseñas 8953#AFjn
 -ofuscar codigo
-
+-eliminar frmPruebas
 
 
 
