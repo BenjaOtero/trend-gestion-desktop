@@ -97,10 +97,10 @@ namespace StockVentas
                 ds = BL.GetDataBLL.GetData();                
                 string idRazonSocial = BL.GetDataBLL.RazonSocial().Rows[0][0].ToString();
                 Mantenimiento();
-                label1.Text = "Exportando datos . . .";
-                BL.DatosBLL.ExportarDatos();
                 label1.Text = "Importando datos . . .";
                 BL.DatosBLL.GetDataPOS();
+                label1.Text = "Exportando datos . . .";
+                BL.DatosBLL.ExportarDatos();
             }
             catch (ServidorMysqlInaccesibleException ex)
             {

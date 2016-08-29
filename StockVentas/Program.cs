@@ -23,7 +23,7 @@ namespace StockVentas
 
             // Set the unhandled exception mode to force all Windows Forms errors to go through
             // our handler.
-            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+      //      Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
         }
 
         private static void ThreadExceptionHandler(object sender, ThreadExceptionEventArgs args)
