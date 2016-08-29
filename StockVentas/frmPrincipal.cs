@@ -13,12 +13,16 @@ using System.Net;
 using System.Xml;
 using System.Timers;
 using System.Threading;
+using System.Configuration;
 
 
 namespace StockVentas
 {
     public partial class frmPrincipal : Form
     {
+        string connectionString;
+        String[] substrings;
+        string pass;
         public frmProgress progreso;
         string origen, accion;
         string idRazonSocial;
@@ -39,6 +43,10 @@ namespace StockVentas
                     break;
                 }
             }
+            connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
+            Char delimiter = ';';
+            substrings = connectionString.Split(delimiter);
+            pass = substrings[2];
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -347,9 +355,8 @@ namespace StockVentas
                 string unidad = path.Substring(0, 2);
                 sb.AppendLine(unidad);
                 sb.AppendLine(@"cd " + path + @"\Backup");
-                //  sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p8953#AFjn -h ns21a.cyberneticos.com --opt ncsoftwa_re > " + fichero.FileName);
-                sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p8953#AFjn -h localhost --routines --opt ncsoftwa_re > " + fichero.FileName);              
-                //mysqldump -u... -p... mydb t1 t2 t3 > mydb_tables.sql
+             //   sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p" + pass + " -h ns21a.cyberneticos.com --opt ncsoftwa_re > " + fichero.FileName);
+                sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p" + pass + " -h localhost --routines --opt ncsoftwa_re > " + fichero.FileName);              
                 using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\backup.bat", true)) // escribo el archivo .bat
                 {
                     outfile.Write(sb.ToString());

@@ -36,7 +36,7 @@ namespace StockVentas
             InitializeComponent();
             System.Drawing.Icon ico = Properties.Resources.icono_app;
             this.Icon = ico;
-          /*  Configuration cm = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+         /*   Configuration cm = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             ConfigurationSection cs = cm.GetSection("connectionStrings");
             if (cs != null)
             {
@@ -207,6 +207,10 @@ namespace StockVentas
 
         private void ConfigurarMySQL()
         {
+            string connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
+            Char delimiter = ';';
+            String[] substrings = connectionString.Split(delimiter);
+            string pass = substrings[2];
             if (File.Exists("c:\\Windows\\Temp\\config_mysql.bat")) File.Delete("c:\\Windows\\Temp\\config_mysql.bat");
             System.IO.StreamWriter sw = System.IO.File.CreateText("c:\\Windows\\Temp\\config_mysql.bat"); // creo el archivo .bat
             sw.Close();
@@ -231,13 +235,12 @@ namespace StockVentas
             sb.AppendLine("C:");
             string configMysql = "cd " + "\"C:\\" + programFiles + "\\MySQL\\MySQL Server 5.5\\bin\"";
             sb.AppendLine(configMysql);
-            configMysql = "mysqlinstanceconfig.exe -i -q ServiceName=MySQL ServerType=DEVELOPER DatabaseType=INODB Port=3306 Charset=utf8 RootPassword=8953#AFjn";
-//            configMysql = "mysqlinstanceconfig.exe -i -q ServiceName=MySQL root Password=8953#AFjn ServerType=DEVELOPER DatabaseType=INODB Port=myport Charset=utf8";
+            configMysql = "mysqlinstanceconfig.exe -i -q ServiceName=MySQL ServerType=DEVELOPER DatabaseType=INODB Port=3306 Charset=utf8 RootPassword=" + pass;         
             sb.AppendLine(configMysql);
-            string usuario = "mysql.exe -u root -p8953#AFjn -e \"GRANT ALL ON *.* TO 'ncsoftwa_re'@'%' IDENTIFIED BY '8953#AFjn' WITH GRANT OPTION; FLUSH PRIVILEGES;\"";
+            string usuario = "mysql.exe -u root -p" + pass + " -e \"GRANT ALL ON *.* TO 'ncsoftwa_re'@'%' IDENTIFIED BY '" + pass + "' WITH GRANT OPTION; FLUSH PRIVILEGES;\"";
             sb.AppendLine(usuario);
             string rutaDB = Application.StartupPath.ToString() + @"\MySql\ncsoftwa_re.sql";
-            string restaurarDB = "mysql.exe -u ncsoftwa_re -p8953#AFjn < \"" + rutaDB + "\"";
+            string restaurarDB = "mysql.exe -u ncsoftwa_re -p" + pass + " < \"" + rutaDB + "\"";
             sb.AppendLine(restaurarDB);
             using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\config_mysql.bat", true)) // escribo en el archivo .bat
             {

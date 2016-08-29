@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_05C68A78D8A14F748C0F36F3EAF3E9CE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_07C77CC1FF3B083213AF545EDA5A0324"
         "OwnerKey" = "8:_5898D5F48CDD425EBD4616697237B5F2"
         "MsmSig" = "8:_UNDEFINED"
@@ -34,12 +40,6 @@
         "Entry"
         {
         "MsmKey" = "8:_309ABD780255498CB35EA10C50CE137E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_47A7C5D168864CD49AA79BF6D788F904"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -100,18 +100,6 @@
         "Entry"
         {
         "MsmKey" = "8:_93645AC39E374A5AA0EB25944A4FFBB5"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A18DDA10A3CC4005A82C61E85986D79D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A6C96DB072E64F61ADE0660861DA7120"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -183,12 +171,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F2AC01FBB1D6435A80B0DD0CE4B21177"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_FEAB2A41775E8FC157463B25034F6822"
         "OwnerKey" = "8:_5898D5F48CDD425EBD4616697237B5F2"
         "MsmSig" = "8:_UNDEFINED"
@@ -220,19 +202,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F2AC01FBB1D6435A80B0DD0CE4B21177"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E382A05626A3ECC50D82B3FB9980519E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_47A7C5D168864CD49AA79BF6D788F904"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -417,6 +387,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_05C68A78D8A14F748C0F36F3EAF3E9CE"
+            {
+            "SourcePath" = "8:..\\StockVentas\\bin\\Debug\\Mysql\\xz.exe"
+            "TargetName" = "8:xz.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_5925848AD6FA47CC8B9894561B90E3A9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_07C77CC1FF3B083213AF545EDA5A0324"
             {
             "AssemblyRegister" = "3:1"
@@ -465,37 +455,6 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_47A7C5D168864CD49AA79BF6D788F904"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:InstallUtil, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_47A7C5D168864CD49AA79BF6D788F904"
-                    {
-                    "Name" = "8:InstallUtil.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\Backup\\bin\\Debug\\InstallUtil.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_58826D5AB6734F98A7D3CBB7A32186DC"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
@@ -627,46 +586,6 @@
             "TargetName" = "8:Pedido.rdlc"
             "Tag" = "8:"
             "Folder" = "8:_9200320F75E9422BA43588A355698632"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A18DDA10A3CC4005A82C61E85986D79D"
-            {
-            "SourcePath" = "8:C:\\Program Files\\MySQL\\MySQL Server 5.5\\bin\\mysqldump.exe"
-            "TargetName" = "8:mysqldump.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_58826D5AB6734F98A7D3CBB7A32186DC"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A6C96DB072E64F61ADE0660861DA7120"
-            {
-            "SourcePath" = "8:..\\StockVentas\\bin\\Debug\\Mysql\\gzip.exe"
-            "TargetName" = "8:gzip.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_5925848AD6FA47CC8B9894561B90E3A9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -894,37 +813,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F2AC01FBB1D6435A80B0DD0CE4B21177"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Backup, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_F2AC01FBB1D6435A80B0DD0CE4B21177"
-                    {
-                    "Name" = "8:Backup.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\Backup\\bin\\Debug\\Backup.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_58826D5AB6734F98A7D3CBB7A32186DC"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FEAB2A41775E8FC157463B25034F6822"
             {
             "AssemblyRegister" = "3:1"
@@ -1036,17 +924,6 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_58826D5AB6734F98A7D3CBB7A32186DC"
-                    {
-                    "Name" = "8:Backup"
-                    "AlwaysCreate" = "11:TRUE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_A050AC11320C461A9F0CFB2CF5AB95FF"
-                        "Folders"
-                        {
-                        }
-                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_5925848AD6FA47CC8B9894561B90E3A9"
                     {
                     "Name" = "8:MySql"
@@ -1088,7 +965,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Gestion"
         "ProductCode" = "8:{25DF26A0-1C57-43D1-9C6D-3A8050E3D6D7}"
-        "PackageCode" = "8:{0C6B58BD-5C06-4A83-9E33-60FA732DE478}"
+        "PackageCode" = "8:{10A4C187-E38B-48EB-9BD9-1B821052CCA2}"
         "UpgradeCode" = "8:{776F22DB-151F-489E-A718-50E320D3EB77}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

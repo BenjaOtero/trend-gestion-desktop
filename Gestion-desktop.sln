@@ -9,9 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BL\BLL.csproj", "{A3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{03263708-1364-4033-B4A3-6EDF2FCE4942}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "NcSoftAdmin", "NcSoftAdmin\NcSoftAdmin.vdproj", "{A160A992-0736-458E-BFEA-117FFA736E14}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backup", "Backup\Backup.csproj", "{6660AFB4-43EA-4CDC-8C9F-1787F9F46FA8}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TrendAdmin", "NcSoftAdmin\NcSoftAdmin.vdproj", "{A160A992-0736-458E-BFEA-117FFA736E14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,16 +67,6 @@ Global
 		{A160A992-0736-458E-BFEA-117FFA736E14}.Release|Any CPU.ActiveCfg = Release
 		{A160A992-0736-458E-BFEA-117FFA736E14}.Release|Mixed Platforms.ActiveCfg = Release
 		{A160A992-0736-458E-BFEA-117FFA736E14}.Release|x86.ActiveCfg = Release
-		{6660AFB4-43EA-4CDC-8C9F-1787F9F46FA8}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{6660AFB4-43EA-4CDC-8C9F-1787F9F46FA8}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{6660AFB4-43EA-4CDC-8C9F-1787F9F46FA8}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{6660AFB4-43EA-4CDC-8C9F-1787F9F46FA8}.Debug|x86.ActiveCfg = Debug|x86
-		{6660AFB4-43EA-4CDC-8C9F-1787F9F46FA8}.Debug|x86.Build.0 = Debug|x86
-		{6660AFB4-43EA-4CDC-8C9F-1787F9F46FA8}.Release|Any CPU.ActiveCfg = Release|x86
-		{6660AFB4-43EA-4CDC-8C9F-1787F9F46FA8}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{6660AFB4-43EA-4CDC-8C9F-1787F9F46FA8}.Release|Mixed Platforms.Build.0 = Release|x86
-		{6660AFB4-43EA-4CDC-8C9F-1787F9F46FA8}.Release|x86.ActiveCfg = Release|x86
-		{6660AFB4-43EA-4CDC-8C9F-1787F9F46FA8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

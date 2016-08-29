@@ -248,14 +248,10 @@ namespace StockVentas
             string ftpUserID;
             string ftpPassword;
 
-            ftpServerIP = "karminna.com/public_html/images";
-            ftpUserID = "benja@karminna.com";
-            ftpPassword = "8953#AFjn";
-
             // FTP local
-            /* ftpServerIP = "127.0.0.1:22";
+             ftpServerIP = "127.0.0.1:22";
               ftpUserID = "Benja";
-              ftpPassword = "8953#AFjn";*/
+              ftpPassword = "";
             
 
             FileInfo fileInf = new FileInfo(@"C:\Trend\Ecommerce\trunk\public_html\images\00813605_large.jpg");
