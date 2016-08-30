@@ -12,6 +12,7 @@
 
 
 -ver contraseñas 8953#AFjn
+-borrar todos los .bat en disco que tengan contraseña
 -ofuscar codigo
 -eliminar frmPruebas
 

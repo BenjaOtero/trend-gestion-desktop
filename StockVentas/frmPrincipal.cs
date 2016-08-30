@@ -354,7 +354,7 @@ namespace StockVentas
                 string path = Application.StartupPath;
                 string unidad = path.Substring(0, 2);
                 sb.AppendLine(unidad);
-                sb.AppendLine(@"cd " + path + @"\Backup");
+                sb.AppendLine(@"cd " + path + @"\Mysql");
              //   sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p" + pass + " -h ns21a.cyberneticos.com --opt ncsoftwa_re > " + fichero.FileName);
                 sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p" + pass + " -h localhost --routines --opt ncsoftwa_re > " + fichero.FileName);              
                 using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\backup.bat", true)) // escribo el archivo .bat
@@ -437,9 +437,8 @@ namespace StockVentas
             string path = Application.StartupPath;
             string unidad = path.Substring(0, 2);
             sb.AppendLine(unidad);
-            sb.AppendLine(@"cd " + path + @"\Backup");
-            //  sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p8953#AFjn -h ns21a.cyberneticos.com --opt ncsoftwa_re > " + fichero.FileName);
-            sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p8953#AFjn -h localhost --routines --opt ncsoftwa_re | gzip > c:\windows\temp\" + fileSilenceBck);
+            sb.AppendLine(@"cd " + path + @"\Mysql");            
+            sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p" + pass + @" -h localhost --routines --opt ncsoftwa_re | gzip > c:\windows\temp\" + fileSilenceBck);
             //mysqldump -u... -p... mydb t1 t2 t3 > mydb_tables.sql
             using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\backup.bat", true)) // escribo el archivo .bat
             {

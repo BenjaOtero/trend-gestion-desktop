@@ -965,7 +965,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Gestion"
         "ProductCode" = "8:{25DF26A0-1C57-43D1-9C6D-3A8050E3D6D7}"
-        "PackageCode" = "8:{10A4C187-E38B-48EB-9BD9-1B821052CCA2}"
+        "PackageCode" = "8:{3940276E-1255-431D-A0E4-52DAD3F0BC1A}"
         "UpgradeCode" = "8:{776F22DB-151F-489E-A718-50E320D3EB77}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

@@ -167,39 +167,13 @@ namespace StockVentas
 
         private void txtWebRequest_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
-            string Connection = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\Benja\\Desktop\\clientes_face.xlsx;Extended Properties=\"Excel 12.0;HDR=YES;IMEX=1\";";
-            OleDbConnection con = new OleDbConnection(Connection);
-            System.Data.DataTable tblClientesFace = new System.Data.DataTable();
-            OleDbDataAdapter myCommand = new OleDbDataAdapter("select * from [clientes$]", con);
-            myCommand.Fill(tblClientesFace);
 
-            DataTable tblClientes = BL.GetDataBLL.Clientes();
-            int clientesAntes = tblClientes.Rows.Count;
-            int clave;
-            foreach (DataRow rowClientesFace in tblClientesFace.Rows)
-            {
-                string clienteFace = rowClientesFace["E-mail"].ToString();
-                DataRow[] foundRow = tblClientes.Select("CorreoCLI LIKE '" + clienteFace + "'");
-                if (foundRow.Count() > 0)
-                {
-                    DataRow rowCliente = tblClientes.NewRow();
-                    Random rand = new Random();
-                    clave = rand.Next(1000000000, 2000000000);
-                    rowCliente["IdClienteCLI"] = clave;
-                    rowCliente["NombreCLI"] = rowClientesFace["Nombre"].ToString().ToUpper();
-                    rowCliente["ApellidoCLI"] = rowClientesFace["Apellido"].ToString().ToUpper();
-                    rowCliente["CorreoCLI"] = rowClientesFace["E-mail"].ToString();
-                    tblClientes.Rows.Add(rowCliente);
-                }
-            }
-            int clientesDespues = tblClientes.Rows.Count;
-            if (tblClientes.GetChanges() != null)
-            {
-                frmProgress progreso = new frmProgress(tblClientes, "frmClientes", "grabar");
-                progreso.ShowDialog();
-            }
-            Cursor.Current = Cursors.Arrow;
+            Process process = new Process();
+            process.StartInfo.FileName = @"N:\Mis documentos\Programas\MySql\mysql-essential-5.5.0-m2-win32.msi";
+            process.StartInfo.Arguments = "/quiet";
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            process.Start();
+            process.WaitForExit();
             
         }
 
@@ -339,7 +313,7 @@ namespace StockVentas
             string path = Application.StartupPath;
             string unidad = path.Substring(0, 2);
             sb.AppendLine(unidad);
-            sb.AppendLine(@"cd " + path + @"\Backup");
+            sb.AppendLine(@"cd " + path + @"\Mysql");
             sb.AppendLine(@"mysqldump -t --skip-comments -u ncsoftwa_re -p8953#AFjn -h localhost --opt ncsoftwa_re articulos clientes formaspago generos alicuotasiva razonsocial | gzip > c:\windows\temp\" + razonSocial);
             //sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p8953#AFjn -h localhost --opt ncsoftwa_re articulos clientes formaspago generos alicuotasiva razonsocial | gzip > c:\windows\temp\" + razonSocial);
             using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\backup.bat", true)) // escribo el archivo .bat
