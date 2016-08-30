@@ -76,8 +76,8 @@ namespace BL
         {
             if (Directory.Exists(@"c:\windows\temp\data_import")) Directory.Delete(@"c:\windows\temp\data_import", true);
             Directory.CreateDirectory(@"c:\windows\temp\data_import");
-            string connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
-            //string connectionString = ConfigurationManager.ConnectionStrings["Ftp"].ConnectionString;
+            //string connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["Ftp"].ConnectionString;
             Char delimiter = ';';
             String[] substrings = connectionString.Split(delimiter);
             string ftpServerIP = substrings[0] + "/datos";
