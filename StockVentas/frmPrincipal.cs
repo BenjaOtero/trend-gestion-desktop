@@ -430,7 +430,7 @@ namespace StockVentas
         private void SilenceBackup(object source, ElapsedEventArgs e)
         {
             DataTable tbl = BL.GetDataBLL.RazonSocial();
-            fileSilenceBck = tbl.Rows[0][0].ToString() + "_bck.sql.gz";
+            fileSilenceBck = tbl.Rows[0][0].ToString() + "_bck.sql.xz";
             System.IO.StreamWriter sw = System.IO.File.CreateText("c:\\Windows\\Temp\\backup.bat"); // creo el archivo .bat
             sw.Close();
             StringBuilder sb = new StringBuilder();
@@ -438,7 +438,7 @@ namespace StockVentas
             string unidad = path.Substring(0, 2);
             sb.AppendLine(unidad);
             sb.AppendLine(@"cd " + path + @"\Mysql");            
-            sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p" + pass + @" -h localhost --routines --opt ncsoftwa_re | gzip > c:\windows\temp\" + fileSilenceBck);
+            sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p" + pass + @" -h localhost --routines --opt ncsoftwa_re | xz > c:\windows\temp\" + fileSilenceBck);
             //mysqldump -u... -p... mydb t1 t2 t3 > mydb_tables.sql
             using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\backup.bat", true)) // escribo el archivo .bat
             {

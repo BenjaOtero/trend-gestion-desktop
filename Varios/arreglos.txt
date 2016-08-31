@@ -15,6 +15,14 @@
 -borrar todos los .bat en disco que tengan contraseña
 -ofuscar codigo
 -eliminar frmPruebas
+-el mensaje error webexception en frmProgress debe quedar por encima del formulario
+-controlar borrado de archivos de movimientos pos en servidor ftp
+-  GetDataPOS() controlar posible bucle sin salida.
+
+
+
+23106 24067 
+
 
 
 

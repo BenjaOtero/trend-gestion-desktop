@@ -583,6 +583,18 @@ namespace StockVentas
                 servidorCaidoExcepcion = new ServidorMysqlInaccesibleException("No se pudo conectar con el servidor de base de datos."
                             + '\r' + "Consulte al administrador del sistema.");
             }
+            catch (WebException)
+            {
+                this.Invoke((Action)delegate
+                {
+                    MessageBox.Show("No se pudo conectar con el servidor remoto."
+                            + '\r' + "No se importaron los datos."
+                            + '\r' + "Intente nuevamente.", 
+                            "Trend Sistemas", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                });
+                return;
+            }
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
