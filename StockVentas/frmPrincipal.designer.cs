@@ -79,8 +79,6 @@
             this.movimientosDeEmpleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
-            this.marketingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.emailMarketingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
             this.fondosDeCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -297,7 +295,6 @@
             this.toolStripMenuItem9,
             this.toolStripMenuItem13,
             this.toolStripMenuItem14,
-            this.marketingToolStripMenuItem,
             this.toolStripMenuItem19,
             this.mantenimientoToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -502,21 +499,6 @@
             this.toolStripMenuItem16.Text = "Fondo de caja";
             this.toolStripMenuItem16.Click += new System.EventHandler(this.fondoDeCajaToolStripMenuItem_Click);
             // 
-            // marketingToolStripMenuItem
-            // 
-            this.marketingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.emailMarketingToolStripMenuItem});
-            this.marketingToolStripMenuItem.Name = "marketingToolStripMenuItem";
-            this.marketingToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.marketingToolStripMenuItem.Text = "Marketing";
-            // 
-            // emailMarketingToolStripMenuItem
-            // 
-            this.emailMarketingToolStripMenuItem.Name = "emailMarketingToolStripMenuItem";
-            this.emailMarketingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.emailMarketingToolStripMenuItem.Text = "E-mail marketing";
-            this.emailMarketingToolStripMenuItem.Click += new System.EventHandler(this.emailMarketingToolStripMenuItem_Click);
-            // 
             // toolStripMenuItem19
             // 
             this.toolStripMenuItem19.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -532,14 +514,14 @@
             // fondosDeCajaToolStripMenuItem
             // 
             this.fondosDeCajaToolStripMenuItem.Name = "fondosDeCajaToolStripMenuItem";
-            this.fondosDeCajaToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.fondosDeCajaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fondosDeCajaToolStripMenuItem.Text = "Fondos de caja";
             this.fondosDeCajaToolStripMenuItem.Click += new System.EventHandler(this.fondosDeCajaToolStripMenuItem_Click);
             // 
             // pedidosToolStripMenuItem
             // 
             this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pedidosToolStripMenuItem.Text = "Pedidos";
             this.pedidosToolStripMenuItem.Click += new System.EventHandler(this.pedidos_Click);
             // 
@@ -550,7 +532,7 @@
             this.toolStripMenuItem22,
             this.toolStripMenuItem23});
             this.toolStripMenuItem20.Name = "toolStripMenuItem20";
-            this.toolStripMenuItem20.Size = new System.Drawing.Size(147, 22);
+            this.toolStripMenuItem20.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem20.Text = "Stock";
             // 
             // toolStripMenuItem21
@@ -582,7 +564,7 @@
             this.detallesToolStripMenuItem,
             this.históricasToolStripMenuItem});
             this.ventasToolStripMenuItem2.Name = "ventasToolStripMenuItem2";
-            this.ventasToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
+            this.ventasToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.ventasToolStripMenuItem2.Text = "Ventas";
             // 
             // arqueoDeCajaToolStripMenuItem1
@@ -619,7 +601,7 @@
             this.movimientosToolStripMenuItem2,
             this.liquidaciónToolStripMenuItem});
             this.empleadosToolStripMenuItem2.Name = "empleadosToolStripMenuItem2";
-            this.empleadosToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
+            this.empleadosToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.empleadosToolStripMenuItem2.Text = "Empleados";
             this.empleadosToolStripMenuItem2.Click += new System.EventHandler(this.empleadosToolStripMenuItem2_Click);
             // 
@@ -779,8 +761,6 @@
         private System.Windows.Forms.ToolStripMenuItem liquidaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportarDatosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importarDatosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem marketingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem emailMarketingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restaurarBaseDeDatosToolStripMenuItem;
     }
 }

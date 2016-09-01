@@ -227,13 +227,6 @@ namespace StockVentas
             newMDIChild.Show();
         }
 
-        private void emailMarketingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmMarketingEmail newMDIChild = new frmMarketingEmail();
-            newMDIChild.MdiParent = this;
-            newMDIChild.Show();
-        }
-
         private void fondoDeCajaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmFondoCaja newMDIChild = new frmFondoCaja();
@@ -546,22 +539,16 @@ namespace StockVentas
 
         private void restaurarBaseDeDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("");
-            string rutaDB;
+            string fileName;
             OpenFileDialog opFilDlg = new OpenFileDialog();
             opFilDlg.Filter = "SQL (*.sql)|*.sql";
-            if (opFilDlg.ShowDialog() == DialogResult.OK) rutaDB = opFilDlg.FileName;
+            if (opFilDlg.ShowDialog() == DialogResult.OK) fileName = opFilDlg.FileName;
             else return;
             Cursor.Current = Cursors.WaitCursor;
-            string path = Application.StartupPath + @"\Mysql\mysql.exe";
-            Process process = new Process();
-            process.StartInfo.FileName = path;
-            process.StartInfo.Arguments = "/c -u ncsoftwa_re -p" + pass + " ncsoftwa_re < \"" + rutaDB + "\"";
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
-            process.Start();
-            process.WaitForExit();
-         //   Application.Restart();
+            BL.Utilitarios.RestoreDB("localhost", 3306, "ncsoftwa_re", pass, "ncsoftwa_re", fileName);
+            Application.Restart();
         }
+
 
     }
 }

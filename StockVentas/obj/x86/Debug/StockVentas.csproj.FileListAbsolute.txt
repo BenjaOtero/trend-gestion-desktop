@@ -630,7 +630,6 @@ C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmEmpleado
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmEmpleadosMovCons.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmEmpleadosMovConsInter.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmEmpleadosMovTipo.resources
-C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmMarketingEmail.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmPopupTrend.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmRazonSocial.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmAlicuotasIva.resources

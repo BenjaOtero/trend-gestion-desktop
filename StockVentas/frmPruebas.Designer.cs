@@ -143,8 +143,6 @@
             // backgroundWorker1
             // 
             this.backgroundWorker1.WorkerReportsProgress = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // frmPruebas
             // 
@@ -163,7 +161,6 @@
             this.Controls.Add(this.button1);
             this.Name = "frmPruebas";
             this.Text = "frmPruebas";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPruebas_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 

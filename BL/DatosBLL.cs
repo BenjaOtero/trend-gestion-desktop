@@ -17,10 +17,21 @@ namespace BL
 {
     public class DatosBLL
     {
+        static string connectionString;
+        static string pass;
         static string idRazonSocial;
         static string strFile;
         static int intentosDump = 0;
         static int intentosUpload = 0;
+
+        public DatosBLL()
+        {
+            connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
+            Char delimiter = ';';
+            String[] substrings = connectionString.Split(delimiter);
+            pass = substrings[2];
+        }
 
         // IMPORTAR MOVIMIENTOS POS           COMPROBAR
 
@@ -105,28 +116,9 @@ namespace BL
         private static bool RestaurarDatos(string archivo)
         {
             bool restaurarDatos = false;
-            System.IO.StreamWriter sw = System.IO.File.CreateText("c:\\Windows\\Temp\\data_import\\restore.bat"); // creo el archivo .bat
-            sw.Close();
-            StringBuilder sb = new StringBuilder();
-            string path = Application.StartupPath;
-            string unidad = path.Substring(0, 2);
-            sb.AppendLine(unidad);
-            sb.AppendLine(@"cd " + path + @"\Mysql");
-            sb.AppendLine(@"xz -d " + archivo);
+            Utilitarios.UnzipDB(archivo);
             archivo = archivo.Substring(0, archivo.Length - 3);
-            sb.AppendLine(@"mysql -u ncsoftwa_re -p8953#AFjn ncsoftwa_re < " + archivo);
-            using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\data_import\\restore.bat", true)) // escribo el archivo .bat
-            {
-                outfile.Write(sb.ToString());
-            }
-            Process process = new Process();
-            process.StartInfo.FileName = "c:\\Windows\\Temp\\data_import\\restore.bat";
-            process.StartInfo.CreateNoWindow = false;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.EnableRaisingEvents = true;  // permite disparar el evento process_Exited
-            process.Exited += new EventHandler(RestaurarDatos_Exited);
-            process.Start();
-            process.WaitForExit();
+            Utilitarios.RestoreDB("localhost", 3306, "ncsoftwa_re", pass, "ncsoftwa_re", archivo);
             // compruebo si se restauraron los datos
             Char delimiter = '_';
             String[] substrings = archivo.Split(delimiter);
