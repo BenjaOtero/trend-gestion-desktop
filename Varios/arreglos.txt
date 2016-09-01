@@ -18,6 +18,7 @@
 -el mensaje error webexception en frmProgress debe quedar por encima del formulario
 -controlar borrado de archivos de movimientos pos en servidor ftp
 -  GetDataPOS() controlar posible bucle sin salida.
+-ventas historicas no coinciden  con informe ventas en pesos
 
 
 
