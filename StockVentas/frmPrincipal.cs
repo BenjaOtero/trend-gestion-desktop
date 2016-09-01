@@ -530,32 +530,6 @@ namespace StockVentas
             }                
         }
 
-        private void RestaurarDatos(string archivo)
-        {
-            System.IO.StreamWriter sw = System.IO.File.CreateText("c:\\Windows\\Temp\\datos\\restore.bat"); // creo el archivo .bat
-            sw.Close();
-            StringBuilder sb = new StringBuilder();
-            string path = Application.StartupPath;
-            string unidad = path.Substring(0, 2);
-            sb.AppendLine(unidad);
-            sb.AppendLine(@"cd " + path + @"\Mysql");
-            sb.AppendLine(@"gzip -d " + archivo);
-            archivo = archivo.Substring(0, archivo.Length - 3);
-            sb.AppendLine(@"mysql -u ncsoftwa_re -p8953#AFjn ncsoftwa_re < " + archivo);
-            using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\datos\\restore.bat", true)) // escribo el archivo .bat
-            {
-                outfile.Write(sb.ToString());
-            }
-            Process process = new Process();
-            process.StartInfo.FileName = "c:\\Windows\\Temp\\datos\\restore.bat";
-            process.StartInfo.CreateNoWindow = false;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.EnableRaisingEvents = true;  // permite disparar el evento process_Exited
-            process.Exited += new EventHandler(RestaurarDatos_Exited);
-            process.Start();
-            process.WaitForExit();
-        }
-
         private void RestaurarDatos_Exited(object sender, System.EventArgs e)
         {
             if (File.Exists("c:\\Windows\\Temp\\datos\\restore.bat")) File.Delete("c:\\Windows\\Temp\\datos\\restore.bat");
@@ -572,50 +546,21 @@ namespace StockVentas
 
         private void restaurarBaseDeDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("");
             string rutaDB;
             OpenFileDialog opFilDlg = new OpenFileDialog();
             opFilDlg.Filter = "SQL (*.sql)|*.sql";
             if (opFilDlg.ShowDialog() == DialogResult.OK) rutaDB = opFilDlg.FileName;
             else return;
             Cursor.Current = Cursors.WaitCursor;
-            System.IO.StreamWriter sw = System.IO.File.CreateText("c:\\Windows\\Temp\\restore_db.bat"); // creo el archivo .bat
-            sw.Close();
-            string programFiles;
-            if (Directory.Exists(@"C:\Program files"))
-            {
-                programFiles = "Program files";
-            }
-            else if (Directory.Exists(@"C:\Archivos de programa"))
-            {
-                programFiles = "Archivos de programa";
-            }
-            else if (Directory.Exists(@"C:\Program files(x86)"))
-            {
-                programFiles = "Program files(x86)";
-            }
-            else
-            {
-                programFiles = "Archivos de programa(x86)";
-            }
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("C:");
-            string configMysql = "cd " + "\"C:\\" + programFiles + "\\MySQL\\MySQL Server 5.5\\bin\"";
-            sb.AppendLine(configMysql);
-          //  string rutaDB = Application.StartupPath.ToString() + @"\MySql\ncsoftwa_re.sql";
-            string restaurarDB = "mysql.exe -u ncsoftwa_re -p8953#AFjn ncsoftwa_re < \"" + rutaDB + "\"";
-            sb.AppendLine(restaurarDB);
-            using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\restore_db.bat", true)) // escribo en el archivo .bat
-            {
-                outfile.Write(sb.ToString());
-            }
+            string path = Application.StartupPath + @"\Mysql\mysql.exe";
             Process process = new Process();
-            process.StartInfo.FileName = "c:\\Windows\\Temp\\restore_db.bat";
-            process.StartInfo.CreateNoWindow = false;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            process.StartInfo.FileName = path;
+            process.StartInfo.Arguments = "/c -u ncsoftwa_re -p" + pass + " ncsoftwa_re < \"" + rutaDB + "\"";
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
             process.Start();
-            process.EnableRaisingEvents = true;
             process.WaitForExit();
-            Application.Restart();
+         //   Application.Restart();
         }
 
     }
