@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using System.IO;
+using System.IO.Compression;
 using BL;
 using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -215,6 +216,25 @@ namespace StockVentas
             Cursor.Current = Cursors.WaitCursor;
             backgroundWorker1.RunWorkerAsync();           
         }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {           
+         //  string path = Application.StartupPath + @"\Mysql\mysqldump.exe";
+         //  Process.Start(path, ("-t --skip-comments -u ncsoftwa_re -p8953#AFjn -h localhost --opt ncsoftwa_re alicuotasiva articulos clientes formaspago generos razonsocial stock -r \"c:\\windows\\temp\\prueba.sql\""));
+
+
+
+        /*   var bytes = File.ReadAllBytes("c:\\windows\\temp\\prueba.sql");
+           using (FileStream fs = new FileStream("c:\\prueba.sql.zip", FileMode.CreateNew))
+           using (GZipStream zipStream = new GZipStream(fs, CompressionMode.Compress, false))
+           {
+               zipStream.Write(bytes, 0, bytes.Length);
+           }*/
+
+        }
+
+
+
 
     }
 }

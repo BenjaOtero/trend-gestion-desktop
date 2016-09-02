@@ -37,8 +37,8 @@
             this.btnDownLoadImage = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnLeftBottom = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnBackup = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,26 +130,26 @@
             this.btnLeftBottom.UseVisualStyleBackColor = true;
             this.btnLeftBottom.Click += new System.EventHandler(this.btnLeftBottom_Click);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(179, 78);
-            this.progressBar1.MarqueeAnimationSpeed = 40;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(268, 15);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 5;
-            this.progressBar1.UseWaitCursor = true;
-            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.WorkerReportsProgress = true;
+            // 
+            // btnBackup
+            // 
+            this.btnBackup.Location = new System.Drawing.Point(158, 41);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(129, 23);
+            this.btnBackup.TabIndex = 5;
+            this.btnBackup.Text = "Backup";
+            this.btnBackup.UseVisualStyleBackColor = true;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // frmPruebas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 483);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.btnBackup);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnLeftBottom);
             this.Controls.Add(this.btnDownLoadImage);
@@ -177,7 +177,7 @@
         private System.Windows.Forms.Button btnDownLoadImage;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnLeftBottom;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button btnBackup;
     }
 }

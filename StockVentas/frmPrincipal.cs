@@ -315,7 +315,18 @@ namespace StockVentas
 
         private void backup_Click(object sender, EventArgs e)
         {
-            Backup();
+                        SaveFileDialog fichero = new SaveFileDialog();
+            fichero.Filter = "SQL (*.sql)|*.sql";
+            fichero.FileName = "Backup";
+            if (fichero.ShowDialog() == DialogResult.OK)
+            {
+                List<string> credentials = Utilitarios.GetCredentialsDB();
+                string server = credentials[0];
+                string user = credentials[1];
+                string database = credentials[2];
+                string pass = credentials[3];
+                Utilitarios.DumpDB(server, 3306, user, pass, database, fichero.FileName);
+            }
         }
 
         private void processBackupExited(object sender, System.EventArgs e)
