@@ -20,12 +20,8 @@ namespace StockVentas
 {
     public partial class frmPrincipal : Form
     {
-        string connectionString;
-        String[] substrings;
-        string pass;
         public frmProgress progreso;
         string origen, accion;
-        string idRazonSocial;
         private System.Timers.Timer tmrSilenceBck;
         System.Windows.Forms.Timer tmrPopup = new System.Windows.Forms.Timer();
         private static System.Timers.Timer timer;
@@ -42,7 +38,7 @@ namespace StockVentas
                     break;
                 }
             }
-            List<String> credentials = Utilitarios.GetCredentialsFTP();
+            List<String> credentials = UtilVarios.GetCredentialsFTP();
             string server = credentials[0];
             string user = credentials[1];
             string pass = credentials[2];
@@ -319,7 +315,7 @@ namespace StockVentas
             fichero.FileName = "Backup";
             if (fichero.ShowDialog() == DialogResult.OK)
             {
-                List<string> credentials = Utilitarios.GetCredentialsDB();
+                List<string> credentials = UtilVarios.GetCredentialsDB();
                 string server = credentials[0];
                 string user = credentials[1];
                 string database = credentials[2];
@@ -328,25 +324,11 @@ namespace StockVentas
             }
         }
 
-        private void processBackupExited(object sender, System.EventArgs e)
-        {
-            if (File.Exists("c:\\Windows\\Temp\\backup.bat"))
-            {
-                File.Delete("c:\\Windows\\Temp\\backup.bat");
-            }            
-        }
-
         private void pruebasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPruebas newMDIChild = new frmPruebas();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
-        }
-
-        private void process_Exited(object sender, System.EventArgs e)
-        {
-            if (File.Exists("c:\\Windows\\Temp\\backup.bat")) File.Delete("c:\\Windows\\Temp\\backup.bat");
-            Cursor = Cursors.Arrow;
         }
 
         private void Popup(Object myObject, EventArgs myEventArgs)
@@ -400,7 +382,7 @@ namespace StockVentas
         private void SilenceBackup(object source, ElapsedEventArgs e)
         {
 
-            List<string> credentials = Utilitarios.GetCredentialsDB();
+            List<string> credentials = UtilVarios.GetCredentialsDB();
             string server = credentials[0];
             string user = credentials[1];
             string database = credentials[2];
@@ -487,7 +469,7 @@ namespace StockVentas
             if (opFilDlg.ShowDialog() == DialogResult.OK) fileName = opFilDlg.FileName;
             else return;
             Cursor.Current = Cursors.WaitCursor;
-            List<string> credentials = Utilitarios.GetCredentialsDB();
+            List<string> credentials = UtilVarios.GetCredentialsDB();
             string server = credentials[0];
             string user = credentials[1];
             string database = credentials[2];

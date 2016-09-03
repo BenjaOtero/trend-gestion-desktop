@@ -207,7 +207,7 @@ namespace StockVentas
 
         private void ConfigurarMySQL()
         {
-            List<string> Cred = Utilitarios.GetCredentialsDB();
+            List<string> Cred = UtilVarios.GetCredentialsDB();
             string pass = pass = Cred[3];
             if (File.Exists("c:\\Windows\\Temp\\config_mysql.bat")) File.Delete("c:\\Windows\\Temp\\config_mysql.bat");
             System.IO.StreamWriter sw = System.IO.File.CreateText("c:\\Windows\\Temp\\config_mysql.bat"); // creo el archivo .bat

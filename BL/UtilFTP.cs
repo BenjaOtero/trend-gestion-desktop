@@ -12,7 +12,7 @@ namespace BL
     {
         public static void UploadFromFile(string nombreLocal, string nombreServidor)
         {
-            List<String> credentials = Utilitarios.GetCredentialsFTP();
+            List<String> credentials = UtilVarios.GetCredentialsFTP();
             string server = credentials[0];
             string user = credentials[1];
             string pass = credentials[2];
@@ -30,7 +30,7 @@ namespace BL
 
         public static void DownloadFile(string nombreLocal, string nombreServidor)
         {
-            List<String> credentials = Utilitarios.GetCredentialsFTP();
+            List<String> credentials = UtilVarios.GetCredentialsFTP();
             string server = credentials[0];
             string user = credentials[1];
             string pass = credentials[2];
@@ -56,7 +56,7 @@ namespace BL
 
         public static void UploadFromMemoryStream(MemoryStream memoryStream, string nombreRemoto, string servidor)
         {
-            List<String> credentials = Utilitarios.GetCredentialsFTP();
+            List<String> credentials = UtilVarios.GetCredentialsFTP();
             string server = credentials[0] + "/datos";
             string user = credentials[1];
             string pass = credentials[2];
@@ -94,7 +94,7 @@ namespace BL
 
         public static FtpWebRequest FtpRequest(string path)
         {
-            List<String> credentials = Utilitarios.GetCredentialsFTP();
+            List<String> credentials = UtilVarios.GetCredentialsFTP();
             string server = credentials[0];
             string user = credentials[1];
             string pass = credentials[2];

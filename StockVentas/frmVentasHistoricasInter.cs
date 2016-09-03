@@ -57,8 +57,8 @@ namespace StockVentas
             libro = app.Workbooks.Add();
             libro.DefaultPivotTableStyle = "PivotStyleLight26";
             Excel.PivotCache pivotCache = libro.PivotCaches().Add(Excel.XlPivotTableSourceType.xlExternal);
-            string MyConString = ConfigurationManager.ConnectionStrings["ODBCExcel"].ConnectionString;
-            //string MyConString = ConfigurationManager.ConnectionStrings["ODBCExcelLocal"].ConnectionString;
+            //string MyConString = ConfigurationManager.ConnectionStrings["ODBCExcel"].ConnectionString;
+            string MyConString = ConfigurationManager.ConnectionStrings["ODBCExcelLocal"].ConnectionString;
             //string MyConString = ConfigurationManager.ConnectionStrings["ODBCMinusculas"].ConnectionString;
             string strFecha = dateTimePicker1.Value.ToString("yyyy-MM-dd");
             string command = "SELECT * FROM ventash  WHERE Fecha >='" + strFecha + "'";

@@ -150,7 +150,7 @@ namespace StockVentas
             if (comparar == 0)
             {
                 Cursor.Current = Cursors.WaitCursor;
-                List<String> credentials = BL.Utilitarios.GetCredentialsFTP();
+                List<String> credentials = BL.UtilVarios.GetCredentialsFTP();
                 string pass = credentials[2];
                 Guid guid = Guid.NewGuid();
                 MailAddress to = new MailAddress(txtCorreo.Text);

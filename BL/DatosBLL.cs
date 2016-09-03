@@ -24,6 +24,7 @@ namespace BL
         static string pass;
         static string idRazonSocial;
         static string strFile;
+        static int intentosGetPOS = 0;
         static int intentosDump = 0;
         static int intentosUpload = 0;
 
@@ -43,8 +44,7 @@ namespace BL
                 {
                     if (RestaurarDatos(archivo))
                     {
-                        BL.DatosBLL.InsertarMovimientos();
-                        // borro archivos en el servidor ftp
+                        DAL.DatosDAL.InsertarMovimientos();
                         Char delimitador = '\\';
                         String[] cadena = archivo.Split(delimitador);
                         string borrar = cadena[4];                        
@@ -54,10 +54,15 @@ namespace BL
                     }
                     else
                     {
-                        GetDataPOS();
+                        if (intentosGetPOS < 10)
+                        {
+                            intentosGetPOS++;
+                            GetDataPOS();
+                        }                        
                     }
                 }
-            }  
+            }
+            if (Directory.Exists(@"c:\windows\temp\data_import")) Directory.Delete(@"c:\windows\temp\data_import", true);
         }
 
         public static List<string> GetDirectoriesFTP()
@@ -81,7 +86,7 @@ namespace BL
         {
             if (Directory.Exists(@"c:\windows\temp\data_import")) Directory.Delete(@"c:\windows\temp\data_import", true);
             Directory.CreateDirectory(@"c:\windows\temp\data_import");
-            credentials = Utilitarios.GetCredentialsFTP();
+            credentials = UtilVarios.GetCredentialsFTP();
             server = credentials[0] + "/datos"; 
             user = credentials[1];
             pass = credentials[2];
@@ -107,7 +112,7 @@ namespace BL
         private static bool RestaurarDatos(string archivo)
         {
             bool restaurarDatos = false;
-            List<string> credentials = Utilitarios.GetCredentialsDB();
+            List<string> credentials = UtilVarios.GetCredentialsDB();
             string server = credentials[0];
             string user = credentials[1];
             string database = credentials[2];
@@ -125,24 +130,11 @@ namespace BL
             return restaurarDatos;
         }
 
-        private static void RestaurarDatos_Exited(object sender, System.EventArgs e)
-        {
-            if (File.Exists("c:\\Windows\\Temp\\data_import\\restore.bat")) File.Delete("c:\\Windows\\Temp\\data_import\\restore.bat");
-            if (File.Exists("c:\\Windows\\Temp\\datos.sql")) File.Delete("c:\\Windows\\Temp\\datos.sql");
-            if (File.Exists("c:\\Windows\\Temp\\datos.sql.gz")) File.Delete("c:\\Windows\\Temp\\datos.sql.gz");
-        }
-
-        public static void InsertarMovimientos()
-        {
-            DAL.DatosDAL.InsertarMovimientos();
-        }
-
-
         // EXPORTAR DATOS POS
 
         public static void ExportarDatos()
         {
-            credentials = Utilitarios.GetCredentialsDB();
+            credentials = UtilVarios.GetCredentialsDB();
             server = credentials[0];
             user = credentials[1];
             database = credentials[2];
@@ -158,7 +150,7 @@ namespace BL
             Reintentar:
                 UtilFTP.UploadFromFile(@"c:\windows\temp\" + strFile, "/datos/" + strFile);
                 UtilFTP.DownloadFile(@"c:\windows\temp\tmp_" + strFile, "/datos/" + strFile);
-                if (!Utilitarios.FileCompare(@"c:\windows\temp\tmp_" + strFile, @"c:\windows\temp\" + strFile))
+                if (!UtilVarios.FileCompare(@"c:\windows\temp\tmp_" + strFile, @"c:\windows\temp\" + strFile))
                 {
                     if (intentosUpload < 5)
                     {

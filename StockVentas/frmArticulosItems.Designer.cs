@@ -86,7 +86,7 @@
             this.grpBotones.Location = new System.Drawing.Point(333, 69);
             this.grpBotones.Name = "grpBotones";
             this.grpBotones.Size = new System.Drawing.Size(200, 321);
-            this.grpBotones.TabIndex = 2;
+            this.grpBotones.TabIndex = 1;
             this.grpBotones.TabStop = false;
             // 
             // btnCancelar
@@ -188,7 +188,7 @@
             this.groupBox1.Location = new System.Drawing.Point(333, 9);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 54);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar";
             // 
@@ -198,7 +198,7 @@
             this.txtParametros.Location = new System.Drawing.Point(6, 20);
             this.txtParametros.Name = "txtParametros";
             this.txtParametros.Size = new System.Drawing.Size(188, 20);
-            this.txtParametros.TabIndex = 7;
+            this.txtParametros.TabIndex = 0;
             this.txtParametros.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtParametros_KeyDown);
             // 
             // gvwDatos
@@ -257,7 +257,7 @@
             this.txtDescripcionWebITE.Location = new System.Drawing.Point(130, 79);
             this.txtDescripcionWebITE.Name = "txtDescripcionWebITE";
             this.txtDescripcionWebITE.Size = new System.Drawing.Size(164, 20);
-            this.txtDescripcionWebITE.TabIndex = 3;
+            this.txtDescripcionWebITE.TabIndex = 2;
             // 
             // label3
             // 

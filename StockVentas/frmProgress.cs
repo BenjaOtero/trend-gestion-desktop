@@ -389,25 +389,6 @@ namespace StockVentas
                 {
                     switch (origen)
                     {
-                        case "backup":
-                            if (BL.Utilitarios.HayInternet())
-                            {
-                                Process process = new Process();
-                                process.StartInfo.FileName = "c:\\Windows\\Temp\\backup.bat";
-                                process.StartInfo.CreateNoWindow = false;
-                                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                                process.Start();
-                                process.WaitForExit();
-                            }
-                            else
-                            {
-                                this.Invoke((Action)delegate
-                                {
-                                    MessageBox.Show("Verifique la conexión a internet. No se realizo al copia de seguridad.", "Trend",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                });
-                            }
-                            break;
                         case "frmArqueoInter":
                             dsArqueo = BL.VentasBLL.CrearDatasetArqueo(strFechaDesde, strFechaHasta, idPc);
                             break;
@@ -585,14 +566,12 @@ namespace StockVentas
             }
             catch (WebException)
             {
-                this.Invoke((Action)delegate
-                {
-                    MessageBox.Show("No se pudo conectar con el servidor remoto."
-                            + '\r' + "No se importaron los datos."
-                            + '\r' + "Intente nuevamente.", 
-                            "Trend Sistemas", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                });
+                this.Visible = false;
+                MessageBox.Show("No se pudo conectar con el servidor remoto."
+                        + '\r' + "No se importaron los datos."
+                        + '\r' + "Intente nuevamente.", 
+                        "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 return;
             }
         }
@@ -629,13 +608,6 @@ namespace StockVentas
             {
                 switch (origen)
                 {
-                        case "backup":
-                        this.Close();
-                        if (File.Exists("c:\\Windows\\Temp\\backup.bat"))
-                        {
-                            File.Delete("c:\\Windows\\Temp\\backup.bat");
-                        }  
-                        break;
                     case "frmArqueoInter":
                         if (frmInstanciaArqueo == null) // Estoy abriendo frmArqueoCajaAdmin desde el menú
                         {

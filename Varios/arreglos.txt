@@ -11,13 +11,10 @@
 -Update no puede encontrar TableMapping['Ventas'] o DataTable 'Ventas'. Lo probé varias veces, dió error. Volver a probarlo.
 
 
--borrar todos los .bat en disco que tengan contraseña
+
 -ofuscar codigo
 -eliminar frmPruebas
--el mensaje error webexception en frmProgress debe quedar por encima del formulario
--controlar borrado de archivos de movimientos pos en servidor ftp
--  GetDataPOS() controlar posible bucle sin salida.
--ventas historicas no coinciden  con informe ventas en pesos
+
 
 
 

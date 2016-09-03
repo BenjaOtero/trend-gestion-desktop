@@ -77,6 +77,7 @@
     <Compile Include="UtilDB.cs" />
     <Compile Include="UtilFTP.cs" />
     <Compile Include="Utilitarios.cs" />
+    <Compile Include="UtilVarios.cs" />
     <Compile Include="VentasBLL.cs" />
     <Compile Include="VentasDetalleBLL.cs" />
   </ItemGroup>
