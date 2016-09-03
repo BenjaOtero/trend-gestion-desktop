@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entiti
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TrendAdmin", "NcSoftAdmin\NcSoftAdmin.vdproj", "{A160A992-0736-458E-BFEA-117FFA736E14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pruebas", "Pruebas\Pruebas\Pruebas.csproj", "{3DB131D6-FE33-4EAA-8231-3050097BB2E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,16 @@ Global
 		{A160A992-0736-458E-BFEA-117FFA736E14}.Release|Any CPU.ActiveCfg = Release
 		{A160A992-0736-458E-BFEA-117FFA736E14}.Release|Mixed Platforms.ActiveCfg = Release
 		{A160A992-0736-458E-BFEA-117FFA736E14}.Release|x86.ActiveCfg = Release
+		{3DB131D6-FE33-4EAA-8231-3050097BB2E7}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{3DB131D6-FE33-4EAA-8231-3050097BB2E7}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{3DB131D6-FE33-4EAA-8231-3050097BB2E7}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{3DB131D6-FE33-4EAA-8231-3050097BB2E7}.Debug|x86.ActiveCfg = Debug|x86
+		{3DB131D6-FE33-4EAA-8231-3050097BB2E7}.Debug|x86.Build.0 = Debug|x86
+		{3DB131D6-FE33-4EAA-8231-3050097BB2E7}.Release|Any CPU.ActiveCfg = Release|x86
+		{3DB131D6-FE33-4EAA-8231-3050097BB2E7}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{3DB131D6-FE33-4EAA-8231-3050097BB2E7}.Release|Mixed Platforms.Build.0 = Release|x86
+		{3DB131D6-FE33-4EAA-8231-3050097BB2E7}.Release|x86.ActiveCfg = Release|x86
+		{3DB131D6-FE33-4EAA-8231-3050097BB2E7}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

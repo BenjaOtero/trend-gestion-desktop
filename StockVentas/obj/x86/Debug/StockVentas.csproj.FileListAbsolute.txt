@@ -647,7 +647,6 @@ C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmGetDatos
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmGetDatosCliente1.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmInicio.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmLocales.resources
-C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmPruebas.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmRPTstock.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmGeneros.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmStockComp.resources

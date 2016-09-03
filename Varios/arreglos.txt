@@ -13,7 +13,7 @@
 
 
 -ofuscar codigo
--eliminar frmPruebas
+
 
 
 

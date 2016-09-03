@@ -97,7 +97,6 @@
             this.mantenimientoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.backupBaseDeDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarBaseDeDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pruebasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -514,14 +513,14 @@
             // fondosDeCajaToolStripMenuItem
             // 
             this.fondosDeCajaToolStripMenuItem.Name = "fondosDeCajaToolStripMenuItem";
-            this.fondosDeCajaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fondosDeCajaToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.fondosDeCajaToolStripMenuItem.Text = "Fondos de caja";
             this.fondosDeCajaToolStripMenuItem.Click += new System.EventHandler(this.fondosDeCajaToolStripMenuItem_Click);
             // 
             // pedidosToolStripMenuItem
             // 
             this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.pedidosToolStripMenuItem.Text = "Pedidos";
             this.pedidosToolStripMenuItem.Click += new System.EventHandler(this.pedidos_Click);
             // 
@@ -532,7 +531,7 @@
             this.toolStripMenuItem22,
             this.toolStripMenuItem23});
             this.toolStripMenuItem20.Name = "toolStripMenuItem20";
-            this.toolStripMenuItem20.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem20.Size = new System.Drawing.Size(147, 22);
             this.toolStripMenuItem20.Text = "Stock";
             // 
             // toolStripMenuItem21
@@ -564,7 +563,7 @@
             this.detallesToolStripMenuItem,
             this.históricasToolStripMenuItem});
             this.ventasToolStripMenuItem2.Name = "ventasToolStripMenuItem2";
-            this.ventasToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.ventasToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
             this.ventasToolStripMenuItem2.Text = "Ventas";
             // 
             // arqueoDeCajaToolStripMenuItem1
@@ -601,7 +600,7 @@
             this.movimientosToolStripMenuItem2,
             this.liquidaciónToolStripMenuItem});
             this.empleadosToolStripMenuItem2.Name = "empleadosToolStripMenuItem2";
-            this.empleadosToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.empleadosToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
             this.empleadosToolStripMenuItem2.Text = "Empleados";
             // 
             // movimientosToolStripMenuItem2
@@ -623,7 +622,6 @@
             this.mantenimientoToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.backupBaseDeDatosToolStripMenuItem,
             this.restaurarBaseDeDatosToolStripMenuItem,
-            this.pruebasToolStripMenuItem,
             this.exportarDatosToolStripMenuItem,
             this.importarDatosToolStripMenuItem});
             this.mantenimientoToolStripMenuItem1.Name = "mantenimientoToolStripMenuItem1";
@@ -643,13 +641,6 @@
             this.restaurarBaseDeDatosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.restaurarBaseDeDatosToolStripMenuItem.Text = "Restaurar base de datos";
             this.restaurarBaseDeDatosToolStripMenuItem.Click += new System.EventHandler(this.restaurarBaseDeDatosToolStripMenuItem_Click);
-            // 
-            // pruebasToolStripMenuItem
-            // 
-            this.pruebasToolStripMenuItem.Name = "pruebasToolStripMenuItem";
-            this.pruebasToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.pruebasToolStripMenuItem.Text = "Pruebas";
-            this.pruebasToolStripMenuItem.Click += new System.EventHandler(this.pruebasToolStripMenuItem_Click);
             // 
             // exportarDatosToolStripMenuItem
             // 
@@ -745,7 +736,6 @@
         private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem históricasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backupBaseDeDatosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pruebasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem génerosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem localesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alícuotasIVAToolStripMenuItem;

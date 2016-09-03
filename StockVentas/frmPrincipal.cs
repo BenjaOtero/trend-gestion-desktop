@@ -324,13 +324,6 @@ namespace StockVentas
             }
         }
 
-        private void pruebasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPruebas newMDIChild = new frmPruebas();
-            newMDIChild.MdiParent = this;
-            newMDIChild.Show();
-        }
-
         private void Popup(Object myObject, EventArgs myEventArgs)
         {
             tmrPopup.Stop();
