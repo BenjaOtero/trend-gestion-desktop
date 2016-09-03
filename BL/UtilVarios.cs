@@ -14,8 +14,8 @@ namespace BL
         public static List<string> GetCredentialsFTP()
         {
             string connectionString;
-            //connectionString = ConfigurationManager.ConnectionStrings["Ftp"].ConnectionString;
-            connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["Ftp"].ConnectionString;
+            //connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
             Char delimiter = ';';
             String[] substrings = connectionString.Split(delimiter);
             string server = substrings[0];
