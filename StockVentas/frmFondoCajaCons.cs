@@ -76,7 +76,7 @@ namespace StockVentas
                 if (MessageBox.Show("¿Desea borrar este registro?", "Buscar",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (!BL.Utilitarios.ValidarServicioMysql())
+                    if (!BL.UtilDB.ValidarServicioMysql())
                     {
                         MessageBox.Show("NO SE BORRARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
                                 + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,

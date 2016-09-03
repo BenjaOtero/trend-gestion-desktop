@@ -155,7 +155,7 @@ namespace StockVentas
 
         private void Grabar()
         {
-            if (!BL.Utilitarios.ValidarServicioMysql())
+            if (!BL.UtilDB.ValidarServicioMysql())
             {
                 MessageBox.Show("NO SE ACTUALIZARON LOS PRECIOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
                         + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,

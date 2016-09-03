@@ -108,7 +108,7 @@ namespace StockVentas
                  "Si elimina este artículo/s, se eliminarán las ventas, movimientos de stock y stock relacionados. ¿Desea continuar?",
                  "Trend", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    if (!BL.Utilitarios.ValidarServicioMysql())
+                    if (!BL.UtilDB.ValidarServicioMysql())
                     {
                         MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
                                 + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,

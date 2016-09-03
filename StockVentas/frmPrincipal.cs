@@ -27,7 +27,6 @@ namespace StockVentas
         string origen, accion;
         string idRazonSocial;
         private System.Timers.Timer tmrSilenceBck;
-        string fileSilenceBck;
         System.Windows.Forms.Timer tmrPopup = new System.Windows.Forms.Timer();
         private static System.Timers.Timer timer;
 
@@ -43,10 +42,10 @@ namespace StockVentas
                     break;
                 }
             }
-            connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
-            Char delimiter = ';';
-            substrings = connectionString.Split(delimiter);
-            pass = substrings[2];
+            List<String> credentials = Utilitarios.GetCredentialsFTP();
+            string server = credentials[0];
+            string user = credentials[1];
+            string pass = credentials[2];
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -287,7 +286,7 @@ namespace StockVentas
         {
             origen = "frmFondoCajaCons";
             accion = "cargar";
-            if (!BL.Utilitarios.ValidarServicioMysql())
+            if (!BL.UtilDB.ValidarServicioMysql())
             {
                 MessageBox.Show("No se pudo conectar con el servidor de base de datos."
                         + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
@@ -315,7 +314,7 @@ namespace StockVentas
 
         private void backup_Click(object sender, EventArgs e)
         {
-                        SaveFileDialog fichero = new SaveFileDialog();
+            SaveFileDialog fichero = new SaveFileDialog();
             fichero.Filter = "SQL (*.sql)|*.sql";
             fichero.FileName = "Backup";
             if (fichero.ShowDialog() == DialogResult.OK)
@@ -325,7 +324,7 @@ namespace StockVentas
                 string user = credentials[1];
                 string database = credentials[2];
                 string pass = credentials[3];
-                Utilitarios.DumpDB(server, 3306, user, pass, database, fichero.FileName);
+                UtilDB.DumpDB(server, 3306, user, pass, database, fichero.FileName);
             }
         }
 
@@ -342,39 +341,6 @@ namespace StockVentas
             frmPruebas newMDIChild = new frmPruebas();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
-        }
-
-        private void Backup()
-        {            
-            SaveFileDialog fichero = new SaveFileDialog();
-            fichero.Filter = "SQL (*.sql)|*.sql";
-            fichero.FileName = "Backup";
-            if (fichero.ShowDialog() == DialogResult.OK)
-            {
-                Cursor = Cursors.WaitCursor;
-                System.IO.StreamWriter sw = System.IO.File.CreateText("c:\\Windows\\Temp\\backup.bat"); // creo el archivo .bat
-                sw.Close();
-                StringBuilder sb = new StringBuilder();
-                string path = Application.StartupPath;
-                string unidad = path.Substring(0, 2);
-                sb.AppendLine(unidad);
-                sb.AppendLine(@"cd " + path + @"\Mysql");
-             //   sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p" + pass + " -h ns21a.cyberneticos.com --opt ncsoftwa_re > " + fichero.FileName);
-                sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p" + pass + " -h localhost --routines --opt ncsoftwa_re > " + fichero.FileName);              
-                using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\backup.bat", true)) // escribo el archivo .bat
-                {
-                    outfile.Write(sb.ToString());
-                }
-                Process process = new Process();
-                process.StartInfo.FileName = "c:\\Windows\\Temp\\backup.bat";
-                process.StartInfo.CreateNoWindow = false;
-                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                process.EnableRaisingEvents = true;  // permite disparar el evento process_Exited
-                process.Exited += new EventHandler(process_Exited);
-                process.Start();
-                process.WaitForExit();
-
-            }
         }
 
         private void process_Exited(object sender, System.EventArgs e)
@@ -433,56 +399,35 @@ namespace StockVentas
 
         private void SilenceBackup(object source, ElapsedEventArgs e)
         {
+
+            List<string> credentials = Utilitarios.GetCredentialsDB();
+            string server = credentials[0];
+            string user = credentials[1];
+            string database = credentials[2];
+            string pass = credentials[3];
             DataTable tbl = BL.GetDataBLL.RazonSocial();
-            fileSilenceBck = tbl.Rows[0][0].ToString() + "_bck.sql.xz";
-            System.IO.StreamWriter sw = System.IO.File.CreateText("c:\\Windows\\Temp\\backup.bat"); // creo el archivo .bat
-            sw.Close();
-            StringBuilder sb = new StringBuilder();
-            string path = Application.StartupPath;
-            string unidad = path.Substring(0, 2);
-            sb.AppendLine(unidad);
-            sb.AppendLine(@"cd " + path + @"\Mysql");            
-            sb.AppendLine(@"mysqldump --skip-comments -u ncsoftwa_re -p" + pass + @" -h localhost --routines --opt ncsoftwa_re | xz > c:\windows\temp\" + fileSilenceBck);
-            //mysqldump -u... -p... mydb t1 t2 t3 > mydb_tables.sql
-            using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\backup.bat", true)) // escribo el archivo .bat
-            {
-                outfile.Write(sb.ToString());
-            }
-            Process process = new Process();
-            process.StartInfo.FileName = "c:\\Windows\\Temp\\backup.bat";
-            process.StartInfo.CreateNoWindow = false;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.EnableRaisingEvents = true;  // permite disparar el evento process_Exited
-            process.Exited += new EventHandler(process_Exited_silence);
-            process.Start();
-            process.WaitForExit();
-
-        }
-
-        private void process_Exited_silence(object sender, System.EventArgs e)
-        {
+            string fileSilenceBck = @"c:\windows\temp\" + tbl.Rows[0][0].ToString() + "_bck.sql";
+            UtilDB.DumpDB(server, 3306, user, pass, database, fileSilenceBck);
+            if (File.Exists(fileSilenceBck + "xz")) File.Delete(fileSilenceBck + "xz");
+            UtilDB.ZipDB(fileSilenceBck);
             MemoryStream ms = new MemoryStream();
-            using (FileStream fs = File.OpenRead(@"c:\windows\temp\" + fileSilenceBck))
+            using (FileStream fs = File.OpenRead(fileSilenceBck + ".xz"))
             {
                 fs.CopyTo(ms);
             }
             try
             {
-                BL.Utilitarios.UploadFromMemoryStream(ms, fileSilenceBck, "trendsistemas");
+                BL.UtilFTP.UploadFromMemoryStream(ms, fileSilenceBck + ".xz", "trendsistemas");
             }
             catch (WebException)
             {
                 return;
             }
-            finally
-            {
-                if (File.Exists("c:\\Windows\\Temp\\backup.bat")) File.Delete("c:\\Windows\\Temp\\backup.bat");
-            }            
         }
 
         private void exportarDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!BL.Utilitarios.ValidarServicioMysql())
+            if (!BL.UtilDB.ValidarServicioMysql())
             {
                 MessageBox.Show("No se pudo conectar con el servidor de base de datos."
                         + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
@@ -508,14 +453,9 @@ namespace StockVentas
             newMDIChild.Show();
         }
 
-        private void empleadosToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void importarDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!BL.Utilitarios.ValidarServicioMysql())
+            if (!BL.UtilDB.ValidarServicioMysql())
             {
                 MessageBox.Show("No se pudo conectar con el servidor de base de datos."
                         + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
@@ -534,17 +474,8 @@ namespace StockVentas
             }                
         }
 
-        private void RestaurarDatos_Exited(object sender, System.EventArgs e)
-        {
-            if (File.Exists("c:\\Windows\\Temp\\datos\\restore.bat")) File.Delete("c:\\Windows\\Temp\\datos\\restore.bat");
-            if (File.Exists("c:\\Windows\\Temp\\datos.sql")) File.Delete("c:\\Windows\\Temp\\datos.sql");
-            if (File.Exists("c:\\Windows\\Temp\\datos.sql.gz")) File.Delete("c:\\Windows\\Temp\\datos.sql.gz");
-        }
-
         private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
-          //  if (MessageBox.Show("¿Realiza copia de seguridad de los datos?", "Trend", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            //    Backup();
             Application.Exit();
         }
 
@@ -556,7 +487,12 @@ namespace StockVentas
             if (opFilDlg.ShowDialog() == DialogResult.OK) fileName = opFilDlg.FileName;
             else return;
             Cursor.Current = Cursors.WaitCursor;
-            BL.Utilitarios.RestoreDB("localhost", 3306, "ncsoftwa_re", pass, "ncsoftwa_re", fileName);
+            List<string> credentials = Utilitarios.GetCredentialsDB();
+            string server = credentials[0];
+            string user = credentials[1];
+            string database = credentials[2];
+            string pass = credentials[3];
+            BL.UtilDB.RestoreDB(server, 3306, user, pass, database, fileName);
             Application.Restart();
         }
 

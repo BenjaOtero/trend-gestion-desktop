@@ -11,7 +11,6 @@
 -Update no puede encontrar TableMapping['Ventas'] o DataTable 'Ventas'. Lo probé varias veces, dió error. Volver a probarlo.
 
 
--ver contraseñas 8953#AFjn
 -borrar todos los .bat en disco que tengan contraseña
 -ofuscar codigo
 -eliminar frmPruebas
@@ -20,9 +19,6 @@
 -  GetDataPOS() controlar posible bucle sin salida.
 -ventas historicas no coinciden  con informe ventas en pesos
 
-
-
-23106 24067 
 
 
 

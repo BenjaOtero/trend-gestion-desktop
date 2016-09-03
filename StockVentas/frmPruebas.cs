@@ -219,8 +219,8 @@ namespace StockVentas
 
         private void btnBackup_Click(object sender, EventArgs e)
         {           
-         //  string path = Application.StartupPath + @"\Mysql\mysqldump.exe";
-         //  Process.Start(path, ("-t --skip-comments -u ncsoftwa_re -p8953#AFjn -h localhost --opt ncsoftwa_re alicuotasiva articulos clientes formaspago generos razonsocial stock -r \"c:\\windows\\temp\\prueba.sql\""));
+           string path = Application.StartupPath + @"\Mysql\mysqldump.exe";
+           Process.Start(path, ("-t --skip-comments -u ncsoftwa_re -p8953#AFjn -h localhost --opt ncsoftwa_re alicuotasiva articulos clientes formaspago generos razonsocial stock -r \"c:\\windows\\temp\\prueba.sql\""));
 
 
 

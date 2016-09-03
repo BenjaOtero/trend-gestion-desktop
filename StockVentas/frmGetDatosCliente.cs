@@ -150,6 +150,8 @@ namespace StockVentas
             if (comparar == 0)
             {
                 Cursor.Current = Cursors.WaitCursor;
+                List<String> credentials = BL.Utilitarios.GetCredentialsFTP();
+                string pass = credentials[2];
                 Guid guid = Guid.NewGuid();
                 MailAddress to = new MailAddress(txtCorreo.Text);
                 MailAddress from = new MailAddress("info@trendsistemas.com", "Trend Sistemas");
@@ -157,7 +159,7 @@ namespace StockVentas
                 message.Subject = "Clave de producto";
                 message.Body = @"Clave: " + guid.ToString();
                 SmtpClient client = new SmtpClient("mail.trendsistemas.com", 587);
-                client.Credentials = new System.Net.NetworkCredential("info@trendsistemas.com", "8953#AFjn");
+                client.Credentials = new System.Net.NetworkCredential("info@trendsistemas.com", pass);
                 try
                 {
                   //  client.Send(message);

@@ -99,7 +99,7 @@ namespace StockVentas
             rowView.EndEdit();
             if (tblFondoCaja.GetChanges() != null)
             {
-                if (!BL.Utilitarios.ValidarServicioMysql())
+                if (!BL.UtilDB.ValidarServicioMysql())
                 {
                     MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
                             + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
@@ -141,7 +141,7 @@ namespace StockVentas
                 switch (respuesta)
                 {
                     case DialogResult.Yes:
-                        if (!BL.Utilitarios.ValidarServicioMysql())
+                        if (!BL.UtilDB.ValidarServicioMysql())
                         {
                             MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
                                     + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,

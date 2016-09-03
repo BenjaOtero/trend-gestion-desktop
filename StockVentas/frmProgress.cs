@@ -651,11 +651,9 @@ namespace StockVentas
                         }
                         break;
                     case "frmArticulosAgrupar":
-                        Form f = BL.Utilitarios.getForm<frmPrincipal>();
                         this.Visible = false;
                         frmArticulosAgrupar frm = new frmArticulosAgrupar(tabla, tblArticulosStock);
                         frm.ShowDialog();
-                      //  frm.MdiParent = f;
                         break;
                     case "frmArticulosBorrar":
                         this.Visible = false;

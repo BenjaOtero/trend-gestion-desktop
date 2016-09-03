@@ -12,7 +12,6 @@ using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Diagnostics;
-using System.ServiceProcess;
 using DAL;
 
 
@@ -24,7 +23,6 @@ namespace BL
         static DataTable tblTabla;
         static Button grabar;
         static bool conexion;
-        static string razonSocial;
 
         public static void ValidarComboBox(object sender, CancelEventArgs e)
         {
@@ -328,148 +326,6 @@ namespace BL
             return false;
         }
 
-        public static void UploadFromFile(string nombreLocal, string nombreServidor)
-        {
-            //  string connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
-            string connectionString = ConfigurationManager.ConnectionStrings["Ftp"].ConnectionString;
-            Char delimiter = ';';
-            String[] substrings = connectionString.Split(delimiter);
-            string ftpServerIP = substrings[0];
-            string ftpUserID = substrings[1];
-            string ftpPassword = substrings[2];
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://" + ftpServerIP + nombreServidor);
-            request.Method = WebRequestMethods.Ftp.UploadFile;
-            request.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
-            byte[] fileContents = File.ReadAllBytes(nombreLocal);
-            request.ContentLength = fileContents.Length;
-            Stream requestStream = request.GetRequestStream();
-            requestStream.Write(fileContents, 0, fileContents.Length);
-            requestStream.Close();
-            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-            response.Close();
-        }
-
-        public static void DownloadFile(string nombreLocal, string nombreServidor)
-        {
-            //string connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
-            string connectionString = ConfigurationManager.ConnectionStrings["Ftp"].ConnectionString;
-            Char delimiter = ';';
-            String[] substrings = connectionString.Split(delimiter);
-            string ftpServerIP = substrings[0];
-            string ftpUserID = substrings[1];
-            string ftpPassword = substrings[2];
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://" + ftpServerIP + nombreServidor);
-            request.Method = WebRequestMethods.Ftp.DownloadFile;
-            request.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
-            FtpWebResponse objResponse = (FtpWebResponse)request.GetResponse();
-            byte[] buffer = new byte[32768];
-            using (Stream input = objResponse.GetResponseStream())
-            {
-                if (File.Exists(nombreLocal)) File.Delete(nombreLocal);
-                using (FileStream output = new FileStream(nombreLocal, FileMode.CreateNew))
-                {
-                    int bytesRead;
-                    while ((bytesRead = input.Read(buffer, 0, buffer.Length)) > 0)
-                    {
-                        output.Write(buffer, 0, bytesRead);
-                    }
-                }
-            }
-            objResponse.Close();
-        }
-
-        public static void UploadFromMemoryStream(MemoryStream memoryStream, string nombreRemoto, string servidor)
-        {
-            string ftpServerIP;
-            string ftpUserID;
-            string ftpPassword;
-            if (servidor == "karminna")
-            {
-                ftpServerIP = "karminna.com/public_html/images";
-                ftpUserID = "benja@karminna.com";
-                ftpPassword = "8953#AFjn";
-            }
-            else
-            {
-                ftpServerIP = "trendsistemas.com/datos";
-                ftpUserID = "benja@trendsistemas.com";
-                ftpPassword = "8953#AFjn";
-            }
-              /*// FTP local
-               ftpServerIP = "127.0.0.1:22";
-                ftpUserID = "Benja";
-                ftpPassword = "8953#AFjn";*/
-            FtpWebRequest reqFTP;
-
-            // Create FtpWebRequest object from the Uri provided
-            reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri("ftp://" + ftpServerIP + "/" + nombreRemoto));
-
-            // Provide the WebPermission Credintials
-            reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
-
-            // By default KeepAlive is true, where the control connection is not closed
-            // after a command is executed.
-            reqFTP.KeepAlive = false;
-
-            // Specify the command to be executed.
-            reqFTP.Method = WebRequestMethods.Ftp.UploadFile;
-
-            // Specify the data transfer type.
-            reqFTP.UseBinary = true;
-
-            // Notify the server about the size of the uploaded file
-            reqFTP.ContentLength = memoryStream.Length;
-
-
-            // The buffer size is set to 2kb
-            int buffLength = 2048;
-            byte[] buff = new byte[buffLength];
-            int contentLen;
-
-            // Opens a file stream (System.IO.FileStream) to read the file to be uploaded
-
-            try
-            {
-                // Stream to which the file to be upload is written
-                Stream strm = reqFTP.GetRequestStream();
-
-                // Read from the file stream 2kb at a time
-                memoryStream.Seek(0, SeekOrigin.Begin);
-                contentLen = memoryStream.Read(buff, 0, buffLength);
-
-                // Till Stream content ends
-                while (contentLen != 0)
-                {
-                    // Write Content from the file stream to the FTP Upload Stream
-                    strm.Write(buff, 0, contentLen);
-                    contentLen = memoryStream.Read(buff, 0, buffLength);
-                }
-
-                // Close the file stream and the Request Stream
-                strm.Close();
-                memoryStream.Close();
-            }
-            catch (Exception ex)
-            {
-               // MessageBox.Show(ex.Message, "Upload Error");
-                return;
-            }
-        }
-
-        public static FtpWebRequest FtpRequest(string path)
-        {
-            //string connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
-            string connectionString = ConfigurationManager.ConnectionStrings["Ftp"].ConnectionString;
-            Char delimiter = ';';
-            String[] substrings = connectionString.Split(delimiter);
-            string ftpServerIP = substrings[0];
-            string ftpUserID = substrings[1];
-            string ftpPassword = substrings[2];
-            FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create("ftp://" + ftpServerIP + path);
-            ftpRequest.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
-            return ftpRequest;
-        }
-
         public static bool FileCompare(string file1, string file2)
         {
             int file1byte;
@@ -503,80 +359,6 @@ namespace BL
             return ((file1byte - file2byte) == 0);
         }
 
-        public static TForm getForm<TForm>() where TForm : Form
-        {
-            return (TForm)Application.OpenForms.OfType<TForm>().FirstOrDefault();
-        }
-
-        public static bool ValidarServicioMysql()
-        {
-            bool funcionando = DAL.DALBase.ValidarServicioMysql();
-            return funcionando;
-        }
-
-        public static void DumpDatos(string server, string user, string password, string database, string filename)
-        {
-              string path = Application.StartupPath + @"\Mysql\mysqldump.exe";              
-              Process process = new Process();
-              process.StartInfo.FileName = path;
-              string args = String.Format("-t --skip-comments -u {0} -p{1} -h {2} --opt {3} alicuotasiva articulos clientes formaspago generos razonsocial stock -r {4}",
-                                             user, password, server, database, filename);
-              process.StartInfo.Arguments = args;
-              process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-              process.Start();
-              process.WaitForExit();
-        }
-
-        public static void DumpDB(string server, int port, string user, string password, string database, string filename)
-        {
-            string path = Application.StartupPath + @"\Mysql\mysqldump.exe";
-            Process process = new Process();
-            process.StartInfo.FileName = path;
-            string args = String.Format("-C -B --host={0} -P {1} --user={2} --password={3} --database={4} -e \"\\. {5}\"",
-                                           server, port, user, password, database, filename);
-            process.StartInfo.Arguments = args;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.Start();
-            process.WaitForExit();
-        }
-
-        public static void RestoreDB(string server, int port, string user, string password, string database, string filename)
-        {
-            string path = Application.StartupPath + @"\Mysql\mysql.exe";
-            Process process = new Process();
-            process.StartInfo.FileName = path;
-            string args = String.Format("-C -B --host={0} -P {1} --user={2} --password={3} --database={4} -e \"\\. {5}\"",
-                                           server, port, user, password, database, filename);
-            process.StartInfo.Arguments = args;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.Start();
-            process.WaitForExit();
-        }
-
-        public static void ZipDB(string filename)
-        {
-            string path = Application.StartupPath + @"\Mysql\xz.exe";
-            Process process = new Process();
-            process.StartInfo.FileName = path;
-            string args = filename;
-            process.StartInfo.Arguments = args;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.Start();
-            process.WaitForExit();
-        }
-
-        public static void UnzipDB(string filename)
-        {
-            string path = Application.StartupPath + @"\Mysql\xz.exe";
-            Process process = new Process();
-            process.StartInfo.FileName = path;
-            string args = "-d " + filename;
-            process.StartInfo.Arguments = args;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.Start();
-            process.WaitForExit();
-        }
-
         public static List<string> GetCredentialsDB()
         {
             string connectionString;
@@ -591,6 +373,23 @@ namespace BL
             credentials.Add(server);
             credentials.Add(user);
             credentials.Add(database);
+            credentials.Add(pass);
+            return credentials;
+        }
+
+        public static List<string> GetCredentialsFTP()
+        {
+            string connectionString;
+         //   connectionString = ConfigurationManager.ConnectionStrings["Ftp"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
+            Char delimiter = ';';
+            String[] substrings = connectionString.Split(delimiter);
+            string server = substrings[0];
+            string user = substrings[1];
+            string pass = substrings[2];
+            List<string> credentials = new List<string>();
+            credentials.Add(server);
+            credentials.Add(user);
             credentials.Add(pass);
             return credentials;
         }

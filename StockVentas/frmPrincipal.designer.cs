@@ -603,7 +603,6 @@
             this.empleadosToolStripMenuItem2.Name = "empleadosToolStripMenuItem2";
             this.empleadosToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.empleadosToolStripMenuItem2.Text = "Empleados";
-            this.empleadosToolStripMenuItem2.Click += new System.EventHandler(this.empleadosToolStripMenuItem2_Click);
             // 
             // movimientosToolStripMenuItem2
             // 

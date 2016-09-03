@@ -74,6 +74,8 @@
     <Compile Include="TransaccionesBLL.cs" />
     <Compile Include="TrendBLL.cs" />
     <Compile Include="UsuariosBLL.cs" />
+    <Compile Include="UtilDB.cs" />
+    <Compile Include="UtilFTP.cs" />
     <Compile Include="Utilitarios.cs" />
     <Compile Include="VentasBLL.cs" />
     <Compile Include="VentasDetalleBLL.cs" />

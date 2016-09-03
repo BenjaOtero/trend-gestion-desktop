@@ -48,7 +48,7 @@ namespace BL
                         Char delimitador = '\\';
                         String[] cadena = archivo.Split(delimitador);
                         string borrar = cadena[4];                        
-                        ftpRequest = Utilitarios.FtpRequest(@"/datos/" + borrar);
+                        ftpRequest = UtilFTP.FtpRequest(@"/datos/" + borrar);
                         ftpRequest.Method = WebRequestMethods.Ftp.DeleteFile;
                         FtpWebResponse respuesta = (FtpWebResponse)ftpRequest.GetResponse();
                     }
@@ -62,7 +62,7 @@ namespace BL
 
         public static List<string> GetDirectoriesFTP()
         {
-            FtpWebRequest ftpRequest = Utilitarios.FtpRequest("/datos");
+            FtpWebRequest ftpRequest = UtilFTP.FtpRequest("/datos");
             ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
             FtpWebResponse response = (FtpWebResponse)ftpRequest.GetResponse();
             StreamReader streamReader = new StreamReader(response.GetResponseStream());
@@ -81,15 +81,12 @@ namespace BL
         {
             if (Directory.Exists(@"c:\windows\temp\data_import")) Directory.Delete(@"c:\windows\temp\data_import", true);
             Directory.CreateDirectory(@"c:\windows\temp\data_import");
-            //string connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
-            string connectionString = ConfigurationManager.ConnectionStrings["Ftp"].ConnectionString;
-            Char delimiter = ';';
-            String[] substrings = connectionString.Split(delimiter);
-            string ftpServerIP = substrings[0] + "/datos";
-            string ftpUserID = substrings[1];
-            string ftpPassword = substrings[2];
+            credentials = Utilitarios.GetCredentialsFTP();
+            server = credentials[0] + "/datos"; 
+            user = credentials[1];
+            pass = credentials[2];
             WebClient ftpClient = new WebClient();
-            ftpClient.Credentials = new System.Net.NetworkCredential(ftpUserID, ftpPassword);
+            ftpClient.Credentials = new System.Net.NetworkCredential(user, pass);
             using (ftpClient)
             {
                 foreach (string archivo in directories)
@@ -98,7 +95,7 @@ namespace BL
                     {
                         if (!archivo.Contains("datos") && !archivo.Contains("locales") && !archivo.Contains("pcs") && !archivo.Contains("bck"))
                         {
-                            string ftpPath = "ftp://" + ftpServerIP + "/" + archivo;
+                            string ftpPath = "ftp://" + server + "/" + archivo;
                             string localPath = @"c:\windows\temp\data_import\" + archivo;
                             ftpClient.DownloadFile(ftpPath, localPath);
                         }
@@ -115,9 +112,9 @@ namespace BL
             string user = credentials[1];
             string database = credentials[2];
             string pass = credentials[3];
-            Utilitarios.UnzipDB(archivo);
+            UtilDB.UnzipDB(archivo);
             archivo = archivo.Substring(0, archivo.Length - 3);
-            Utilitarios.RestoreDB(server, 3306, user, pass, database, archivo);
+            UtilDB.RestoreDB(server, 3306, user, pass, database, archivo);
             // compruebo si se restauraron los datos
             Char delimiter = '_';
             String[] substrings = archivo.Split(delimiter);
@@ -153,14 +150,14 @@ namespace BL
             DataTable tbl = BL.GetDataBLL.RazonSocial();
             idRazonSocial = tbl.Rows[0][0].ToString();
             strFile = idRazonSocial + "_datos.sql";
-            Utilitarios.DumpDatos(server, user, pass, database, @"c:\windows\temp\" + strFile); 
+            UtilDB.DumpDatos(server, user, pass, database, @"c:\windows\temp\" + strFile); 
             if (ValidarDump())
             {
-                Utilitarios.ZipDB(@"c:\windows\temp\" + strFile);
+                UtilDB.ZipDB(@"c:\windows\temp\" + strFile);
                 strFile = strFile + ".xz";
             Reintentar:
-                Utilitarios.UploadFromFile(@"c:\windows\temp\" + strFile, "/datos/" + strFile);
-                Utilitarios.DownloadFile(@"c:\windows\temp\tmp_" + strFile, "/datos/" + strFile);
+                UtilFTP.UploadFromFile(@"c:\windows\temp\" + strFile, "/datos/" + strFile);
+                UtilFTP.DownloadFile(@"c:\windows\temp\tmp_" + strFile, "/datos/" + strFile);
                 if (!Utilitarios.FileCompare(@"c:\windows\temp\tmp_" + strFile, @"c:\windows\temp\" + strFile))
                 {
                     if (intentosUpload < 5)
@@ -178,13 +175,15 @@ namespace BL
                     ExportarDatos();
                 }                
             }
+            intentosUpload = 0;
+            intentosDump = 0;
         }
 
         private static bool ValidarDump()
         {
             bool comprobarDump = true;
             DAL.DatosDAL.DeleteAll();
-            Utilitarios.RestoreDB(server, 3306, user, pass, "dump_admin", "C:\\Windows\\Temp\\" + strFile);
+            UtilDB.RestoreDB(server, 3306, user, pass, "dump_admin", "C:\\Windows\\Temp\\" + strFile);
             DataSet ds = DAL.DatosDAL.ControlarUpdate();
             int records;
             foreach (DataTable tbl in ds.Tables)

@@ -121,7 +121,7 @@ namespace StockVentas
             MemoryStream ms;
             bool tratarImagenesServer = false;
             Cursor.Current = Cursors.WaitCursor;
-            if (!BL.Utilitarios.ValidarServicioMysql())
+            if (!BL.UtilDB.ValidarServicioMysql())
             {
                 MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
                         + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
@@ -144,7 +144,7 @@ namespace StockVentas
                     {
                         fs.CopyTo(ms);
                     }
-                    BL.Utilitarios.UploadFromMemoryStream(ms, nombreServidor + "_large.jpg", "karminna");
+                    BL.UtilFTP.UploadFromMemoryStream(ms, nombreServidor + "_large.jpg", "karminna");
                     tratarImagenesServer = true;
                 }
                 if (strFileNameBck != null)
@@ -160,7 +160,7 @@ namespace StockVentas
                     {
                         fs.CopyTo(ms);
                     }
-                    BL.Utilitarios.UploadFromMemoryStream(ms, nombreServidor + "_bck_large.jpg", "karminna");
+                    BL.UtilFTP.UploadFromMemoryStream(ms, nombreServidor + "_bck_large.jpg", "karminna");
                     tratarImagenesServer = true;
                 }
                 if (strFileNameColor != null)
@@ -170,7 +170,7 @@ namespace StockVentas
                     {
                         fs.CopyTo(ms);
                     }
-                    BL.Utilitarios.UploadFromMemoryStream(ms, nombreServidorColor, "karminna");
+                    BL.UtilFTP.UploadFromMemoryStream(ms, nombreServidorColor, "karminna");
                 }
                 if (tratarImagenesServer)
                 {
@@ -282,7 +282,7 @@ namespace StockVentas
                 switch (respuesta)
                 {
                     case DialogResult.Yes:
-                        if (!BL.Utilitarios.ValidarServicioMysql())
+                        if (!BL.UtilDB.ValidarServicioMysql())
                         {
                             MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
                                     + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,

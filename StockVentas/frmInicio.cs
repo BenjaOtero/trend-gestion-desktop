@@ -207,10 +207,8 @@ namespace StockVentas
 
         private void ConfigurarMySQL()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
-            Char delimiter = ';';
-            String[] substrings = connectionString.Split(delimiter);
-            string pass = substrings[2];
+            List<string> Cred = Utilitarios.GetCredentialsDB();
+            string pass = pass = Cred[3];
             if (File.Exists("c:\\Windows\\Temp\\config_mysql.bat")) File.Delete("c:\\Windows\\Temp\\config_mysql.bat");
             System.IO.StreamWriter sw = System.IO.File.CreateText("c:\\Windows\\Temp\\config_mysql.bat"); // creo el archivo .bat
             sw.Close();

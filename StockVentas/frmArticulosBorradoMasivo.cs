@@ -52,7 +52,7 @@ namespace StockVentas
                 MessageBox.Show("Debe indicar un género.", "Trend", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cmbGenero.Focus();
             }
-            if (!BL.Utilitarios.ValidarServicioMysql())
+            if (!BL.UtilDB.ValidarServicioMysql())
             {
                 MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
                         + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
