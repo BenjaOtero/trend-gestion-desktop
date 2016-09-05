@@ -38,7 +38,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::StockVentas.Properties.Resources.LogoTrend;
-            this.pictureBox2.Location = new System.Drawing.Point(29, 70);
+            this.pictureBox2.Location = new System.Drawing.Point(29, 55);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(319, 90);
             this.pictureBox2.TabIndex = 4;

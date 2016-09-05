@@ -43,3 +43,4 @@ C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\GenerateResource.re
 C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\Pruebas.exe
 C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\Pruebas.pdb
+C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\bin\Debug\Pruebas.exe.config

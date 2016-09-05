@@ -32,6 +32,7 @@
             this.btnLeftBottom = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnBackup = new System.Windows.Forms.Button();
+            this.btnCrearUsuarioMysql = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,11 +138,22 @@
             this.btnBackup.UseVisualStyleBackColor = true;
             this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
-            // frmPruebas
+            // btnCrearUsuarioMysql
+            // 
+            this.btnCrearUsuarioMysql.Location = new System.Drawing.Point(158, 70);
+            this.btnCrearUsuarioMysql.Name = "btnCrearUsuarioMysql";
+            this.btnCrearUsuarioMysql.Size = new System.Drawing.Size(129, 23);
+            this.btnCrearUsuarioMysql.TabIndex = 5;
+            this.btnCrearUsuarioMysql.Text = "Crear usuario Mysl";
+            this.btnCrearUsuarioMysql.UseVisualStyleBackColor = true;
+            this.btnCrearUsuarioMysql.Click += new System.EventHandler(this.btnCrearUsuarioMysql_Click);
+            // 
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 483);
+            this.Controls.Add(this.btnCrearUsuarioMysql);
             this.Controls.Add(this.btnBackup);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnLeftBottom);
@@ -152,7 +164,7 @@
             this.Controls.Add(this.btnCompararStock);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "frmPruebas";
+            this.Name = "Form1";
             this.Text = "frmPruebas";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -172,5 +184,6 @@
         private System.Windows.Forms.Button btnLeftBottom;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnBackup;
+        private System.Windows.Forms.Button btnCrearUsuarioMysql;
     }
 }

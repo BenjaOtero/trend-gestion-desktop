@@ -16,6 +16,7 @@
 
 
 -ofuscar codigo
+-ver error_install.jpg
 
 
 

@@ -55,7 +55,6 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gvwDatos)).BeginInit();
             this.grpBotones.SuspendLayout();
             this.grpCampos.SuspendLayout();
@@ -112,7 +111,6 @@
             // grpBotones
             // 
             this.grpBotones.Controls.Add(this.btnCancelar);
-            this.grpBotones.Controls.Add(this.button1);
             this.grpBotones.Controls.Add(this.btnSalir);
             this.grpBotones.Controls.Add(this.btnGrabar);
             this.grpBotones.Controls.Add(this.btnBorrar);
@@ -302,16 +300,6 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(20, 247);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 26);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Salir";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // frmAlicuotasIva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,7 +355,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.TextBox txtPorcentajeALI;
-        private System.Windows.Forms.Button button1;
 
     }
 }

@@ -234,17 +234,11 @@ namespace StockVentas
             {
                 gvwDatos.Enabled = true;
                 txtIdProveedorPRO.ReadOnly = true;
-                txtIdProveedorPRO.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
                 txtRazonSocialPRO.ReadOnly = true;
-                txtRazonSocialPRO.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
                 txtDireccionPRO.ReadOnly = true;
-                txtDireccionPRO.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
                 txtCodigoPostalPRO.ReadOnly = true;
-                txtCodigoPostalPRO.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
                 txtTelefonoPRO.ReadOnly = true;
-                txtTelefonoPRO.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
                 txtContactoPRO.ReadOnly = true;
-                txtContactoPRO.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
                 btnBuscar.Enabled = true;
                 btnNuevo.Enabled = true;
                 btnEditar.Enabled = true;

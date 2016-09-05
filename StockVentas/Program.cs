@@ -15,7 +15,7 @@ namespace StockVentas
         static void Main()
         {
             Application.ThreadException += new ThreadExceptionEventHandler(ThreadExceptionHandler);
-            Application.ThreadException += new ThreadExceptionEventHandler(frmInicio.Form1_UIThreadException);
+       //     Application.ThreadException += new ThreadExceptionEventHandler(frmInicio.Form1_UIThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(UnhandledExceptionHandler);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

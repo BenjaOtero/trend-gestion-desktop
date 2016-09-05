@@ -320,6 +320,7 @@
             // 
             this.txtIdProveedorPRO.Location = new System.Drawing.Point(92, 20);
             this.txtIdProveedorPRO.Name = "txtIdProveedorPRO";
+            this.txtIdProveedorPRO.ReadOnly = true;
             this.txtIdProveedorPRO.Size = new System.Drawing.Size(388, 20);
             this.txtIdProveedorPRO.TabIndex = 1;
             // 

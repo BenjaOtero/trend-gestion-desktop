@@ -62,13 +62,15 @@ namespace BL
             process.WaitForExit();
             process = new Process();
             process.StartInfo.FileName = pathMysql + @"\mysql.exe";
-            args = "-u root -p" + pass + " -e \"GRANT ALL ON *.* TO '" + user + "'@'%' IDENTIFIED BY '" + pass + "' WITH GRANT OPTION; FLUSH PRIVILEGES;\"";
+            args = string.Format("-u root -e \"GRANT ALL ON *.* TO '{0}'@'%' IDENTIFIED BY '{1}' WITH GRANT OPTION;\"", user, pass);
             process.StartInfo.Arguments = args;
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.Start();
             process.WaitForExit();
             string pathFileDb = Application.StartupPath + @"\MySql\ncsoftwa_re.sql";
             RestoreDB(server, 3306, user, pass, database, pathFileDb);
+            pathFileDb = Application.StartupPath + @"\MySql\dump_admin.sql";
+            RestoreDB(server, 3306, user, pass, "dump_admin", pathFileDb);
         }
 
         public static void DumpDatos(string server, string user, string password, string database, string filename)
