@@ -85,10 +85,12 @@ namespace StockVentas
 
         private void bckIniciarComponetes_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!ExisteServicioMySQL())
+            if (!UtilVarios.ExisteServicio("MySQL"))
             {
+                label1.Text = "Instalando servidor de base de datos . . .";
+                UtilDB.InstalarMySQL();
                 label1.Text = "Configurando servidor de base de datos . . .";
-                ConfigurarMySQL();
+                UtilDB.ConfigurarMySQL();
             }
             label1.Text = "Obteniendo datos del servidor . . .";
         reiniciar:
@@ -100,7 +102,7 @@ namespace StockVentas
                 label1.Text = "Importando datos . . .";
             //    BL.DatosBLL.GetDataPOS();
                 label1.Text = "Exportando datos . . .";
-                BL.DatosBLL.ExportarDatos();
+             //   BL.DatosBLL.ExportarDatos();
             }
             catch (ServidorMysqlInaccesibleException ex)
             {
@@ -187,78 +189,6 @@ namespace StockVentas
         {
             BL.MantenimientoBLL.Mantenimiento();
             BL.VentasBLL.VentasHistoricasMantener();
-        }
-
-        private bool ExisteServicioMySQL()
-        {
-            existeServicio = false;
-            ServiceController[] scServices;
-            scServices = ServiceController.GetServices();
-            foreach (ServiceController scTemp in scServices)
-            {
-                if (scTemp.ServiceName == "MySQL")
-                {
-                    existeServicio = true;
-                    continue;
-                }
-            }
-            return existeServicio;
-        }
-
-        private void ConfigurarMySQL()
-        {
-            List<string> Cred = UtilVarios.GetCredentialsDB();
-            string pass = pass = Cred[3];
-            if (File.Exists("c:\\Windows\\Temp\\config_mysql.bat")) File.Delete("c:\\Windows\\Temp\\config_mysql.bat");
-            System.IO.StreamWriter sw = System.IO.File.CreateText("c:\\Windows\\Temp\\config_mysql.bat"); // creo el archivo .bat
-            sw.Close();
-            string programFiles;
-            if (Directory.Exists(@"C:\Program files"))
-            {
-                programFiles = "Program files";
-            }
-            else if (Directory.Exists(@"C:\Archivos de programa"))
-            {
-                programFiles = "Archivos de programa";
-            }
-            else if (Directory.Exists(@"C:\Program files(x86)"))
-            {
-                programFiles = "Program files(x86)";
-            }
-            else
-            {
-                programFiles = "Archivos de programa(x86)";
-            }
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("C:");
-            string configMysql = "cd " + "\"C:\\" + programFiles + "\\MySQL\\MySQL Server 5.5\\bin\"";
-            sb.AppendLine(configMysql);
-            configMysql = "mysqlinstanceconfig.exe -i -q ServiceName=MySQL ServerType=DEVELOPER DatabaseType=INODB Port=3306 Charset=utf8 RootPassword=" + pass;         
-            sb.AppendLine(configMysql);
-            string usuario = "mysql.exe -u root -p" + pass + " -e \"GRANT ALL ON *.* TO 'ncsoftwa_re'@'%' IDENTIFIED BY '" + pass + "' WITH GRANT OPTION; FLUSH PRIVILEGES;\"";
-            sb.AppendLine(usuario);
-            string rutaDB = Application.StartupPath.ToString() + @"\MySql\ncsoftwa_re.sql";
-            string restaurarDB = "mysql.exe -u ncsoftwa_re -p" + pass + " < \"" + rutaDB + "\"";
-            sb.AppendLine(restaurarDB);
-            using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\config_mysql.bat", true)) // escribo en el archivo .bat
-            {
-                outfile.Write(sb.ToString());
-            }
-            Process process = new Process();
-            process.StartInfo.FileName = "c:\\Windows\\Temp\\config_mysql.bat";
-            process.StartInfo.CreateNoWindow = false;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.Start();
-            process.EnableRaisingEvents = true;
-            process.WaitForExit();
-            StringBuilder sb_myIni = new StringBuilder();
-            sb_myIni.AppendLine("");
-            sb_myIni.AppendLine("[mysqld]");
-            sb_myIni.AppendLine("lower_case_table_names = 0");
-            using (StreamWriter file = new StreamWriter("C:\\" + programFiles + "\\MySQL\\MySQL Server 5.5\\my.ini", true))
-            {
-                file.Write(sb_myIni.ToString());
-            }
         }
 
         private void frmInicio_FormClosing(object sender, FormClosingEventArgs e)

@@ -145,6 +145,7 @@ namespace BL
             UtilDB.DumpDatos(server, user, pass, database, @"c:\windows\temp\" + strFile); 
             if (ValidarDump())
             {
+                if(File.Exists(@"c:\windows\temp\" + strFile + ".xz")) File.Delete(@"c:\windows\temp\" + strFile + ".xz");
                 UtilDB.ZipDB(@"c:\windows\temp\" + strFile);
                 strFile = strFile + ".xz";
             Reintentar:

@@ -5,6 +5,7 @@ using System.Text;
 using System.ServiceProcess;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.IO;
 
 namespace BL
 {
@@ -14,6 +15,60 @@ namespace BL
         {
             bool funcionando = DAL.DALBase.ValidarServicioMysql();
             return funcionando;
+        }
+
+        public static void InstalarMySQL()
+        {
+            string path = Application.StartupPath + @"\MySql\mysql-essential-5.5.0-m2-win32.msi";
+            Process process = new Process();
+            process.StartInfo.FileName = path;
+            string args = "/quiet";
+            process.StartInfo.Arguments = args;
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            process.Start();
+            process.WaitForExit();
+        }
+
+        public static void ConfigurarMySQL()
+        {
+            List<string> credentials = UtilVarios.GetCredentialsDB();
+            string server = credentials[0];
+            string user = credentials[1];
+            string database = credentials[2];
+            string pass = credentials[3];
+            string pathMysql = string.Empty;
+            if (Directory.Exists(@"C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin"))
+            {
+                pathMysql = @"C:\Program Files\MySQL\MySQL Server 5.5\bin";
+            }
+            else if (Directory.Exists(@"C:\Program Files\MySQL\MySQL Server 5.5\bin"))
+            {
+                pathMysql = @"C:\Program Files\MySQL\MySQL Server 5.5\bin";
+            }
+            else if (Directory.Exists(@"C:\Archivos de programa\MySQL\MySQL Server 5.5\bin"))
+            {
+                pathMysql = @"C:\Archivos de programa\MySQL\MySQL Server 5.5\bin";
+            }
+            else if (Directory.Exists(@"C:\Archivos de programa (x86)\MySQL\MySQL Server 5.5\bin"))
+            {
+                pathMysql = @"C:\Archivos de programa (x86)\MySQL\MySQL Server 5.5\bin";
+            }
+            Process process = new Process();
+            process.StartInfo.FileName = pathMysql + @"\mysqlinstanceconfig.exe";
+            string args = "-i -q ServiceName=MySQL ServerType=DEVELOPER DatabaseType=INODB Port=3306 Charset=utf8 RootPassword=" + pass;         
+            process.StartInfo.Arguments = args;
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            process.Start();
+            process.WaitForExit();
+            process = new Process();
+            process.StartInfo.FileName = pathMysql + @"\mysql.exe";
+            args = "-u root -p" + pass + " -e \"GRANT ALL ON *.* TO '" + user + "'@'%' IDENTIFIED BY '" + pass + "' WITH GRANT OPTION; FLUSH PRIVILEGES;\"";
+            process.StartInfo.Arguments = args;
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            process.Start();
+            process.WaitForExit();
+            string pathFileDb = Application.StartupPath + @"\MySql\ncsoftwa_re.sql";
+            RestoreDB(server, 3306, user, pass, database, pathFileDb);
         }
 
         public static void DumpDatos(string server, string user, string password, string database, string filename)
