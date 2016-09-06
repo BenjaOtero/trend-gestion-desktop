@@ -30,14 +30,14 @@ namespace BL
 
         // IMPORTAR MOVIMIENTOS POS
 
-        public static void GetDataPOS()
+        public static void GetDataPOS(bool diarios)
         {
             List<string> directories = GetDirectoriesFTP();
             if (directories.Count() > 0)
             {
                 DataTable tbl = BL.GetDataBLL.RazonSocial();
                 string idRazonSocial = tbl.Rows[0][0].ToString() + "_";
-                DescargarArchivos(directories, idRazonSocial);
+                DescargarArchivos(directories, idRazonSocial, diarios);
                 string[] archivos = Directory.GetFiles(@"c:\windows\temp\data_import", idRazonSocial + "*");
                 FtpWebRequest ftpRequest;
                 foreach (string archivo in archivos)
@@ -57,7 +57,7 @@ namespace BL
                         if (intentosGetPOS < 10)
                         {
                             intentosGetPOS++;
-                            GetDataPOS();
+                            GetDataPOS(diarios);
                         }                        
                     }
                 }
@@ -82,7 +82,7 @@ namespace BL
             return directories;
         }
 
-        private static void DescargarArchivos(List<string> directories, string idRazonSocial)
+        private static void DescargarArchivos(List<string> directories, string idRazonSocial, bool diarios)
         {
             if (Directory.Exists(@"c:\windows\temp\data_import")) Directory.Delete(@"c:\windows\temp\data_import", true);
             Directory.CreateDirectory(@"c:\windows\temp\data_import");
@@ -100,9 +100,28 @@ namespace BL
                     {
                         if (!archivo.Contains("datos") && !archivo.Contains("locales") && !archivo.Contains("pcs") && !archivo.Contains("bck"))
                         {
-                            string ftpPath = "ftp://" + server + "/" + archivo;
-                            string localPath = @"c:\windows\temp\data_import\" + archivo;
-                            ftpClient.DownloadFile(ftpPath, localPath);
+                            Char delimitador = '_';
+                            String[] cadena = archivo.Split(delimitador);
+                            string strFecha =  cadena[2].Substring(0,10);
+                            DateTime fecha = Convert.ToDateTime(strFecha);
+                            if (diarios)
+                            {
+                                if (fecha == DateTime.Today)
+                                {
+                                    string ftpPath = "ftp://" + server + "/" + archivo;
+                                    string localPath = @"c:\windows\temp\data_import\" + archivo;
+                                    ftpClient.DownloadFile(ftpPath, localPath);
+                                }
+                            }
+                            else
+                            {
+                                if (fecha < DateTime.Today)
+                                {
+                                    string ftpPath = "ftp://" + server + "/" + archivo;
+                                    string localPath = @"c:\windows\temp\data_import\" + archivo;
+                                    ftpClient.DownloadFile(ftpPath, localPath);
+                                }
+                            }
                         }
                     }
                 }

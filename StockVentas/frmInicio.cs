@@ -24,7 +24,6 @@ namespace StockVentas
     public partial class frmInicio : Form
     {
         BackgroundWorker bckIniciarComponetes;
-        Label label3;
         Label label2;
         Label label1;
         public static DataSet ds;
@@ -63,12 +62,6 @@ namespace StockVentas
             label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label2.AutoSize = true;
             Controls.Add(label2);
-
-            label3 = new Label();
-            label3.Location = new System.Drawing.Point(28, 160);
-            label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.AutoSize = true;
-            Controls.Add(label3);
         /*    string cs = ConnectionStringManager.GetFirstConnectionString();
             string db = ConnectionStringManager.GetDatabaseName();
             if (cs == "nuevo_cliente")
@@ -99,8 +92,8 @@ namespace StockVentas
         {
             if (!UtilVarios.ExisteServicio("MySQL"))
             {
-                label2.Text = "Iniciando el sistema por primera vez.";
-                label3.Text = "Este proceso puede tomar unos minutos.";
+                this.pictureBox2.Location = new System.Drawing.Point(29, 55);
+                label2.Text = "Iniciando el sistema por primera vez." + '\r' + "Este proceso puede tomar unos minutos.";
                 label1.Text = "Instalando servidor de base de datos . . .";
                 UtilDB.InstalarMySQL();
                 label1.Text = "Configurando servidor de base de datos . . .";
@@ -109,15 +102,13 @@ namespace StockVentas
             label1.Text = "Obteniendo datos del servidor . . .";
         reiniciar:
             try
-            {
-                label2.Text = "Iniciando el sistema por primera vez.";
-                label3.Text = "Este proceso puede tomar unos minutos.";
+            {                
                 ds = BL.GetDataBLL.GetData();                
                 string idRazonSocial = BL.GetDataBLL.RazonSocial().Rows[0][0].ToString();
                 BL.MantenimientoBLL.Mantenimiento();
                 BL.VentasBLL.VentasHistoricasMantener();
-             //   label1.Text = "Importando datos . . .";
-                BL.DatosBLL.GetDataPOS();
+                label1.Text = "Importando datos . . .";
+                BL.DatosBLL.GetDataPOS(false);  // false no importa los datos de hoy
                 label1.Text = "Exportando datos . . .";
              //   BL.DatosBLL.ExportarDatos();
             }

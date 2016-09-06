@@ -207,7 +207,7 @@ namespace Pruebas
 
         private void btnLeftBottom_Click(object sender, EventArgs e)
         {
-            DatosBLL.GetDataPOS();
+
         }
 
         private void button3_Click(object sender, EventArgs e)

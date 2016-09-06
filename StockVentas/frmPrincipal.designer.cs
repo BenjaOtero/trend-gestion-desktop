@@ -99,6 +99,7 @@
             this.restaurarBaseDeDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importarDatosActualesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -623,7 +624,8 @@
             this.backupBaseDeDatosToolStripMenuItem,
             this.restaurarBaseDeDatosToolStripMenuItem,
             this.exportarDatosToolStripMenuItem,
-            this.importarDatosToolStripMenuItem});
+            this.importarDatosToolStripMenuItem,
+            this.importarDatosActualesToolStripMenuItem});
             this.mantenimientoToolStripMenuItem1.Name = "mantenimientoToolStripMenuItem1";
             this.mantenimientoToolStripMenuItem1.Size = new System.Drawing.Size(89, 20);
             this.mantenimientoToolStripMenuItem1.Text = "Mantenimiento";
@@ -655,6 +657,13 @@
             this.importarDatosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.importarDatosToolStripMenuItem.Text = "Importar datos";
             this.importarDatosToolStripMenuItem.Click += new System.EventHandler(this.importarDatosToolStripMenuItem_Click);
+            // 
+            // importarDatosActualesToolStripMenuItem
+            // 
+            this.importarDatosActualesToolStripMenuItem.Name = "importarDatosActualesToolStripMenuItem";
+            this.importarDatosActualesToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.importarDatosActualesToolStripMenuItem.Text = "Importar datos de hoy";
+            this.importarDatosActualesToolStripMenuItem.Click += new System.EventHandler(this.importarDatosActualesToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -751,6 +760,7 @@
         private System.Windows.Forms.ToolStripMenuItem exportarDatosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importarDatosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restaurarBaseDeDatosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importarDatosActualesToolStripMenuItem;
     }
 }
 

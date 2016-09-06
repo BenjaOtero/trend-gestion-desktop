@@ -75,6 +75,7 @@ namespace StockVentas
         string idAlicuota;
         string oldIdAlicuota;
         public Exception servidorCaidoExcepcion;
+        private bool today;
 
         private const int CP_NOCLOSE_BUTTON = 0x200;  //junto con protected override CreateParams inhabilitan el boton cerrar de frmProgress
         protected override CreateParams CreateParams
@@ -96,6 +97,14 @@ namespace StockVentas
         {
             this.origen = origen;
             this.accion = accion;
+        }
+
+        public frmProgress(string origen, string accion, bool today)
+            : this()
+        {
+            this.origen = origen;
+            this.accion = accion;
+            this.today = today;
         }
 
         // Constructor para frmEmpleadosMovConsInter
@@ -516,7 +525,7 @@ namespace StockVentas
                             BL.DatosBLL.ExportarDatos();
                             break;
                         case "ImportarDatos":
-                            BL.DatosBLL.GetDataPOS();
+                            BL.DatosBLL.GetDataPOS(today);
                             break;
                         case "frmFondoCaja":
                             BL.FondoCajaBLL.GrabarDB(tabla);

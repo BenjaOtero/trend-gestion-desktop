@@ -15,7 +15,6 @@ using System.Timers;
 using System.Threading;
 using System.Configuration;
 
-
 namespace StockVentas
 {
     public partial class frmPrincipal : Form
@@ -24,7 +23,6 @@ namespace StockVentas
         string origen, accion;
         private System.Timers.Timer tmrSilenceBck;
         System.Windows.Forms.Timer tmrPopup = new System.Windows.Forms.Timer();
-        private static System.Timers.Timer timer;
 
         public frmPrincipal()
         {
@@ -437,7 +435,7 @@ namespace StockVentas
                         MessageBoxIcon.Error);
                 return;
             }
-            frmProgress frm = new frmProgress("ImportarDatos", "grabar");
+            frmProgress frm = new frmProgress("ImportarDatos", "grabar", false);
             try
             {
                 frm.ShowDialog();
@@ -447,6 +445,27 @@ namespace StockVentas
                 MessageBox.Show("No se pudo establecer conexión con el servidor remoto. No se actualizaron los datos.", "Trend Gestión",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }                
+        }
+
+        private void importarDatosActualesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!BL.UtilDB.ValidarServicioMysql())
+            {
+                MessageBox.Show("No se pudo conectar con el servidor de base de datos."
+                        + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                return;
+            }
+            frmProgress frm = new frmProgress("ImportarDatos", "grabar", true);
+            try
+            {
+                frm.ShowDialog();
+            }
+            catch (WebException)
+            {
+                MessageBox.Show("No se pudo establecer conexión con el servidor remoto. No se actualizaron los datos.", "Trend Gestión",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
@@ -469,7 +488,7 @@ namespace StockVentas
             string pass = credentials[3];
             BL.UtilDB.RestoreDB(server, 3306, user, pass, database, fileName);
             Application.Restart();
-        }
+        }        
 
 
     }
