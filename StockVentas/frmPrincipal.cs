@@ -380,8 +380,9 @@ namespace StockVentas
             string pass = credentials[3];
             DataTable tbl = BL.GetDataBLL.RazonSocial();
             string fileSilenceBck = @"c:\windows\temp\" + tbl.Rows[0][0].ToString() + "_bck.sql";
+            string remoteFile = tbl.Rows[0][0].ToString() + "_bck.sql.xz";
             UtilDB.DumpDB(server, 3306, user, pass, database, fileSilenceBck);
-            if (File.Exists(fileSilenceBck + "xz")) File.Delete(fileSilenceBck + "xz");
+            if (File.Exists(fileSilenceBck + ".xz")) File.Delete(fileSilenceBck + ".xz");
             UtilDB.ZipDB(fileSilenceBck);
             MemoryStream ms = new MemoryStream();
             using (FileStream fs = File.OpenRead(fileSilenceBck + ".xz"))
@@ -390,7 +391,7 @@ namespace StockVentas
             }
             try
             {
-                BL.UtilFTP.UploadFromMemoryStream(ms, fileSilenceBck + ".xz", "trendsistemas");
+                BL.UtilFTP.UploadFromMemoryStream(ms, remoteFile, "trendsistemas");
             }
             catch (WebException)
             {

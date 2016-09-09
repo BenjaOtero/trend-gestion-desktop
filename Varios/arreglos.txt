@@ -19,6 +19,7 @@
 -ver error_install.jpg
 -no importar los movimientos diarios con los anteriores
 -opcion importar movimientos diarios
+-exportar datos (tbl stock) a un nombre de archivo con fecha
 
 
 
