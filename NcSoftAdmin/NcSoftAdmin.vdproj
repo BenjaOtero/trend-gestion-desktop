@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0215D3FC913246BFAB519DA88EB9EC72"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_05C66F21418D40BCB8BDBC3B645E16B9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -64,13 +58,13 @@
         "Entry"
         {
         "MsmKey" = "8:_4946121BDCED3CF9EC1902449E24AC81"
-        "OwnerKey" = "8:_5898D5F48CDD425EBD4616697237B5F2"
+        "OwnerKey" = "8:_D4E0A35127433829F5DFF391C7DB8E11"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4946121BDCED3CF9EC1902449E24AC81"
-        "OwnerKey" = "8:_D4E0A35127433829F5DFF391C7DB8E11"
+        "OwnerKey" = "8:_5898D5F48CDD425EBD4616697237B5F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -166,13 +160,13 @@
         "Entry"
         {
         "MsmKey" = "8:_E382A05626A3ECC50D82B3FB9980519E"
-        "OwnerKey" = "8:_89982A0A160671198D5C329319884AF3"
+        "OwnerKey" = "8:_D4E0A35127433829F5DFF391C7DB8E11"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E382A05626A3ECC50D82B3FB9980519E"
-        "OwnerKey" = "8:_D4E0A35127433829F5DFF391C7DB8E11"
+        "OwnerKey" = "8:_89982A0A160671198D5C329319884AF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -201,12 +195,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FF8A5E48BB8644338C9104EB6F037348"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_FFD63A219A13C3C2589A386A863A6C55"
         "OwnerKey" = "8:_5898D5F48CDD425EBD4616697237B5F2"
         "MsmSig" = "8:_UNDEFINED"
@@ -226,37 +214,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E382A05626A3ECC50D82B3FB9980519E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_07C77CC1FF3B083213AF545EDA5A0324"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5898D5F48CDD425EBD4616697237B5F2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D4E0A35127433829F5DFF391C7DB8E11"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_89982A0A160671198D5C329319884AF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4946121BDCED3CF9EC1902449E24AC81"
+        "OwnerKey" = "8:_FFD63A219A13C3C2589A386A863A6C55"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -268,7 +226,37 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FFD63A219A13C3C2589A386A863A6C55"
+        "OwnerKey" = "8:_4946121BDCED3CF9EC1902449E24AC81"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_89982A0A160671198D5C329319884AF3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D4E0A35127433829F5DFF391C7DB8E11"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5898D5F48CDD425EBD4616697237B5F2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_07C77CC1FF3B083213AF545EDA5A0324"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E382A05626A3ECC50D82B3FB9980519E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -371,26 +359,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0215D3FC913246BFAB519DA88EB9EC72"
-            {
-            "SourcePath" = "8:..\\StockVentas\\bin\\Debug\\MySQL Connector-ODBC 3.51\\mysql-connector-odbc-3.51.30-win32.msi"
-            "TargetName" = "8:mysql-connector-odbc-3.51.30-win32.msi"
-            "Tag" = "8:"
-            "Folder" = "8:_5925848AD6FA47CC8B9894561B90E3A9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_05C66F21418D40BCB8BDBC3B645E16B9"
             {
             "SourcePath" = "8:..\\StockVentas\\bin\\Debug\\Informes\\Etiquetasx2.rdlc"
@@ -509,11 +477,6 @@
             "AssemblyAsmDisplayName" = "8:Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_4946121BDCED3CF9EC1902449E24AC81"
-                    {
-                    "Name" = "8:Entities.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Entities.dll"
             "TargetName" = "8:"
@@ -620,11 +583,6 @@
             "AssemblyAsmDisplayName" = "8:DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_89982A0A160671198D5C329319884AF3"
-                    {
-                    "Name" = "8:DAL.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:DAL.dll"
             "TargetName" = "8:"
@@ -691,11 +649,6 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_BDEBE509F5A0422B6E91CEF3083841C7"
-                    {
-                    "Name" = "8:Microsoft.ReportViewer.WinForms.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Microsoft.ReportViewer.WinForms.dll"
             "TargetName" = "8:"
@@ -742,11 +695,6 @@
             "AssemblyAsmDisplayName" = "8:BL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D4E0A35127433829F5DFF391C7DB8E11"
-                    {
-                    "Name" = "8:BL.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:BL.dll"
             "TargetName" = "8:"
@@ -908,26 +856,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FF8A5E48BB8644338C9104EB6F037348"
-            {
-            "SourcePath" = "8:..\\StockVentas\\bin\\Debug\\MySQLConnector-net-6.5.4\\mysql-connector-net-6.5.4.msi"
-            "TargetName" = "8:mysql-connector-net-6.5.4.msi"
-            "Tag" = "8:"
-            "Folder" = "8:_5925848AD6FA47CC8B9894561B90E3A9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FFD63A219A13C3C2589A386A863A6C55"
             {
             "AssemblyRegister" = "3:1"
@@ -935,11 +863,6 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_FFD63A219A13C3C2589A386A863A6C55"
-                    {
-                    "Name" = "8:Microsoft.ReportViewer.Common.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Microsoft.ReportViewer.Common.dll"
             "TargetName" = "8:"

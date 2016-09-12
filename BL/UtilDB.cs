@@ -39,7 +39,7 @@ namespace BL
             string pathMysql = string.Empty;
             if (Directory.Exists(@"C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin"))
             {
-                pathMysql = @"C:\Program Files\MySQL\MySQL Server 5.5\bin";
+                pathMysql = @"C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin";
             }
             else if (Directory.Exists(@"C:\Program Files\MySQL\MySQL Server 5.5\bin"))
             {
@@ -59,18 +59,27 @@ namespace BL
             process.StartInfo.Arguments = args;
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.Start();
-            process.WaitForExit();
+            process.WaitForExit();            
+
+            string pathEjecutable = Application.StartupPath + @"\Mysql\mysql.exe";
+            string filename = Application.StartupPath + @"\Mysql\ncsoftwa_re.sql";
             process = new Process();
-            process.StartInfo.FileName = pathMysql + @"\mysql.exe";
-            args = string.Format("-u root -e \"GRANT ALL ON *.* TO '{0}'@'%' IDENTIFIED BY '{1}' WITH GRANT OPTION;\"", user, pass);
+            process.StartInfo.FileName = pathEjecutable;
+            args = "-C -B --host=" + server + " -P 3306 --user=" + user + " --password=" + pass + " -e \"\\. " + filename + "\"";
             process.StartInfo.Arguments = args;
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.Start();
             process.WaitForExit();
-            string pathFileDb = Application.StartupPath + @"\MySql\ncsoftwa_re.sql";
-            RestoreDB(server, 3306, user, pass, database, pathFileDb);
-            pathFileDb = Application.StartupPath + @"\MySql\dump_admin.sql";
-            RestoreDB(server, 3306, user, pass, "dump_admin", pathFileDb);
+
+            filename = Application.StartupPath + @"\Mysql\dump_admin.sql";
+            process = new Process();
+            process.StartInfo.FileName = pathEjecutable;
+            args = "-C -B --host=" + server + " -P 3306 --user=" + user + " --password=" + pass + " -e \"\\. " + filename + "\"";
+            process.StartInfo.Arguments = args;
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            process.Start();
+            process.WaitForExit();
+
         }
 
         public static void DumpDatos(string server, string user, string password, string database, string filename)

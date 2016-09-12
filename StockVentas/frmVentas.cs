@@ -325,9 +325,9 @@ namespace StockVentas
                     row["IdLocalDVEN"] = intLocal;
                     row["IdArticuloDVEN"] = txtArticulo.Text;
                     row["DescripcionDVEN"] = txtDescripcion.Text;
-                    row["CantidadDVEN"] = txtCantidad.Text;
-                    row["PrecioPublicoDVEN"] = txtPrecio.Text;
-                    row["PrecioCostoDVEN"] = txtCosto.Text;
+                    row["CantidadDVEN"] = Convert.ToDouble(txtCantidad.Text);
+                    row["PrecioPublicoDVEN"] = Convert.ToDouble(txtPrecio.Text);
+                    row["PrecioCostoDVEN"] = Convert.ToDouble(txtCosto.Text);
                     row["PrecioMayorDVEN"] = 0;
                     row["IdFormaPagoDVEN"] = cmbForma.SelectedValue;
                     int checkeado;

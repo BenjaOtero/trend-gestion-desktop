@@ -33,6 +33,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnBackup = new System.Windows.Forms.Button();
             this.btnCrearUsuarioMysql = new System.Windows.Forms.Button();
+            this.btnCrearRestaurar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,11 +149,23 @@
             this.btnCrearUsuarioMysql.UseVisualStyleBackColor = true;
             this.btnCrearUsuarioMysql.Click += new System.EventHandler(this.btnCrearUsuarioMysql_Click);
             // 
+            // btnCrearRestaurar
+            // 
+            this.btnCrearRestaurar.AllowDrop = true;
+            this.btnCrearRestaurar.Location = new System.Drawing.Point(158, 99);
+            this.btnCrearRestaurar.Name = "btnCrearRestaurar";
+            this.btnCrearRestaurar.Size = new System.Drawing.Size(129, 23);
+            this.btnCrearRestaurar.TabIndex = 5;
+            this.btnCrearRestaurar.Text = "Crear y restaurar db";
+            this.btnCrearRestaurar.UseVisualStyleBackColor = true;
+            this.btnCrearRestaurar.Click += new System.EventHandler(this.btnCrearRestaurar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 483);
+            this.Controls.Add(this.btnCrearRestaurar);
             this.Controls.Add(this.btnCrearUsuarioMysql);
             this.Controls.Add(this.btnBackup);
             this.Controls.Add(this.pictureBox2);
@@ -185,5 +198,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.Button btnCrearUsuarioMysql;
+        private System.Windows.Forms.Button btnCrearRestaurar;
     }
 }

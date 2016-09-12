@@ -250,57 +250,29 @@ namespace Pruebas
             process.WaitForExit();
         }
 
-        private void ConfigurarMySQL()
+        private void btnCrearRestaurar_Click(object sender, EventArgs e)
         {
-            System.IO.StreamWriter sw = System.IO.File.CreateText("c:\\Windows\\Temp\\config_mysql.bat"); // creo el archivo .bat
-            sw.Close();
-            string programFiles;
-            if (Directory.Exists(@"C:\Program files"))
-            {
-                programFiles = "Program files";
-            }
-            else if (Directory.Exists(@"C:\Archivos de programa"))
-            {
-                programFiles = "Archivos de programa";
-            }
-            else if (Directory.Exists(@"C:\Program files(x86)"))
-            {
-                programFiles = "Program files(x86)";
-            }
-            else
-            {
-                programFiles = "Archivos de programa(x86)";
-            }
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("C:");
-            string configMysql = "cd " + "\"C:\\" + programFiles + "\\MySQL\\MySQL Server 5.5\\bin\"";
-            sb.AppendLine(configMysql);
-            string usuario = "mysql.exe -u root -p8953#AFjn -e \"GRANT ALL ON *.* TO 'ncsoftwa_re'@'%' IDENTIFIED BY '8953#AFjn' WITH GRANT OPTION; FLUSH PRIVILEGES;\"";
-            sb.AppendLine(usuario);
-            string rutaDB = Application.StartupPath.ToString() + @"\MySql\ncsoftwa_re.sql";
-            string restaurarDB = "mysql.exe -u ncsoftwa_re -p8953#AFjn < \"" + rutaDB + "\"";
-            sb.AppendLine(restaurarDB);
-            using (StreamWriter outfile = new StreamWriter("c:\\Windows\\Temp\\config_mysql.bat", true)) // escribo en el archivo .bat
-            {
-                outfile.Write(sb.ToString());
-            }
-            Process process = new Process();
-            process.StartInfo.FileName = "c:\\Windows\\Temp\\config_mysql.bat";
+            RestoreDB();
+        }
 
-            process.StartInfo.CreateNoWindow = false;
+        public static void RestoreDB()
+        {
+            List<string> credentials = UtilVarios.GetCredentialsDB();
+            string server = credentials[0];
+            string user = credentials[1];
+            string database = credentials[2];
+            string pass = credentials[3];
+            string path = Application.StartupPath + @"\Mysql\mysql.exe";
+            string filename = Application.StartupPath + @"\Mysql\ncsoftwa_re.sql";            
+            Process process = new Process();
+            process.StartInfo.FileName = path;
+            string args = "-C -B --host=" + server + " -P 3306 --user=" + user + " --password=" + pass + " -e \"\\. " + filename + "\"";
+            process.StartInfo.Arguments = args;
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.Start();
-            process.EnableRaisingEvents = true;
             process.WaitForExit();
-            StringBuilder sb_myIni = new StringBuilder();
-            sb_myIni.AppendLine("");
-            sb_myIni.AppendLine("[mysqld]");
-            sb_myIni.AppendLine("lower_case_table_names = 0");
-            using (StreamWriter file = new StreamWriter("C:\\" + programFiles + "\\MySQL\\MySQL Server 5.5\\my.ini", true))
-            {
-                file.Write(sb_myIni.ToString());
-            }
         }
+
 
     }
 }
