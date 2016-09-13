@@ -472,7 +472,7 @@ namespace StockVentas
             rowView.EndEdit();            
             try
             {
-                BL.TransaccionesBLL.GrabarStockMovimientos(dsStockMov, ref codigoError);
+                BL.TransaccionesBLL.GrabarStockMovimientos(dsStockMov);
             }
             catch (ServidorMysqlInaccesibleException ex)
             {

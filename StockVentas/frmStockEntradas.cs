@@ -425,7 +425,7 @@ namespace StockVentas
             if (tblEntradasDetalle.GetChanges() == null) return;            
             try
             {
-                BL.TransaccionesBLL.GrabarStockMovimientos(dsStockMov, ref codigoError);
+                BL.TransaccionesBLL.GrabarStockMovimientos(dsStockMov);
             }
             catch (ServidorMysqlInaccesibleException ex)
             {
