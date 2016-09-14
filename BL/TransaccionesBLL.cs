@@ -17,7 +17,7 @@ namespace BL
 
         public static void GrabarStockMovimientos(DataSet dtStockMov)
         {
-            MySqlTransaction tr = null;
+          /*  MySqlTransaction tr = null;
             MySqlConnection SqlConnection1 = DALBase.GetConnection();
             tr = SqlConnection1.BeginTransaction();
             DataTable tblStock = dtStockMov.Tables[0];
@@ -79,36 +79,7 @@ namespace BL
             throw new Exception();
         }
             tr.Commit();
-            SqlConnection1.Close();
-        }
-
-        public static void GrabarVentas(DataSet dtVentas)
-        {
-            MySqlTransaction tr = null;
-            try
-            {
-                MySqlConnection SqlConnection1 = DALBase.GetConnection();
-                
-                tr = SqlConnection1.BeginTransaction();
-                DAL.VentasDAL.GrabarDB(dtVentas, SqlConnection1, tr);
-                DAL.VentasDetalleDAL.GrabarDB(dtVentas, SqlConnection1, tr);
-                tr.Commit();
-                SqlConnection1.Close();
-            }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
-                {
-                    case 1042: //Unable to connect to any of the specified MySQL hosts.
-                        if (tr != null)
-                        {
-                            tr.Rollback();
-                            dtVentas.RejectChanges();
-                            throw new ServidorMysqlInaccesibleException("No se pudo conectar con el servidor de base de datos.", ex);
-                        }
-                        break;
-                }
-            }
+            SqlConnection1.Close();*/
         }
 
         public static void GrabarArticulosAgrupar(DataTable tblStock, DataTable tblArticulos, ref int? codigoError)
@@ -116,8 +87,7 @@ namespace BL
             MySqlTransaction tr = null;
             try
             {
-                MySqlConnection SqlConnection1 = DALBase.GetConnection();
-                
+                MySqlConnection SqlConnection1 = DALBase.GetConnection();                
                 tr = SqlConnection1.BeginTransaction();
                 DAL.ArticulosDAL.BorrarArticulosAgrupar(tblArticulos, SqlConnection1, tr);
                 DAL.StockDAL.Update(tblStock, SqlConnection1, tr);

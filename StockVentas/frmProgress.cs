@@ -560,7 +560,7 @@ namespace StockVentas
                             BL.TransaccionesBLL.GrabarStockMovimientos(dsStockMov);
                             break;
                         case "frmVentas":
-                            BL.TransaccionesBLL.GrabarVentas(dsVentas);
+                            BL.VentasBLL.GrabarVentas(dsVentas);
                             break;
                         case "frmTesoreriaMov":
                             BL.TesoreriaMovimientosBLL.GrabarDB(dsTesoreriaMov);

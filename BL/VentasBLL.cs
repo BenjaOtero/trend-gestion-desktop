@@ -18,10 +18,21 @@ namespace BL
         public DataTable tblVentas;
         public DataTable tblVentasDetalle;
 
-        public static DataTable GetTabla()
+        public static DataTable GetTablaVentas()
         {
-            DataTable tbl = DAL.VentasDAL.GetTabla();
+            DataTable tbl = DAL.VentasDAL.GetTablaVentas();
             return tbl;
+        }
+
+        public static DataTable GetTablaDetalle()
+        {
+            DataTable tbl = DAL.VentasDAL.GetTablaDetalle();
+            return tbl;
+        }
+
+        public static void GrabarVentas(DataSet dsVentas)
+        {
+            DAL.VentasDAL.GrabarVentas(dsVentas);
         }
 
         public static DataSet CrearDatasetArqueo(string fechaDesde, string fechaHasta, int pc)

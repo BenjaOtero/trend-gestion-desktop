@@ -84,8 +84,8 @@ namespace StockVentas
             tblArticulos.TableName = "Articulos";
             if (PK == "") //registro nuevo
             {
-                tblStockMov = BL.StockMovBLL.GetTabla();
-                tblStockMovDetalle = BL.StockMovDetalleBLL.GetTabla();
+                tblStockMov = BL.StockMovBLL.GetTablaMov();
+                tblStockMovDetalle = BL.StockMovBLL.GetTablaDetalle();
                 tblStockMovDetalle.PrimaryKey = new DataColumn[] { tblStockMovDetalle.Columns["IdMSTKD"] };
                 dsStockMov = new DataSet();
                 dsStockMov.DataSetName = "dsStockMov";
@@ -98,7 +98,7 @@ namespace StockVentas
                 int clave = rand.Next(1, 2000000000);
                 lblNro.Text = clave.ToString();
                 rowView = viewStockMov.AddNew();
-                rowView["IdMovMSTK"] = clave.ToString();  //"1057454702"; // 
+                rowView["IdMovMSTK"] = "1824497"; //clave.ToString();  // // 
                 rowView["FechaMSTK"] = DateTime.Today;
                 rowView["OrigenMSTK"] = 1;
                 rowView["CompensaMSTK"] = 1;
@@ -468,7 +468,7 @@ namespace StockVentas
             rowView.EndEdit();
             try
             {
-                BL.TransaccionesBLL.GrabarStockMovimientos(dsStockMov);
+                BL.StockMovBLL.GrabarStockMovimientos(dsStockMov);
             }
             catch (ServidorMysqlInaccesibleException ex)
             {
@@ -478,7 +478,8 @@ namespace StockVentas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + '\r' + "Es posible que no se grabaran los datos.", "Trend Gestión", 
+                                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             ResetForm();
             Cursor.Current = Cursors.WaitCursor;

@@ -12,11 +12,16 @@ using DAL;
 namespace BL
 {
     public class StockMovBLL
-    { 
+    {
 
-        public static DataTable GetTabla()
+        public static void GrabarStockMovimientos(DataSet dtStockMov)
         {
-            DataTable tbl = DAL.StockMovDAL.GetTabla();
+            DAL.StockMovDAL.GrabarStockMovimientos(dtStockMov);
+        }
+
+        public static DataTable GetTablaMov()
+        {
+            DataTable tbl = DAL.StockMovDAL.GetTablaMov();
             return tbl;
         }
 
@@ -78,6 +83,15 @@ namespace BL
         {
             DAL.StockMovDAL.BorrarByPK(PK);
         }
+
+            //-------------------------- StockMovDetalle ---------------------------//
+
+        public static DataTable GetTablaDetalle()
+        {
+            DataTable tbl = DAL.StockMovDAL.GetTablaDetalle();
+            return tbl;
+        }
+            
 
     }
 }

@@ -77,8 +77,8 @@ namespace StockVentas
             this.ControlBox = true;
             this.MaximizeBox = false;
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            tblStockMov = BL.StockMovBLL.GetTabla();
-            tblStockMovDetalle = BL.StockMovDetalleBLL.GetTabla();
+            tblStockMov = BL.StockMovBLL.GetTablaMov();
+            tblStockMovDetalle = BL.StockMovBLL.GetTablaDetalle();
             DataColumn col = new DataColumn();
             col.ColumnName = "Precio";
             tblStockMovDetalle.Columns.Add(col);
@@ -422,10 +422,10 @@ namespace StockVentas
                 }
             }
             rowView.EndEdit();
-            if (tblEntradasDetalle.GetChanges() == null) return;            
+            if (tblEntradasDetalle.GetChanges() == null) return;
             try
             {
-                BL.TransaccionesBLL.GrabarStockMovimientos(dsStockMov);
+                BL.StockMovBLL.GrabarStockMovimientos(dsStockMov);
             }
             catch (ServidorMysqlInaccesibleException ex)
             {
@@ -435,9 +435,13 @@ namespace StockVentas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + '\r' + "Es posible que no se grabaran los datos.", "Trend Gestión",
+                                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            Cursor.Current = Cursors.WaitCursor;
+            finally
+            {
+                Cursor.Current = Cursors.Arrow;
+            }            
         }
 
         private bool ImprimirEtiquetas()

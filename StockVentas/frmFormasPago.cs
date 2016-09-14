@@ -41,6 +41,7 @@ namespace StockVentas
         {
             InitializeComponent();
             tblFormasPago = BL.GetDataBLL.FormasPago();
+            tblFormasPago.PrimaryKey = new DataColumn[] { tblFormasPago.Columns["IdFormaPagoFOR"] };
             BL.Utilitarios.AddEventosABM(grpCampos, ref btnGrabar, ref tblFormasPago);
             bindingSource1.BindingComplete += new BindingCompleteEventHandler(bindingSource1_BindingComplete);
         }
@@ -81,11 +82,7 @@ namespace StockVentas
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             bindingSource1.AddNew();
-            DataTable tmp = tblFormasPago.Copy();
-            tmp.AcceptChanges();
-            // utilizo tmp porque si hay filas borradas en tblFormasPago el select max da error
-            var maxValue = tmp.Rows.OfType<DataRow>().Select(row => row["IdFormaPagoFOR"]).Max();
-            int clave = Convert.ToInt32(maxValue) + 1;
+            int clave = GenerarCodigo();
             bindingSource1.Position = bindingSource1.Count - 1;
             txtIdFormaPagoFOR.ReadOnly = false;
             txtIdFormaPagoFOR.Text = clave.ToString();
@@ -231,6 +228,25 @@ namespace StockVentas
             this.errorProvider1.Clear();
         }
 
+        private int GenerarCodigo()
+        {
+            int nroFormaPago = 1;
+            bool existe = true;
+            while (existe == true)
+            {
+                DataRow foundRow = tblFormasPago.Rows.Find(nroFormaPago);
+                if (foundRow == null)
+                {
+                    existe = false;
+                }
+                else
+                {
+                    nroFormaPago++;
+                }
+            }
+            return nroFormaPago;
+        }
+
         public void SetStateForm(FormState state)
         {
 
@@ -242,7 +258,7 @@ namespace StockVentas
                 btnNuevo.Enabled = true;
                 btnEditar.Enabled = true;
                 btnBorrar.Enabled = true;
-                btnGrabar.Enabled = false;
+                btnGrabar.Enabled = true;
                 btnCancelar.Enabled = false;
                 btnSalir.Enabled = true;
                 DelEventosValidacion();

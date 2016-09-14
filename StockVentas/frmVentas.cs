@@ -46,8 +46,8 @@ namespace StockVentas
         public frmVentas()
         {
             InitializeComponent();        
-            tblVentas = BL.VentasBLL.GetTabla();
-            tblVentasDetalle = BL.VentasDetalleBLL.GetTabla();            
+            tblVentas = BL.VentasBLL.GetTablaVentas();
+            tblVentasDetalle = BL.VentasBLL.GetTablaDetalle();            
         }
 
         public frmVentas(string PK, int idPc, DataTable tblVentas, DataTable tblVentasDetalle):this()
@@ -460,18 +460,26 @@ namespace StockVentas
 
         private void Grabar()
         {
-            Cursor.Current = Cursors.WaitCursor;            
+            Cursor.Current = Cursors.WaitCursor;
             try
             {
-                BL.TransaccionesBLL.GrabarVentas(dsVentas);
+                BL.VentasBLL.GrabarVentas(dsVentas);
             }
             catch (ServidorMysqlInaccesibleException ex)
             {
                 MessageBox.Show(ex.Message, "Trend Gestión",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dsVentas.RejectChanges();
-            }   
-            Cursor.Current = Cursors.WaitCursor;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + '\r' + "Es posible que no se grabaran los datos.", "Trend Gestión",
+                                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.WaitCursor;
+            }            
         }
 
         private void ValidarMaestro(object sender, EventArgs e)

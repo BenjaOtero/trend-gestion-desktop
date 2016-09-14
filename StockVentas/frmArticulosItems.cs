@@ -89,21 +89,7 @@ namespace StockVentas
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             bindingSource1.AddNew();
-            Random rand = new Random();
-            clave = rand.Next(1, 999);
-            bool existe = true;
-            while (existe == true)
-            {
-                DataRow[] foundRow2 = tblArticulosItems.Select("IdItemITE =" + clave);
-                if (foundRow2.Count() == 0)
-                {
-                    existe = false;
-                }
-                else
-                {
-                    clave = rand.Next(1, 999);
-                }
-            }
+            clave = GenerarCodigo();
             txtIdItemITE.ReadOnly = false;
             txtIdItemITE.Text = clave.ToString();            
             txtIdItemITE.ReadOnly = true;
@@ -268,6 +254,25 @@ namespace StockVentas
                 }
             }
             this.errorProvider1.Clear();
+        }
+
+        private int GenerarCodigo()
+        {
+            int nroArticuloItem = 1;
+            bool existe = true;
+            while (existe == true)
+            {
+                DataRow foundRow = tblArticulosItems.Rows.Find(nroArticuloItem);
+                if (foundRow == null)
+                {
+                    existe = false;
+                }
+                else
+                {
+                    nroArticuloItem++;
+                }
+            }
+            return nroArticuloItem;
         }
 
         public void SetStateForm(FormState state)
