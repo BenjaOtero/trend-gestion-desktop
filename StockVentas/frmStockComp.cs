@@ -98,7 +98,7 @@ namespace StockVentas
                 int clave = rand.Next(1, 2000000000);
                 lblNro.Text = clave.ToString();
                 rowView = viewStockMov.AddNew();
-                rowView["IdMovMSTK"] = "1824497"; //clave.ToString();  // // 
+                rowView["IdMovMSTK"] = clave.ToString(); 
                 rowView["FechaMSTK"] = DateTime.Today;
                 rowView["OrigenMSTK"] = 1;
                 rowView["CompensaMSTK"] = 1;

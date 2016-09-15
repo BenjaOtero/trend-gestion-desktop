@@ -62,7 +62,7 @@ namespace BL
             process.WaitForExit();            
 
             string pathEjecutable = Application.StartupPath + @"\Mysql\mysql.exe";
-            string filename = Application.StartupPath + @"\Mysql\ncsoftwa_re.sql";
+            string filename = Application.StartupPath + @"\Mysql\ncsoftwa_re_install.sql";
             process = new Process();
             process.StartInfo.FileName = pathEjecutable;
             args = "-C -B --host=" + server + " -P 3306 --user=" + user + " --password=" + pass + " -e \"\\. " + filename + "\"";

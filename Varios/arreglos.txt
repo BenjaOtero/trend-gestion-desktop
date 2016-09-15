@@ -4,8 +4,6 @@
 
 
 	Instalacion
-- tener en cuenta en la configuracion inicial de mysql server que el directorio de instalacion del mismo puede varias entre 
-	'archivos de programas', 'program files' y 'program files(x86)'
 -al instalar restaurar dump_admin
 -agregar link sp3 windows xp en página web
 
@@ -16,7 +14,6 @@
 
 
 -ofuscar codigo
--ver error_install.jpg
 -exportar datos (tbl stock) a un nombre de archivo con fecha
 - claves duplicadas en todas las tablas (http://www.nosolocodigo.com/crear-handlers-para-manejar-errores-en-mysql-5)
 

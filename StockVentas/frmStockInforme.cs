@@ -11,7 +11,7 @@ namespace StockVentas
 {
     public partial class frmStockInforme : Form
     {
-        public frmStockInforme(DataTable datos)
+        public frmStockInforme(DataView datos)
         {
             InitializeComponent();
             System.Drawing.Icon ico = Properties.Resources.icono_app;

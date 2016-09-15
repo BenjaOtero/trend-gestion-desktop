@@ -120,6 +120,7 @@ namespace StockVentas
                 activoWeb = 1;
             }
             DataTable sortedDT;
+            DataView dv;
             try
             {
                 string origen = "frmStock";
@@ -128,7 +129,7 @@ namespace StockVentas
                 newMDIChild.ShowDialog();
                 tblStock = frmProgress.dtEstatico.Tables[0];
                 // Ordeno por NombreLOC para que aparezcan ordenadas las columnas local en el informe de stock
-                DataView dv = tblStock.DefaultView;
+                dv = tblStock.DefaultView;
                 dv.Sort = "NombreLOC asc";
                 sortedDT = dv.ToTable();
             }
@@ -139,11 +140,13 @@ namespace StockVentas
             DataColumn columnaPivot = tblStock.Columns["NombreLOC"];
             DataColumn valorPivot = tblStock.Columns["Cantidad"];
             dtCruzada = BL.Utilitarios.Pivot(sortedDT, columnaPivot, valorPivot);
+            dv = dtCruzada.DefaultView;
+            dv.Sort = "Descripcion asc";
             if (rdPantalla.Checked == true)
             {
                 try
                 {
-                    frmStockInforme stockInforme = new frmStockInforme(dtCruzada);
+                    frmStockInforme stockInforme = new frmStockInforme(dv);
                     stockInforme.Show();
                 }
                 catch
