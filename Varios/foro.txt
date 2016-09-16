@@ -1,0 +1,8 @@
+Hola a todos. He desarrollado una aplicación de escritorio en Visual Studio 2010 (C#),
+la cual trabaja con un servidor Mysql. Para instalar la aplicación creé un setup project
+el cual instala el servidor Mysql por medio de un requisito previo. En sistemas de 32 bits
+se instala y funciona correctamente. Al instalar la aplicación en sistemas de 64 bits se produce el
+siguiente error al instalar el servidor Mysql:
+Error de comprobación de los requisitos previos del componente del sistema MySQL Server 5.5 con el siguiente mensaje:
+Windows Installer 3.1 no se admite en un sistema operativo de 64 bits. Póngase en contacto con el proveedor de la aplicación.
+Espero puedan ayudarme. Gracias. Un cordial saludo.
