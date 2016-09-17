@@ -62,6 +62,8 @@ namespace StockVentas
 
         private void frmVentas_Load(object sender, EventArgs e)
         {
+            System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator = ",";
+            System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator = ",";
             this.CenterToScreen();
             instanciaVentas = this;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
