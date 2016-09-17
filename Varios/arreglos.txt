@@ -16,6 +16,7 @@
 -ofuscar codigo
 -exportar datos (tbl stock) a un nombre de archivo con fecha
 - claves duplicadas en todas las tablas (http://www.nosolocodigo.com/crear-handlers-para-manejar-errores-en-mysql-5)
+- configuracion regional mediante código (separador de miles debe ser coma)
 
 
 

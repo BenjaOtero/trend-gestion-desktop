@@ -14,6 +14,7 @@ namespace StockVentas
         [STAThread]
         static void Main()
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-AR");
             Application.ThreadException += new ThreadExceptionEventHandler(ThreadExceptionHandler);
        //     Application.ThreadException += new ThreadExceptionEventHandler(frmInicio.Form1_UIThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(UnhandledExceptionHandler);

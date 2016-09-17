@@ -36,9 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationIcon>icono_app.ico</ApplicationIcon>
   </PropertyGroup>
@@ -712,7 +710,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="app.manifest" />
     <None Include="Dataset_informes.xsc">
       <DependentUpon>Dataset_informes.xsd</DependentUpon>
     </None>

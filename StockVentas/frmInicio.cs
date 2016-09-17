@@ -94,8 +94,8 @@ namespace StockVentas
             {
                 this.pictureBox2.Location = new System.Drawing.Point(29, 55);
                 label2.Text = "Iniciando el sistema por primera vez." + '\r' + "Este proceso puede tomar unos minutos.";
-                label1.Text = "Instalando servidor de base de datos . . .";
-                UtilDB.InstalarMySQL();
+             //   label1.Text = "Instalando servidor de base de datos . . .";
+              //  UtilDB.InstalarMySQL();
                 label1.Text = "Configurando servidor de base de datos . . .";
                 UtilDB.ConfigurarMySQL();
             }

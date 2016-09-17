@@ -52,13 +52,13 @@
         "Entry"
         {
         "MsmKey" = "8:_4946121BDCED3CF9EC1902449E24AC81"
-        "OwnerKey" = "8:_5898D5F48CDD425EBD4616697237B5F2"
+        "OwnerKey" = "8:_D4E0A35127433829F5DFF391C7DB8E11"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4946121BDCED3CF9EC1902449E24AC81"
-        "OwnerKey" = "8:_D4E0A35127433829F5DFF391C7DB8E11"
+        "OwnerKey" = "8:_5898D5F48CDD425EBD4616697237B5F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -160,13 +160,13 @@
         "Entry"
         {
         "MsmKey" = "8:_E382A05626A3ECC50D82B3FB9980519E"
-        "OwnerKey" = "8:_89982A0A160671198D5C329319884AF3"
+        "OwnerKey" = "8:_D4E0A35127433829F5DFF391C7DB8E11"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E382A05626A3ECC50D82B3FB9980519E"
-        "OwnerKey" = "8:_D4E0A35127433829F5DFF391C7DB8E11"
+        "OwnerKey" = "8:_89982A0A160671198D5C329319884AF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -214,37 +214,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E382A05626A3ECC50D82B3FB9980519E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_07C77CC1FF3B083213AF545EDA5A0324"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5898D5F48CDD425EBD4616697237B5F2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D4E0A35127433829F5DFF391C7DB8E11"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_89982A0A160671198D5C329319884AF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4946121BDCED3CF9EC1902449E24AC81"
+        "OwnerKey" = "8:_FFD63A219A13C3C2589A386A863A6C55"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -256,7 +226,37 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FFD63A219A13C3C2589A386A863A6C55"
+        "OwnerKey" = "8:_4946121BDCED3CF9EC1902449E24AC81"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_89982A0A160671198D5C329319884AF3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D4E0A35127433829F5DFF391C7DB8E11"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5898D5F48CDD425EBD4616697237B5F2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_07C77CC1FF3B083213AF545EDA5A0324"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E382A05626A3ECC50D82B3FB9980519E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -267,7 +267,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:..\\StockVentas\\bin\\Debug\\NcSoftAdmin.msi"
+        "OutputFilename" = "8:..\\Setup\\NcSoftAdmin.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -290,6 +290,11 @@
                     {
                     "Name" = "8:Microsoft .NET Framework 4 (x86 y x64)"
                     "ProductCode" = "8:.NETFramework,Version=v4.0"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Oracle.MySQL.Server"
+                    {
+                    "Name" = "8:MySQL Server 5.5"
+                    "ProductCode" = "8:Oracle.MySQL.Server"
                     }
                 }
             }
