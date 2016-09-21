@@ -78,7 +78,7 @@
                             <TextRun>
                               <Value>=Fields!IdArticuloMSTKD.Value</Value>
                               <Style>
-                                <FontFamily>IDAutomationHC39M</FontFamily>
+                                <FontFamily>IDAHC39M Code 39 Barcode</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -112,7 +112,7 @@
                             <TextRun>
                               <Value>=Fields!IdArticuloMSTKD1.Value</Value>
                               <Style>
-                                <FontFamily>IDAutomationHC39M</FontFamily>
+                                <FontFamily>IDAHC39M Code 39 Barcode</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -130,6 +130,7 @@
                         <PaddingTop>2pt</PaddingTop>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
