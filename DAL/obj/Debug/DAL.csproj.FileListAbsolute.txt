@@ -102,6 +102,7 @@ C:\Trend\Gestion-desktop\trunk\DAL\bin\Debug\DAL.dll
 C:\Trend\Gestion-desktop\trunk\DAL\bin\Debug\DAL.pdb
 C:\Trend\Gestion-desktop\trunk\DAL\bin\Debug\Entities.dll
 C:\Trend\Gestion-desktop\trunk\DAL\bin\Debug\Entities.pdb
-C:\Trend\Gestion-desktop\trunk\DAL\obj\Debug\ResolveAssemblyReference.cache
 C:\Trend\Gestion-desktop\trunk\DAL\obj\Debug\DAL.dll
 C:\Trend\Gestion-desktop\trunk\DAL\obj\Debug\DAL.pdb
+C:\Trend\Gestion-desktop\trunk\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Trend\Gestion-desktop\trunk\DAL\bin\Debug\MySql.Data.dll

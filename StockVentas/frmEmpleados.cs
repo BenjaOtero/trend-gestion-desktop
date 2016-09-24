@@ -126,7 +126,7 @@ namespace StockVentas
             }
             bindingSource1.AddNew();
             Random rand = new Random();
-            int clave = rand.Next(1, 2000000000);
+            int clave = rand.Next(-2000000000, 2000000000);
             bindingSource1.Position = bindingSource1.Count - 1;
             txtIdEmpleadoEMP.ReadOnly = false;
             txtIdEmpleadoEMP.Text = clave.ToString();

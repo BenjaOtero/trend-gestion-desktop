@@ -176,7 +176,7 @@ namespace StockVentas
             {
                 lblNro.ForeColor = System.Drawing.Color.DarkRed;
                 Random rand = new Random();
-                int clave = rand.Next(1, 2000000000);
+                int clave = rand.Next(-2000000000, 2000000000);
                 lblNro.Text = clave.ToString();
                 rowView = viewVentas.AddNew();
                 rowView["IdVentaVEN"] = clave.ToString();
@@ -318,7 +318,7 @@ namespace StockVentas
                 {
                     DataRow row = tblVentasDetalle.NewRow();
                     Random rand = new Random();
-                    int clave = rand.Next(1, 2000000000);
+                    int clave = rand.Next(-2000000000, 2000000000);
                     row["IdDVEN"] = clave;
                     row["IdVentaDVEN"] = lblNro.Text;
                     int intPc = Convert.ToInt32(cmbLocal.SelectedValue.ToString());

@@ -86,10 +86,8 @@ namespace StockVentas
             dsStockMov.DataSetName = "dsStockMov";
             dsStockMov.Tables.Add(tblStockMov);
             dsStockMov.Tables.Add(tblStockMovDetalle);
-            tblStockEntradas = tblStockMov.Clone();
-            tblEntradasDetalle = tblStockMovDetalle.Clone();
-            viewStockMov = new DataView(tblStockEntradas);
-            viewStockMovDetalle = new DataView(tblEntradasDetalle);
+            viewStockMov = new DataView(tblStockMov);
+            viewStockMovDetalle = new DataView(tblStockMovDetalle);
             lblNro.ForeColor = System.Drawing.Color.DarkRed;
             Random rand = new Random();
             idMov = rand.Next(-2000000000, 2000000000);
@@ -105,7 +103,6 @@ namespace StockVentas
             dateTimePicker1.DataBindings.Add("Text", rowView, "FechaMSTK", false, DataSourceUpdateMode.OnPropertyChanged);
             cmbOrigen.DataBindings.Add("SelectedValue", rowView, "OrigenMSTK", false, DataSourceUpdateMode.OnPropertyChanged);
             cmbDestino.DataBindings.Add("SelectedValue", rowView, "DestinoMSTK", false, DataSourceUpdateMode.OnPropertyChanged);
-            rowView.CancelEdit();
             bindingSource1.DataSource = viewStockMovDetalle;
             bindingNavigator1.BindingSource = bindingSource1;
             dgvDatos.DataSource = bindingSource1;
@@ -289,7 +286,7 @@ namespace StockVentas
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            if (tblEntradasDetalle.GetChanges() != null)
+            if (tblStockMovDetalle.GetChanges() != null)
             {
                 if (ValidarGrid())
                 {
@@ -314,12 +311,7 @@ namespace StockVentas
             if (dgvDatos.Rows.Count == 1) return;
             if (MessageBox.Show("¿Confirma el borrado de datos?", "Trend",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
-            tblEntradasDetalle.AcceptChanges();
-            foreach (DataRow row in tblEntradasDetalle.Rows)
-            {
-                row.Delete();
-            }
-            tblEntradasDetalle.AcceptChanges();
+            tblStockMovDetalle.Clear();
             cmbDestino.Focus();
             cmbDestino.DroppedDown = true;
         }
@@ -342,7 +334,7 @@ namespace StockVentas
         private void frmStockEntradas_FormClosing(object sender, FormClosingEventArgs e)
         {
             Cursor = Cursors.WaitCursor;
-            if (tblEntradasDetalle.GetChanges() != null)
+            if (tblStockMovDetalle.GetChanges() != null)
             {
                 DialogResult respuesta = MessageBox.Show("¿Confirma la grabación de datos?", "Trend Gestión",
                     MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
@@ -384,45 +376,8 @@ namespace StockVentas
         private void grabar()
         {
             Cursor.Current = Cursors.WaitCursor;
-            int intDestino = Convert.ToInt32(cmbDestino.SelectedValue.ToString());
-            DataRow newRowStockMov = tblStockMov.NewRow();
-            newRowStockMov["IdMovMSTK"] = "10984510"; // idMov.ToString();
-            newRowStockMov["FechaMSTK"] = dateTimePicker1.Value;
-            newRowStockMov["OrigenMSTK"] = 1;
-            newRowStockMov["DestinoMSTK"] = intDestino;
-            newRowStockMov["CompensaMSTK"] = 0;
-            tblStockMov.Rows.Add(newRowStockMov);
-            foreach (DataRow row in tblEntradasDetalle.Rows)
-            {
-                try
-                {
-                    if (!String.IsNullOrEmpty(row["IdArticuloMSTKD"].ToString()))
-                    {
-                        DataRow newRowStockMovDetalle = tblStockMovDetalle.NewRow();
-                        newRowStockMovDetalle["IdMSTKD"] = row["IdMSTKD"].ToString();
-                        newRowStockMovDetalle["IdMovMSTKD"] = row["IdMovMSTKD"].ToString();
-                        newRowStockMovDetalle["IdArticuloMSTKD"] = row["IdArticuloMSTKD"].ToString();
-                        if (!string.IsNullOrEmpty(row["CantidadMSTKD"].ToString()))
-                        {
-                            newRowStockMovDetalle["CantidadMSTKD"] = row["CantidadMSTKD"].ToString();
-                        }
-                        else
-                        {
-                            newRowStockMovDetalle["CantidadMSTKD"] = 0;
-                        }
-                        newRowStockMovDetalle["CompensaMSTKD"] = row["CompensaMSTKD"].ToString();
-                        newRowStockMovDetalle["OrigenMSTKD"] = row["OrigenMSTKD"].ToString();
-                        newRowStockMovDetalle["DestinoMSTKD"] = row["DestinoMSTKD"].ToString();
-                        tblStockMovDetalle.Rows.Add(newRowStockMovDetalle);
-                    }
-                }
-                catch (DeletedRowInaccessibleException)
-                {
-                    continue;
-                }
-            }
             rowView.EndEdit();
-            if (tblEntradasDetalle.GetChanges() == null) return;
+            if (tblStockMovDetalle.GetChanges() == null) return;
             try
             {
                 BL.StockMovBLL.GrabarStockMovimientos(dsStockMov);
@@ -469,7 +424,7 @@ namespace StockVentas
                         }
                     }
                 }
-                if (validar) tblEntradasDetalle.AcceptChanges();                                      
+                if (validar) tblStockMovDetalle.AcceptChanges();                                      
                 // hago el foreach para borrar la fila extra que me genera tblEntradasDetalle.AcceptChanges()
                 foreach (DataGridViewRow row in dgvDatos.Rows)
                 {
@@ -482,7 +437,7 @@ namespace StockVentas
                     }
                 }
                 int i = 1;
-                foreach (DataRow row in tblEntradasDetalle.Rows)
+                foreach (DataRow row in tblStockMovDetalle.Rows)
                 {
                     int x = Convert.ToInt32(row["CantidadMSTKD"].ToString());
                     if (x != 0)
@@ -540,8 +495,10 @@ namespace StockVentas
             cmbDestino.SelectedValue = -1;
             this.cmbDestino.SelectedIndexChanged += new System.EventHandler(this.cmbDestino_SelectedIndexChanged);
             rowView.EndEdit();
+            tblStockMov.AcceptChanges();
+            tblStockMov.Rows[0].SetAdded();
             Random randDetalle = new Random();
-            foreach (DataRow row in tblEntradasDetalle.Rows)
+            foreach (DataRow row in tblStockMovDetalle.Rows)
             {
                 try
                 {
@@ -551,14 +508,15 @@ namespace StockVentas
                     row["IdMovMSTKD"] = idMov;
                     row["CantidadMSTKD"] = 0;
                     row.EndEdit();
+                    tblStockMovDetalle.AcceptChanges();
                 }
                 catch (DeletedRowInaccessibleException)
                 {
                     continue;
                 }
             }
-            tblEntradasDetalle.AcceptChanges();
-            // hago el foreach para borrar la fila extra que me genera tblEntradasDetalle.AcceptChanges()
+            tblStockMovDetalle.AcceptChanges();
+            // hago el foreach para borrar la fila extra que me genera tblStockMovDetalle.AcceptChanges()
             foreach (DataGridViewRow row in dgvDatos.Rows)
             {
                 if (!row.IsNewRow)
@@ -569,8 +527,18 @@ namespace StockVentas
                     }
                 }
             }
-            tblStockMov.Rows.Clear();
-            tblStockMovDetalle.Clear();
+            foreach (DataRow row in tblStockMovDetalle.Rows)
+            {
+                try
+                {
+                    row.SetAdded();
+                }
+                catch (DeletedRowInaccessibleException)
+                {
+                    continue;
+                }
+            }
+            tblStockMovDetalle.AcceptChanges();
         }
 
         private void frmArticulos_FormClosed(object sender, FormClosedEventArgs e)

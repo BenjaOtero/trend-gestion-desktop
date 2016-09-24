@@ -141,7 +141,7 @@ namespace StockVentas
             bindingSource1.AddNew();
             chkLiquidadoEMOV.CheckState = CheckState.Checked; // Tildo el checkbox para bindearlo
             Random rand = new Random();
-            int clave = rand.Next(1, 2000000000);
+            int clave = rand.Next(-2000000000, 2000000000);
             bool existe = true;
             while (existe == true)
             {
@@ -152,7 +152,7 @@ namespace StockVentas
                 }
                 else
                 {
-                    clave = rand.Next(1, 2000000000);
+                    clave = rand.Next(-2000000000, 2000000000);
                 }
             }
             bindingSource1.Position = bindingSource1.Count - 1;

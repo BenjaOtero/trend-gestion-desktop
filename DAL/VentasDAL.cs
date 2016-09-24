@@ -39,7 +39,7 @@ namespace DAL
                 if (ex.Number == 1062) // clave principal duplicada
                 {
                     Random rand = new Random();
-                    int clave = rand.Next(1, 2000000000);
+                    int clave = rand.Next(-2000000000, 2000000000);
                     tblVentas.Rows[0][0] = clave;
                     foreach (DataRow row in tblVentasDetalle.Rows)
                     {
@@ -70,7 +70,7 @@ namespace DAL
                     int clave;
                     foreach (DataRow row in tblVentasDetalle.Rows)
                     {
-                        clave = rand.Next(1, 2000000000);
+                        clave = rand.Next(-2000000000, 2000000000);
                         row["IdDVEN"] = clave;
                     }
                     goto reintetarDetalle;

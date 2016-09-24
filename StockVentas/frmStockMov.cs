@@ -97,7 +97,7 @@ namespace StockVentas
                 viewStockMovDetalle = new DataView(tblStockMovDetalle);
                 lblNro.ForeColor = System.Drawing.Color.DarkRed;
                 Random rand = new Random();
-                int clave = rand.Next(1, 2000000000);
+                int clave = rand.Next(-2000000000, 2000000000);
                 lblNro.Text = clave.ToString();
                 rowView = viewStockMov.AddNew();
                 rowView["IdMovMSTK"] = clave.ToString();
@@ -320,7 +320,7 @@ namespace StockVentas
             if (String.IsNullOrEmpty(dgvDatos["IdMSTKD", e.RowIndex].Value.ToString()))
             {
                 Random rand = new Random();
-                int clave = rand.Next(1, 2000000000);
+                int clave = rand.Next(-2000000000, 2000000000);
                 dgvDatos["IdMSTKD", e.RowIndex].Value = clave;
                 dgvDatos["IdMovMSTKD", e.RowIndex].Value = Convert.ToInt32(lblNro.Text.ToString());
                 dgvDatos["OrigenMSTKD", e.RowIndex].Value = cmbOrigen.SelectedValue;
@@ -497,7 +497,7 @@ namespace StockVentas
             if (string.IsNullOrEmpty(PK) && !formClosing)
             {
                 Random rand = new Random();
-                int clave = rand.Next(1, 2000000000);
+                int clave = rand.Next(-2000000000, 2000000000);
                 lblNro.Text = clave.ToString();
                 rowView = viewStockMov.AddNew();
                 rowView["IdMovMSTK"] = clave.ToString();
@@ -536,7 +536,7 @@ namespace StockVentas
             if (string.IsNullOrEmpty(PK) && !formClosing)
             {
                 Random rand = new Random();
-                int clave = rand.Next(1, 2000000000);
+                int clave = rand.Next(-2000000000, 2000000000);
                 lblNro.Text = clave.ToString();
                 rowView = null;
                 rowView = viewStockMov.AddNew();

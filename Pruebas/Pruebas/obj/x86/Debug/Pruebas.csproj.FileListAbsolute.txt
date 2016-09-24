@@ -36,11 +36,13 @@ C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\bin\Debug\BL.pdb
 C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\bin\Debug\DAL.pdb
 C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\bin\Debug\StockVentas.pdb
 C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\bin\Debug\Entities.pdb
-C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\Pruebas.Form1.resources
 C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\Pruebas.Properties.Resources.resources
-C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\Pruebas.exe
 C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\Pruebas.pdb
 C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\bin\Debug\Pruebas.exe.config
+C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\Pruebas.csprojResolveAssemblyReference.cache
+C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\obj\x86\Debug\Pruebas.csproj.GenerateResource.Cache
+C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\bin\Debug\MySql.Data.dll
+C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Trend\Gestion-desktop\trunk\Pruebas\Pruebas\bin\Debug\Microsoft.ReportViewer.Common.dll

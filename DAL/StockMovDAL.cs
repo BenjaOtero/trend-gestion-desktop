@@ -38,7 +38,7 @@ namespace DAL
                 if (ex.Number == 1062) // clave principal duplicada
                 {
                     Random rand = new Random();
-                    int clave = rand.Next(1, 2000000000);
+                    int clave = rand.Next(-2000000000, 2000000000);
                     tblStock.Rows[0][0] = clave;
                     foreach (DataRow row in tblStockDetalle.Rows)
                     {
@@ -49,11 +49,14 @@ namespace DAL
                 else
                 {
                     tr.Rollback();
-                    throw new Exception();
+                    SqlConnection1.Close();
+                    throw new Exception("Se produjo un  error en el servidor de base de datos");
                 }
             }
             catch (Exception)
             {
+                tr.Rollback();
+                SqlConnection1.Close();
                 throw new Exception();
             }
         reintetarDetalle:
@@ -69,7 +72,7 @@ namespace DAL
                     int clave;
                     foreach (DataRow row in tblStockDetalle.Rows)
                     {
-                        clave = rand.Next(1, 2000000000);
+                        clave = rand.Next(-2000000000, 2000000000);
                         row["IdMSTKD"] = clave;
                     }
                     goto reintetarDetalle;
@@ -77,11 +80,14 @@ namespace DAL
                 else
                 {
                     tr.Rollback();
-                    throw new Exception();
+                    SqlConnection1.Close();
+                    throw new Exception("Se produjo un  error en el servidor de base de datos");
                 }
             }
             catch (Exception)
             {
+                tr.Rollback();
+                SqlConnection1.Close();
                 throw new Exception();
             }
             tr.Commit();

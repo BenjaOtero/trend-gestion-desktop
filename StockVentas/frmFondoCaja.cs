@@ -67,7 +67,7 @@ namespace StockVentas
             {
                 rowView = viewFondoCaja.AddNew();
                 Random rand = new Random();
-                int clave = rand.Next(1, 2000000000);
+                int clave = rand.Next(-2000000000, 2000000000);
                 rowView["IdFondoFONP"] = clave;
                 rowView["FechaFONP"] = DateTime.Today;
                 rowView.EndEdit();

@@ -9,13 +9,24 @@ using System.IO;
 
 namespace BL
 {
+
+    //-------------- TAREAS --------------//
+    // ALTA: claves duplicadas en todas las tablas
+    // NORMAL: ofuscar codigo
+    // ALTA: Cargar ventas desde Gestion para probar
+    // NORMAL: exportar datos(tbl stock) a un nombre de archivo con fecha
+    // NORMAL: agregar link sp3 windows xp en página web
+    // NORMAL: desarrolar ayuda
+    // NORMAL: instalar Team Viewer
+    // NORMAL: frmAlicuotasIva, txtPorcentajeALI_KeyPress(permitir un solo punto y dos decimales)
+
     public class UtilVarios
     {
         public static List<string> GetCredentialsFTP()
         {
             string connectionString;
-            //connectionString = ConfigurationManager.ConnectionStrings["Ftp"].ConnectionString;
-            connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["Ftp"].ConnectionString;
+            //connectionString = ConfigurationManager.ConnectionStrings["FtpLocal"].ConnectionString;
             Char delimiter = ';';
             String[] substrings = connectionString.Split(delimiter);
             string server = substrings[0];

@@ -621,7 +621,6 @@ C:\Trend\Gestion-desktop\trunk\StockVentas\bin\Debug\Entities.dll
 C:\Trend\Gestion-desktop\trunk\StockVentas\bin\Debug\BL.pdb
 C:\Trend\Gestion-desktop\trunk\StockVentas\bin\Debug\DAL.pdb
 C:\Trend\Gestion-desktop\trunk\StockVentas\bin\Debug\Entities.pdb
-C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmArticulosDetalle.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmArticulosGenerar.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.frmArticulosItems.resources
@@ -682,7 +681,8 @@ C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.StockRpt.re
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.VentasDetalleRpt.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.Properties.Resources.resources
 C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.StockMovRpt.resources
-C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\RdlCompile.cache
-C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\RdlCompile.compiled
+C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.csprojResolveAssemblyReference.cache
+C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.csproj.GenerateResource.Cache
+C:\Trend\Gestion-desktop\trunk\StockVentas\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Trend\Gestion-desktop\trunk\StockVentas\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Trend\Gestion-desktop\trunk\StockVentas\bin\Debug\MySql.Data.dll

@@ -173,7 +173,7 @@ namespace StockVentas
             this.lstLocales.SelectedValueChanged -= new System.EventHandler(this.lstLocales_SelectedValueChanged);
             bindingSource1.AddNew();
             Random rand = new Random();
-            int clave = rand.Next(1, 2000000000);
+            int clave = rand.Next(-2000000000, 2000000000);
             registroNuevo = clave.ToString();
             lblClave.Text = registroNuevo;
             dateTimePicker1.Value = DateTime.Now;
