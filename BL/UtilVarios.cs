@@ -21,7 +21,6 @@ namespace BL
     // NORMAL: frmAlicuotasIva, txtPorcentajeALI_KeyPress(permitir un solo punto y dos decimales)
     // ALTA: claves duplicadas en todas las tablas
     /*
-        `clientes`
         `condicioniva`
         `fondocaja`
         `pc`

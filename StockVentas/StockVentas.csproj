@@ -731,6 +731,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Snippets\combobox_inicializar.snippet" />
     <None Include="Snippets\datarowview_foreach_dataview.snippet" />
     <None Include="Snippets\datarowview_foreach_listbox.snippet" />
     <None Include="Snippets\table_create.snippet" />
@@ -743,7 +744,6 @@
     <None Include="Snippets\datarowview_delete_row.snippet" />
     <None Include="Snippets\table_delete_row.snippet" />
     <None Include="Snippets\table_edit_row.snippet" />
-    <None Include="Snippets\table_new_row.snippet" />
     <None Include="Snippets\xml_read.snippet" />
     <None Include="Snippets\xml_write.snippet" />
     <None Include="Snippets\table_select.snippet" />

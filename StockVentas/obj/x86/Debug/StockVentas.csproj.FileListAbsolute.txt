@@ -686,3 +686,7 @@ C:\Trend\Gestion-desktop\trunk\StockVentas\obj\x86\Debug\StockVentas.csproj.Gene
 C:\Trend\Gestion-desktop\trunk\StockVentas\bin\Debug\Microsoft.ReportViewer.Common.dll
 C:\Trend\Gestion-desktop\trunk\StockVentas\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\Trend\Gestion-desktop\trunk\StockVentas\bin\Debug\MySql.Data.dll
+C:\Trend\trend-gestion-desktop\StockVentas\bin\Debug\StockVentas.exe.config
+C:\Trend\trend-gestion-desktop\StockVentas\obj\x86\Debug\StockVentas.csproj.ResolveComReference.cache
+C:\Trend\trend-gestion-desktop\StockVentas\obj\x86\Debug\StockVentas.exe
+C:\Trend\trend-gestion-desktop\StockVentas\obj\x86\Debug\StockVentas.pdb
