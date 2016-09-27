@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using BL;
 using System.Text.RegularExpressions;
-using System.Drawing.Drawing2D;
 using DAL;
 
 namespace StockVentas
@@ -73,6 +69,7 @@ namespace StockVentas
                 return;
             }   
             tblClientes = dsClientes.Tables[0];
+            tblClientes.PrimaryKey = new DataColumn[] { tblClientes.Columns["IdClienteCLI"] };
             BL.Utilitarios.AddEventosABM(grpCampos, ref btnGrabar, ref tblClientes);
             DataView viewClientes = new DataView(tblClientes);
             bindingSource1.DataSource = tblClientes;
@@ -132,7 +129,7 @@ namespace StockVentas
         {
             bindingSource1.AddNew();
             Random rand = new Random();
-            int clave = rand.Next(-2000000000, 2000000000);            
+            int clave = 290696694; //rand.Next(-2000000000, 2000000000);            
             bindingSource1.Position = bindingSource1.Count - 1;
             txtIdClienteCLI.ReadOnly = false;
             txtIdClienteCLI.Text = clave.ToString();
@@ -199,6 +196,7 @@ namespace StockVentas
         private void Grabar()
         {
             Cursor.Current = Cursors.WaitCursor;
+            reintentar:
             try
             {
                 bindingSource1.EndEdit();
@@ -214,8 +212,15 @@ namespace StockVentas
                 }
                 bindingSource1.Sort = "ApellidoCLI ASC, NombreCLI ASC";
             }
-            catch (ConstraintException)
+            catch (ConstraintException ex)
             {
+                if (ex.ToString().Contains("IdClienteCLI"))
+                {
+                    Random rand = new Random();
+                    int clave = rand.Next(-2000000000, 2000000000);
+                    ((DataRowView)bindingSource1.Current).Row[0] = clave;
+                    goto reintentar;
+                }
                 string mensaje;
                 if (insertando)
                 {

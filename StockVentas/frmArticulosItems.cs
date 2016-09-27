@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using BL;
-using System.Data.Objects.DataClasses;
 using DAL;
-using System.Threading;
 
 
 namespace StockVentas
@@ -89,7 +84,7 @@ namespace StockVentas
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             bindingSource1.AddNew();
-            clave = GenerarCodigo();
+            clave = Utilitarios.GenerarCodigo(tblArticulosItems);
             txtIdItemITE.ReadOnly = false;
             txtIdItemITE.Text = clave.ToString();            
             txtIdItemITE.ReadOnly = true;
@@ -254,25 +249,6 @@ namespace StockVentas
                 }
             }
             this.errorProvider1.Clear();
-        }
-
-        private int GenerarCodigo()
-        {
-            int nroArticuloItem = 1;
-            bool existe = true;
-            while (existe == true)
-            {
-                DataRow foundRow = tblArticulosItems.Rows.Find(nroArticuloItem);
-                if (foundRow == null)
-                {
-                    existe = false;
-                }
-                else
-                {
-                    nroArticuloItem++;
-                }
-            }
-            return nroArticuloItem;
         }
 
         public void SetStateForm(FormState state)

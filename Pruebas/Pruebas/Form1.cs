@@ -5,16 +5,13 @@ using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using System.IO;
-using System.IO.Compression;
 using BL;
 using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Diagnostics;
-using System.Net;
 
 namespace Pruebas
 {
@@ -22,11 +19,8 @@ namespace Pruebas
     {
         [DllImport("user32.dll", SetLastError = true)] //dll necesaria para matar proceso excel
         private static extern IntPtr GetWindowThreadProcessId(IntPtr hWnd, out IntPtr ProcessId);  //dll necesaria para matar proceso excel
-        string razonSocial;
-        bool exportaronDatos = false;
 
         Excel.Application app = new Excel.Application();
-        Excel.Workbook libro;
 
         public Form1()
         {

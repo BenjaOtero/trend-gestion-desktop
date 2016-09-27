@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Data;
-using System.Management;
-using System.Net.NetworkInformation;
 using System.ComponentModel;
-using System.ServiceProcess;
-using System.Configuration;
-using System.IO;
-using System.Net;
-using System.Diagnostics;
-using DAL;
 
 namespace BL
 {
@@ -269,6 +259,25 @@ namespace BL
             errorMessage = "Debe indicar una dirección de correo válida.\n" +
                "Por ejemplo 'alguien@dominio.com' ";
             return false;
+        }
+
+        public static int GenerarCodigo(DataTable tbl)
+        {
+            int nroCodigo = 1;
+            bool existe = true;
+            while (existe == true)
+            {
+                DataRow foundRow = tbl.Rows.Find(nroCodigo);
+                if (foundRow == null)
+                {
+                    existe = false;
+                }
+                else
+                {
+                    nroCodigo++;
+                }
+            }
+            return nroCodigo;
         }
 
     }

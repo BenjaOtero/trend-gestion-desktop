@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Net;
@@ -22,7 +18,6 @@ namespace StockVentas
         string strFileNameBck = null;
         string strFileNameColor = null;
         string nombreServidor = null;
-        string nombreServidorBck = null;
         string nombreServidorColor = null;
         string ftpServerIP;
         string ftpUserID;

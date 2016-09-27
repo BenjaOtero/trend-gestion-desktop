@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-using MySql.Data;
-using MySql.Data.MySqlClient;
-using System.IO;
-using System.Windows.Forms;
-using System.ComponentModel;
-using DAL;
-using System.Threading;
+﻿using System.Data;
 
 namespace BL
 {

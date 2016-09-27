@@ -1,20 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using MySql.Data.MySqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.ServiceProcess;
-using System.IO;
-using System.Diagnostics;
 using System.Net;
-using System.Net.NetworkInformation;
-using System.Threading;
-using System.Timers;
-using System.Configuration;
 using BL;
 using DAL;
 
@@ -108,9 +96,9 @@ namespace StockVentas
                 BL.MantenimientoBLL.Mantenimiento();
                 BL.VentasBLL.VentasHistoricasMantener();
                 label1.Text = "Importando datos . . .";
-                BL.DatosBLL.GetDataPOS(false);  // false no importa los datos de hoy
+           //     BL.DatosBLL.GetDataPOS(false);  // false no importa los datos de hoy
                 label1.Text = "Exportando datos . . .";
-                BL.DatosBLL.ExportarDatos();
+             //   BL.DatosBLL.ExportarDatos();
             }
             catch (ServidorMysqlInaccesibleException ex)
             {
@@ -251,7 +239,7 @@ namespace StockVentas
             {
                 BL.RazonSocialBLL.SetActualizarDatos();
             }
-            catch (ServidorMysqlInaccesibleException ex)
+            catch (ServidorMysqlInaccesibleException)
             {
                 System.Environment.Exit(1);
             }

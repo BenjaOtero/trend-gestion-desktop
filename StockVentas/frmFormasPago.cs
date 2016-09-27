@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using BL;
 using DAL;
@@ -82,7 +79,7 @@ namespace StockVentas
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             bindingSource1.AddNew();
-            int clave = GenerarCodigo();
+            int clave = Utilitarios.GenerarCodigo(tblFormasPago);
             bindingSource1.Position = bindingSource1.Count - 1;
             txtIdFormaPagoFOR.ReadOnly = false;
             txtIdFormaPagoFOR.Text = clave.ToString();
@@ -226,25 +223,6 @@ namespace StockVentas
                 }
             }
             this.errorProvider1.Clear();
-        }
-
-        private int GenerarCodigo()
-        {
-            int nroFormaPago = 1;
-            bool existe = true;
-            while (existe == true)
-            {
-                DataRow foundRow = tblFormasPago.Rows.Find(nroFormaPago);
-                if (foundRow == null)
-                {
-                    existe = false;
-                }
-                else
-                {
-                    nroFormaPago++;
-                }
-            }
-            return nroFormaPago;
         }
 
         public void SetStateForm(FormState state)

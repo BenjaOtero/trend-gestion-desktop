@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using DAL;
 
@@ -15,7 +13,6 @@ namespace StockVentas
         private DataTable tblAlicuotasIva;
         string oldId = string.Empty;
         bool editar = false;
-        string idAlicuota;
         bool esDecimal = false;
         int decimales = 0;
         private const int CP_NOCLOSE_BUTTON = 0x200;  //junto con protected override CreateParams inhabilitan el boton cerrar del formulario

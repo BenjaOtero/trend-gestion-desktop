@@ -710,6 +710,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="app.manifest" />
     <None Include="Dataset_informes.xsc">
       <DependentUpon>Dataset_informes.xsd</DependentUpon>
     </None>

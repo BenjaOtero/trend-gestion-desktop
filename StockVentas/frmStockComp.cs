@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using MySql.Data;
-using BL;
-using Entities;
-using System.Media;
 using Microsoft.VisualBasic;
 using DAL;
 
@@ -33,7 +24,6 @@ namespace StockVentas
         public string idArticulo;
         private bool grabacionCorrecta;
         bool formClosing = false;
-        private int? codigoError = null;
 
         public frmStockComp()
         {

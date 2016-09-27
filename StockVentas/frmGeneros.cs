@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using BL;
-using System.Data.Objects.DataClasses;
 using DAL;
 
 namespace StockVentas
@@ -42,6 +38,7 @@ namespace StockVentas
         {
             InitializeComponent();
             tblGeneros = BL.GetDataBLL.Generos();
+            tblGeneros.PrimaryKey = new DataColumn[] { tblGeneros.Columns["IdGeneroGEN"] };
             BL.Utilitarios.AddEventosABM(grpCampos, ref btnGrabar, ref chkActivoWebGEN, ref tblGeneros);
         }
 
@@ -90,11 +87,7 @@ namespace StockVentas
             bindingSource1.AddNew();
             // tildo el checkbox para disparar el evento parse del objeto bind
             chkActivoWebGEN.CheckState = CheckState.Checked;
-            DataTable tmp = tblGeneros.Copy();
-            tmp.AcceptChanges();
-            // utilizo tmp porque si hay filas borradas en tblFormasPago el select max da error
-            var maxValue = tmp.Rows.OfType<DataRow>().Select(row => row["IdGeneroGEN"]).Max();
-            int clave = Convert.ToInt32(maxValue) + 1;
+            int clave = Utilitarios.GenerarCodigo(tblGeneros);
             bindingSource1.Position = bindingSource1.Count - 1;
             txtIdGeneroGEN.ReadOnly = false;
             txtIdGeneroGEN.Text = clave.ToString();

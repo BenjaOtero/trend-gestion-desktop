@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using DAL;
+using BL;
 
 namespace StockVentas
 {
@@ -40,7 +38,8 @@ namespace StockVentas
         {
             InitializeComponent();
             tblLocales = BL.GetDataBLL.Locales();
-            BL.Utilitarios.AddEventosABM(grpCampos, ref btnGrabar, ref chkActivoWebLOC, ref tblLocales);
+            tblLocales.PrimaryKey = new DataColumn[] { tblLocales.Columns["IdLocalLOC"] };
+            Utilitarios.AddEventosABM(grpCampos, ref btnGrabar, ref chkActivoWebLOC, ref tblLocales);
         }
 
         private void BindingSource_Load(object sender, EventArgs e)
@@ -88,11 +87,7 @@ namespace StockVentas
             bindingSource1.AddNew();
             // tildo el checkbox para disparar el evento parse del objeto bind
             chkActivoWebLOC.CheckState = CheckState.Checked;
-            DataTable tmp = tblLocales.Copy();
-            tmp.AcceptChanges();
-            // utilizo tmp porque si hay filas borradas en tblLocales el select max da error
-            var maxValue = tmp.Rows.OfType<DataRow>().Select(row => row["IdLocalLOC"]).Max();
-            int clave = Convert.ToInt32(maxValue) + 1;
+            int clave = Utilitarios.GenerarCodigo(tblLocales);
             bindingSource1.Position = bindingSource1.Count - 1;
             txtIdLocalLOC.ReadOnly = false;
             txtIdLocalLOC.Text = clave.ToString();

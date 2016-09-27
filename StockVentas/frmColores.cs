@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using BL;
-using System.Data.Objects.DataClasses;
 using DAL;
 
 namespace StockVentas
@@ -42,6 +38,7 @@ namespace StockVentas
         {
             InitializeComponent();
             tblColores = BL.GetDataBLL.Colores();
+            tblColores.PrimaryKey = new DataColumn[] { tblColores.Columns["IdColorCOL"] };
             BL.Utilitarios.AddEventosABM(grpCampos, ref btnGrabar, ref tblColores);
         }
 
@@ -81,11 +78,7 @@ namespace StockVentas
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             bindingSource1.AddNew();
-            DataTable tmp = tblColores.Copy();
-            tmp.AcceptChanges();
-            // utilizo tmp porque si hay filas borradas en tblColores el select max da error
-            var maxValue = tmp.Rows.OfType<DataRow>().Select(row => row["IdColorCOL"]).Max();
-            int clave = Convert.ToInt32(maxValue) + 1;
+            int clave = Utilitarios.GenerarCodigo(tblColores);
             bindingSource1.Position = bindingSource1.Count - 1;
             txtIdColorCOL.ReadOnly = false;
             txtIdColorCOL.Text = clave.ToString();

@@ -13,15 +13,10 @@
 // 
 #pragma warning disable 1591
 
-namespace StockVentas.com.karminna {
-    using System;
-    using System.Web.Services;
-    using System.Diagnostics;
-    using System.Web.Services.Protocols;
-    using System.ComponentModel;
-    using System.Xml.Serialization;
-    
-    
+namespace StockVentas.com.karminna
+{
+
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
