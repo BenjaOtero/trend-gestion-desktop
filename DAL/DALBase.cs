@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Configuration;
-using MySql.Data;
+﻿using System.Configuration;
 using MySql.Data.MySqlClient;
 using System.Data.OleDb;
 using System.ServiceProcess;
-using System.Threading;
 
 namespace DAL
 {
