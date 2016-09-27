@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>Table.Get2</Title>
+    <Author>autor</Author>
+    <Shortcut>snptDatatableGet2</Shortcut>
+    <Description>Obtiene un datatable</Description>
+    <SnippetTypes>
+      <SnippetType>SurroundsWith</SnippetType>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>nombre</ID>
+        <Default>valor</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="CSharp">
+      <![CDATA[
+        public static DataTable GetTable()
+        {
+            MySqlConnection SqlConnection1 = DALBase.GetConnection();
+            MySqlDataAdapter SqlDataAdapter1 = new MySqlDataAdapter();
+            MySqlCommand SqlSelectCommand1 = new MySqlCommand("Stored_Name", SqlConnection1);
+            SqlDataAdapter1.SelectCommand = SqlSelectCommand1;
+            SqlSelectCommand1.CommandType = CommandType.StoredProcedure;
+            DataTable tbl = new DataTable();
+            SqlDataAdapter1.Fill(tbl);
+            SqlConnection1.Close();
+            return tbl;
+        }
+            ]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>

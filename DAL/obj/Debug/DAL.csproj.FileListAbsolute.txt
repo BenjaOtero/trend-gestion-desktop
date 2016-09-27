@@ -106,3 +106,11 @@ C:\Trend\Gestion-desktop\trunk\DAL\obj\Debug\DAL.dll
 C:\Trend\Gestion-desktop\trunk\DAL\obj\Debug\DAL.pdb
 C:\Trend\Gestion-desktop\trunk\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Trend\Gestion-desktop\trunk\DAL\bin\Debug\MySql.Data.dll
+C:\Trend\trend-gestion-desktop\DAL\bin\Debug\DAL.dll
+C:\Trend\trend-gestion-desktop\DAL\bin\Debug\DAL.pdb
+C:\Trend\trend-gestion-desktop\DAL\bin\Debug\Entities.dll
+C:\Trend\trend-gestion-desktop\DAL\bin\Debug\MySql.Data.dll
+C:\Trend\trend-gestion-desktop\DAL\bin\Debug\Entities.pdb
+C:\Trend\trend-gestion-desktop\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Trend\trend-gestion-desktop\DAL\obj\Debug\DAL.dll
+C:\Trend\trend-gestion-desktop\DAL\obj\Debug\DAL.pdb

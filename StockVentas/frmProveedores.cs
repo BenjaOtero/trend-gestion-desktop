@@ -41,11 +41,7 @@ namespace StockVentas
         {
             InitializeComponent();
             tblProveedores = BL.GetDataBLL.Proveedores();
-            DataColumn[] primaryKey;
-            primaryKey = new DataColumn[1];
-            DataColumn razonSocial = tblProveedores.Columns["RazonSocialPRO"];
-            primaryKey[0] = razonSocial;
-            tblProveedores.PrimaryKey = primaryKey;
+            tblProveedores.PrimaryKey = new DataColumn[] { tblProveedores.Columns["IdProveedorPRO"] };
             BL.Utilitarios.AddEventosABM(grpCampos, ref btnGrabar, ref tblProveedores);
         }
 
@@ -87,11 +83,7 @@ namespace StockVentas
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             bindingSource1.AddNew();
-            DataTable tmp = tblProveedores.Copy();
-            tmp.AcceptChanges();
-            // utilizo tmp porque si hay filas borradas en tblColores el select max da error
-            var maxValue = tmp.Rows.OfType<DataRow>().Select(row => row["IdProveedorPRO"]).Max();
-            int clave = Convert.ToInt32(maxValue) + 1;
+            int clave = Utilitarios.GenerarCodigo(tblProveedores);
             bindingSource1.Position = bindingSource1.Count - 1;
             txtIdProveedorPRO.ReadOnly = false;
             txtIdProveedorPRO.Text = clave.ToString();
