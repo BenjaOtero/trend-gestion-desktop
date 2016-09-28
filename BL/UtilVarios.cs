@@ -22,8 +22,6 @@ namespace BL
     // ALTA: claves duplicadas en todas las tablas
     /*
         `pc`
-        `stockmov`
-        `stockmovdetalle`
         `ventas`
         `ventasdetalle`
      * */

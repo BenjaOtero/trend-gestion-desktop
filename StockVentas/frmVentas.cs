@@ -175,7 +175,7 @@ namespace StockVentas
                 int clave = rand.Next(-2000000000, 2000000000);
                 lblNro.Text = clave.ToString();
                 rowView = viewVentas.AddNew();
-                rowView["IdVentaVEN"] = clave.ToString();
+                rowView["IdVentaVEN"] = 1746777318; clave.ToString();
                 rowView["FechaVEN"] = dateTimePicker1.Value;
                 rowView.EndEdit();
               //  SetStateForm(FormState.inicial);   
@@ -370,6 +370,11 @@ namespace StockVentas
                     SetStateForm(FormState.insercion);
                     dgvDatos.CellEnter -= new DataGridViewCellEventHandler(dgvDatos_CellEnter);
                 }
+                rowView.EndEdit();
+                if (tblVentasDetalle.GetChanges() != null || tblVentas.GetChanges() != null)
+                {
+                    Grabar();
+                }
             }
         }
 
@@ -420,40 +425,6 @@ namespace StockVentas
             articulos.Show(this);
             articulos.FormClosed += frmArticulos_FormClosed;
             Cursor.Current = Cursors.Arrow;
-        }
-
-        private void frmVentas_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = false; // permite cerrar el form por mas que 'this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;'
-            rowView.EndEdit();
-            if (PK == "" & dgvDatos.Rows.Count == 0) return;
-            if (tblVentasDetalle.GetChanges() != null || tblVentas.GetChanges() != null)
-            {
-                DialogResult respuesta = MessageBox.Show("¿Actualizar base de datos?", "Trend",
-                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                switch (respuesta)
-                {
-                    case DialogResult.Yes:
-                        this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-                        if (string.IsNullOrEmpty(PK))
-                        {
-                            Grabar();
-                        }
-                        else
-                        {
-                            formClosing = true;
-                            this.Tag = "ActualizarArqueo";
-                        }
-                        break;
-                    case DialogResult.No:
-                        this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-                        tblVentasDetalle.RejectChanges();
-                        break;
-                    case DialogResult.Cancel:
-                        e.Cancel = true;
-                        break;
-                }
-            }
         }
 
         private void Grabar()
@@ -698,5 +669,43 @@ namespace StockVentas
             return;
         }
 
+        private void frmVentas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = false; // permite cerrar el form por mas que 'this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;'
+            rowView.EndEdit();
+            if (PK == "" & dgvDatos.Rows.Count == 0) return;
+            if (tblVentasDetalle.GetChanges() != null || tblVentas.GetChanges() != null)
+            {
+                DialogResult respuesta = MessageBox.Show("¿Actualizar base de datos?", "Trend",
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                switch (respuesta)
+                {
+                    case DialogResult.Yes:
+                        this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+                        if (string.IsNullOrEmpty(PK))
+                        {
+                            Grabar();
+                        }
+                        else
+                        {
+                            formClosing = true;
+                            this.Tag = "ActualizarArqueo";
+                        }
+                        break;
+                    case DialogResult.No:
+                        this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+                        tblVentasDetalle.RejectChanges();
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                }
+            }
+        }
+
+        private void frmVentas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) Close();
+        }
     }
 }

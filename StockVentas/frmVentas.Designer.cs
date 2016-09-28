@@ -526,11 +526,13 @@
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.grpABM);
             this.Controls.Add(this.grpVentas);
+            this.KeyPreview = true;
             this.Name = "frmVentas";
             this.Text = "Ventas";
             this.Activated += new System.EventHandler(this.frmVentas_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVentas_FormClosing);
             this.Load += new System.EventHandler(this.frmVentas_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmVentas_KeyDown);
             this.grpVentas.ResumeLayout(false);
             this.grpVentas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
