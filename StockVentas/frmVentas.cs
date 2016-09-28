@@ -10,6 +10,7 @@ namespace StockVentas
 {
     public partial class frmVentas : Form
     {
+        public frmArqueoCajaAdmin frmInstanciaArqueo = null;
         private frmVentas instanciaVentas;
         public DataSet dsVentas;
         DataTable tblVentas;
@@ -46,7 +47,7 @@ namespace StockVentas
             tblVentasDetalle = BL.VentasBLL.GetTablaDetalle();            
         }
 
-        public frmVentas(string PK, int idPc, DataTable tblVentas, DataTable tblVentasDetalle):this()
+        public frmVentas(string PK, int idPc, DataTable tblVentas, DataTable tblVentasDetalle, frmArqueoCajaAdmin instanciarArqueo):this()
         {
             this.PK = PK;
             this.idPc = idPc;
@@ -54,6 +55,7 @@ namespace StockVentas
             tblVentas.TableName = "Ventas";
             this.tblVentasDetalle = tblVentasDetalle;
             tblVentasDetalle.TableName = "VentasDetalle";
+            frmInstanciaArqueo = instanciarArqueo;
         }
 
         private void frmVentas_Load(object sender, EventArgs e)
@@ -682,15 +684,7 @@ namespace StockVentas
                 {
                     case DialogResult.Yes:
                         this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-                        if (string.IsNullOrEmpty(PK))
-                        {
-                            Grabar();
-                        }
-                        else
-                        {
-                            formClosing = true;
-                            this.Tag = "ActualizarArqueo";
-                        }
+                        Grabar();
                         break;
                     case DialogResult.No:
                         this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
@@ -700,6 +694,15 @@ namespace StockVentas
                         e.Cancel = true;
                         break;
                 }
+            }
+            if (frmInstanciaArqueo != null)
+            {
+                string strFechaDesde = dateTimePicker1.Value.ToString("yyyy-MM-dd 00:00:00"); //fecha string para mysql
+                string strFechaHasta = dateTimePicker1.Value.AddDays(1).ToString("yyyy-MM-dd 00:00:00");
+                DataSet dsArqueo = BL.VentasBLL.CrearDatasetArqueo(strFechaDesde, strFechaHasta, idPc);
+                frmInstanciaArqueo.dsArqueo = dsArqueo;
+                frmInstanciaArqueo.OrganizarTablas();
+                frmInstanciaArqueo.CargarDatos();
             }
         }
 

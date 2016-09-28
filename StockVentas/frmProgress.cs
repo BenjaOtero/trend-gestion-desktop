@@ -618,7 +618,7 @@ namespace StockVentas
                         }
                         else // Estoy actualizando frmArqueoCajaAdmin despues de editar una venta
                         {
-                            frmInstanciaArqueo.dt = dsArqueo;
+                            frmInstanciaArqueo.dsArqueo = dsArqueo;
                             frmInstanciaArqueo.OrganizarTablas();
                             frmInstanciaArqueo.CargarDatos();
                         }
