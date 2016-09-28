@@ -177,7 +177,7 @@ namespace StockVentas
                 int clave = rand.Next(-2000000000, 2000000000);
                 lblNro.Text = clave.ToString();
                 rowView = viewVentas.AddNew();
-                rowView["IdVentaVEN"] = 1746777318; clave.ToString();
+                rowView["IdVentaVEN"] = clave.ToString();
                 rowView["FechaVEN"] = dateTimePicker1.Value;
                 rowView.EndEdit();
               //  SetStateForm(FormState.inicial);   
@@ -318,7 +318,7 @@ namespace StockVentas
                     Random rand = new Random();
                     int clave = rand.Next(-2000000000, 2000000000);
                     row["IdDVEN"] = clave;
-                    row["IdVentaDVEN"] = lblNro.Text;
+                    row["IdVentaDVEN"] = tblVentas.Rows[0][0];
                     int intPc = Convert.ToInt32(cmbLocal.SelectedValue.ToString());
                     viewLocal.RowFilter = "IdPc = " + intPc;
                     int intLocal = Convert.ToInt32(viewLocal[0][1].ToString());
@@ -627,8 +627,7 @@ namespace StockVentas
 
         private void button1_Click(object sender, EventArgs e)
         {
-          //  Help.ShowHelp(button1, @"N:\NcSoftware\02_Access\HelpNc\NcPunto.chm");
-            DataTable temp = tblVentasDetalle.Copy();
+            Help.ShowHelp(button1, @"N:\NcSoftware\02_Access\HelpNc\NcPunto.chm");
         }         
 
         public void SetStateForm(FormState state)

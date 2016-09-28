@@ -7,6 +7,7 @@ using System.IO;
 using BL;
 using System.Net;
 using System.Timers;
+using System.Diagnostics;
 
 namespace StockVentas
 {
@@ -465,6 +466,18 @@ namespace StockVentas
         private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ayudaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, @"N:\NcSoftware\02_Access\HelpNc\NcPunto.chm");
+
+        }
+
+        private void ayudaEnLíneaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process p = Process.Start(@"C:\Trend\trend-gestion-desktop\StockVentas\bin\Debug\Soporte\TeamViewer11.exe");
+
         }
 
         private void restaurarBaseDeDatosToolStripMenuItem_Click(object sender, EventArgs e)

@@ -795,8 +795,11 @@
     <None Include="Resources\btn_cerrar_down.jpg" />
     <None Include="Resources\btn_cerrar_down.gif" />
     <None Include="Resources\bckgrd_popup.jpg" />
+    <None Include="Resources\Help.png" />
+    <None Include="Resources\Help1.png" />
     <Content Include="Resources\LogoTrend1.jpg" />
     <None Include="Resources\top_ bar_form.jpg" />
+    <None Include="Resources\Noia_64_apps_help_index.png" />
     <Content Include="xml\Clientes.xml" />
   </ItemGroup>
   <ItemGroup>
