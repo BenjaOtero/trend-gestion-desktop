@@ -62,7 +62,8 @@ namespace DAL
             MySqlDataAdapter SqlDataAdapter1 = new MySqlDataAdapter();
             string stringCommand;
             stringCommand = "SELECT * FROM alicuotasiva";
-            MySqlConnection SqlConnection1 = DALBase.GetConnection();            
+            MySqlConnection SqlConnection1 = DALBase.GetConnection();
+            
             MySqlCommand command = new MySqlCommand(stringCommand, SqlConnection1);
             SqlDataAdapter1.SelectCommand = command;
             DataTable tbl = new DataTable();
@@ -70,6 +71,8 @@ namespace DAL
             SqlConnection1.Close();
             return tbl;
         }
+
+
 
 
     }

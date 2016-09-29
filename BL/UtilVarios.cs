@@ -21,7 +21,15 @@ namespace BL
     // NORMAL: frmAlicuotasIva, txtPorcentajeALI_KeyPress(permitir un solo punto y dos decimales)
     // ALTA: claves duplicadas en todas las tablas
     /*
+        `condicioniva`
+        `fondocaja`
         `pc`
+        `proveedores`
+        `razonsocial`
+        `stockmov`
+        `stockmovdetalle`
+        `ventas`
+        `ventasdetalle`
      * */
 
     public class UtilVarios
@@ -41,7 +49,7 @@ namespace BL
             credentials.Add(user);
             credentials.Add(pass);
             return credentials;
-        }       
+        }
 
         public static List<string> GetCredentialsDB()
         {

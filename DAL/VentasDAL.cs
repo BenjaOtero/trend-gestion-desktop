@@ -24,7 +24,6 @@ namespace DAL
             DataTable tblVentasDetalle = dsVentas.Tables[1];
         reintetarVentas:
             try
-
             {
                 GrabarDbVentas(dsVentas, SqlConnection1, tr);
             }
@@ -35,7 +34,10 @@ namespace DAL
                     Random rand = new Random();
                     int clave = rand.Next(-2000000000, 2000000000);
                     tblVentas.Rows[0][0] = clave;
-                    tblVentasDetalle.Rows[0][1] = clave;
+                    foreach (DataRow row in tblVentasDetalle.Rows)
+                    {
+                        row["IdVentaDVEN"] = clave;
+                    }
                     goto reintetarVentas;
                 }
                 else
@@ -57,13 +59,13 @@ namespace DAL
             {
                 if (ex.Number == 1062) // clave principal duplicada
                 {
-                    DataTable tbl = tblVentasDetalle.GetChanges();
-                    int oldKey = (int)tbl.Rows[0][0];
                     Random rand = new Random();
                     int clave;
-                    clave = rand.Next(-2000000000, 2000000000);
-                    DataRow[] foundRow = tblVentasDetalle.Select("IdDVEN = " + oldKey);
-                    foundRow[0]["IdDVEN"] = clave;
+                    foreach (DataRow row in tblVentasDetalle.Rows)
+                    {
+                        clave = rand.Next(-2000000000, 2000000000);
+                        row["IdDVEN"] = clave;
+                    }
                     goto reintetarDetalle;
                 }
                 else

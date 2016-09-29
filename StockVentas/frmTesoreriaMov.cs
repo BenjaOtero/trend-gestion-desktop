@@ -7,7 +7,6 @@ namespace StockVentas
 {
     public partial class frmTesoreriaMov : Form
     {
-        public frmArqueoCajaAdmin frmInstanciaArqueo = null;
         DataSet dsTesoreriaMov;
         DataTable tblTesoreriaMov;
         DataTable tblLocales;
@@ -26,14 +25,13 @@ namespace StockVentas
             tblTesoreriaMov = BL.TesoreriaMovimientosBLL.GetTabla();
         }
 
-        public frmTesoreriaMov(int idLocal, int idPc, string PK, DataTable tblTesoreria, frmArqueoCajaAdmin instanciarArqueo)
+        public frmTesoreriaMov(int idLocal, int idPc, string PK, DataTable tblTesoreria)
         {
             InitializeComponent();
             this.idLocal = idLocal;
             this.idPc = idPc;
             this.PK = PK;
             this.tblTesoreriaMov = tblTesoreria;
-            frmInstanciaArqueo = instanciarArqueo;
         }
 
         private void frmTesoreriaMov_Load(object sender, EventArgs e)
@@ -162,15 +160,6 @@ namespace StockVentas
                     MessageBox.Show(ex.Message);
                 }
             }
-            if (frmInstanciaArqueo != null)
-            {
-                string strFechaDesde = dateTimePicker1.Value.ToString("yyyy-MM-dd 00:00:00"); //fecha string para mysql
-                string strFechaHasta = dateTimePicker1.Value.AddDays(1).ToString("yyyy-MM-dd 00:00:00");
-                DataSet dsArqueo = BL.VentasBLL.CrearDatasetArqueo(strFechaDesde, strFechaHasta, idPc);
-                frmInstanciaArqueo.dsArqueo = dsArqueo;
-                frmInstanciaArqueo.OrganizarTablas();
-                frmInstanciaArqueo.CargarDatos();
-            }
         }
 
         private void AgregarNuevo()
@@ -185,6 +174,7 @@ namespace StockVentas
             if (lstPc.Items.Count > 0) lstPc.SetSelected(0, true);   
             txtDetalle.Focus();
             this.lstLocales.SelectedValueChanged += new System.EventHandler(this.lstLocales_SelectedValueChanged);
+
         }
 
         private void Grabar()

@@ -10,7 +10,6 @@ namespace StockVentas
 {
     public partial class frmVentas : Form
     {
-        public frmArqueoCajaAdmin frmInstanciaArqueo = null;
         private frmVentas instanciaVentas;
         public DataSet dsVentas;
         DataTable tblVentas;
@@ -47,7 +46,7 @@ namespace StockVentas
             tblVentasDetalle = BL.VentasBLL.GetTablaDetalle();            
         }
 
-        public frmVentas(string PK, int idPc, DataTable tblVentas, DataTable tblVentasDetalle, frmArqueoCajaAdmin instanciarArqueo):this()
+        public frmVentas(string PK, int idPc, DataTable tblVentas, DataTable tblVentasDetalle):this()
         {
             this.PK = PK;
             this.idPc = idPc;
@@ -55,7 +54,6 @@ namespace StockVentas
             tblVentas.TableName = "Ventas";
             this.tblVentasDetalle = tblVentasDetalle;
             tblVentasDetalle.TableName = "VentasDetalle";
-            frmInstanciaArqueo = instanciarArqueo;
         }
 
         private void frmVentas_Load(object sender, EventArgs e)
@@ -318,7 +316,7 @@ namespace StockVentas
                     Random rand = new Random();
                     int clave = rand.Next(-2000000000, 2000000000);
                     row["IdDVEN"] = clave;
-                    row["IdVentaDVEN"] = tblVentas.Rows[0][0];
+                    row["IdVentaDVEN"] = lblNro.Text;
                     int intPc = Convert.ToInt32(cmbLocal.SelectedValue.ToString());
                     viewLocal.RowFilter = "IdPc = " + intPc;
                     int intLocal = Convert.ToInt32(viewLocal[0][1].ToString());
@@ -372,11 +370,6 @@ namespace StockVentas
                     SetStateForm(FormState.insercion);
                     dgvDatos.CellEnter -= new DataGridViewCellEventHandler(dgvDatos_CellEnter);
                 }
-                rowView.EndEdit();
-                if (tblVentasDetalle.GetChanges() != null || tblVentas.GetChanges() != null)
-                {
-                    Grabar();
-                }
             }
         }
 
@@ -427,6 +420,40 @@ namespace StockVentas
             articulos.Show(this);
             articulos.FormClosed += frmArticulos_FormClosed;
             Cursor.Current = Cursors.Arrow;
+        }
+
+        private void frmVentas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = false; // permite cerrar el form por mas que 'this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;'
+            rowView.EndEdit();
+            if (PK == "" & dgvDatos.Rows.Count == 0) return;
+            if (tblVentasDetalle.GetChanges() != null || tblVentas.GetChanges() != null)
+            {
+                DialogResult respuesta = MessageBox.Show("¿Actualizar base de datos?", "Trend",
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                switch (respuesta)
+                {
+                    case DialogResult.Yes:
+                        this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+                        if (string.IsNullOrEmpty(PK))
+                        {
+                            Grabar();
+                        }
+                        else
+                        {
+                            formClosing = true;
+                            this.Tag = "ActualizarArqueo";
+                        }
+                        break;
+                    case DialogResult.No:
+                        this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+                        tblVentasDetalle.RejectChanges();
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                }
+            }
         }
 
         private void Grabar()
@@ -627,7 +654,8 @@ namespace StockVentas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Help.ShowHelp(button1, @"N:\NcSoftware\02_Access\HelpNc\NcPunto.chm");
+          //  Help.ShowHelp(button1, @"N:\NcSoftware\02_Access\HelpNc\NcPunto.chm");
+            DataTable temp = tblVentasDetalle.Copy();
         }         
 
         public void SetStateForm(FormState state)
@@ -670,44 +698,5 @@ namespace StockVentas
             return;
         }
 
-        private void frmVentas_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = false; // permite cerrar el form por mas que 'this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;'
-            rowView.EndEdit();
-            if (PK == "" & dgvDatos.Rows.Count == 0) return;
-            if (tblVentasDetalle.GetChanges() != null || tblVentas.GetChanges() != null)
-            {
-                DialogResult respuesta = MessageBox.Show("¿Actualizar base de datos?", "Trend",
-                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                switch (respuesta)
-                {
-                    case DialogResult.Yes:
-                        this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-                        Grabar();
-                        break;
-                    case DialogResult.No:
-                        this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-                        tblVentasDetalle.RejectChanges();
-                        break;
-                    case DialogResult.Cancel:
-                        e.Cancel = true;
-                        break;
-                }
-            }
-            if (frmInstanciaArqueo != null)
-            {
-                string strFechaDesde = dateTimePicker1.Value.ToString("yyyy-MM-dd 00:00:00"); //fecha string para mysql
-                string strFechaHasta = dateTimePicker1.Value.AddDays(1).ToString("yyyy-MM-dd 00:00:00");
-                DataSet dsArqueo = BL.VentasBLL.CrearDatasetArqueo(strFechaDesde, strFechaHasta, idPc);
-                frmInstanciaArqueo.dsArqueo = dsArqueo;
-                frmInstanciaArqueo.OrganizarTablas();
-                frmInstanciaArqueo.CargarDatos();
-            }
-        }
-
-        private void frmVentas_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape) Close();
-        }
     }
 }

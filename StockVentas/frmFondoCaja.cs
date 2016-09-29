@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using MySql.Data.MySqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -20,6 +19,9 @@ namespace StockVentas
         public int idPc;
         public int idLocal;       
         
+
+        
+
         public frmFondoCaja()
         {
             InitializeComponent();
@@ -95,29 +97,13 @@ namespace StockVentas
                 if (!BL.UtilDB.ValidarServicioMysql())
                 {
                     MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
-                            + '\r' + "Consulte al administrador del sistema.", "Trend Gestión", MessageBoxButtons.OK,
+                            + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     tblFondoCaja.RejectChanges();
                     return;
                 }
-                try
-                {
-                    BL.FondoCajaBLL.GrabarDB(tblFondoCaja);
-                }
-                catch (MySqlException ex)
-                {
-                    if (ex.Number == 1062) // clave principal duplicada
-                    {                        
-                        String local = (((DataRowView)lstLocales.SelectedItem).Row[1]).ToString();
-                        String caja = (((DataRowView)lstPc.SelectedItem).Row[2]).ToString();
-                        MessageBox.Show("Ya existe un fondo de caja con los siguientes datos:" + '\r' 
-                                        + "Fecha - " + dateTimePicker1.Value.ToString("dd-MM-yyyy") + '\r'
-                                        + "Local - " + local + '\r'
-                                        + "Caja - " + caja + '\r'
-                                        + "NO SE GRABARON LOS DATOS."
-                                        , "Trend Gestión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }                
+                frmProgress progreso = new frmProgress(tblFondoCaja, "frmFondoCaja", "grabar");
+                progreso.ShowDialog();
                 tblFondoCaja.AcceptChanges();
                 Close();
             }

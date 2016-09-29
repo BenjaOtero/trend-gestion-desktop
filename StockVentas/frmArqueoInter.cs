@@ -55,17 +55,12 @@ namespace StockVentas
                         MessageBoxIcon.Error);
                 return;
             }
-            Cursor.Current = Cursors.WaitCursor;
             fecha = dateTimePicker1.Value;
             idLocal = Convert.ToInt32(lstLocales.SelectedValue.ToString());
             nombreLocal = lstLocales.Text;
             idPc = Convert.ToInt32(lstPc.SelectedValue.ToString());
-            string strFechaDesde = dateTimePicker1.Value.ToString("yyyy-MM-dd 00:00:00"); //fecha string para mysql
-            string strFechaHasta = dateTimePicker1.Value.AddDays(1).ToString("yyyy-MM-dd 00:00:00");
-            DataSet dsArqueo = BL.VentasBLL.CrearDatasetArqueo(strFechaDesde, strFechaHasta, idPc);
-            frmArqueoCajaAdmin frmArqueo = new frmArqueoCajaAdmin(dsArqueo, fecha, idLocal, nombreLocal, idPc);
-            frmArqueo.ShowDialog();
-            Cursor.Current = Cursors.Arrow;
+            frmProgress frm = new frmProgress(fecha, idLocal, nombreLocal, idPc, "frmArqueoInter", "cargar");
+            frm.Show();
         }
 
         private void lstLocales_SelectedValueChanged(object sender, EventArgs e)

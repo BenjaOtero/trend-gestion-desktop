@@ -72,7 +72,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.dgvDatos = new StockVentas.customDgvw();
             this.grpVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
@@ -104,7 +103,6 @@
             // 
             // grpVentas
             // 
-            this.grpVentas.Controls.Add(this.button1);
             this.grpVentas.Controls.Add(this.btnClientes);
             this.grpVentas.Controls.Add(this.lblTotal);
             this.grpVentas.Controls.Add(this.lblNro);
@@ -507,16 +505,6 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "Cantidad";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(855, 11);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 21);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // dgvDatos
             // 
             this.dgvDatos.AllowUserToResizeRows = false;
@@ -538,13 +526,11 @@
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.grpABM);
             this.Controls.Add(this.grpVentas);
-            this.KeyPreview = true;
             this.Name = "frmVentas";
             this.Text = "Ventas";
             this.Activated += new System.EventHandler(this.frmVentas_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVentas_FormClosing);
             this.Load += new System.EventHandler(this.frmVentas_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmVentas_KeyDown);
             this.grpVentas.ResumeLayout(false);
             this.grpVentas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
@@ -604,6 +590,5 @@
         private System.Windows.Forms.TextBox txtCosto;
         private System.Windows.Forms.Label lblCosto;
         private System.Windows.Forms.Button btnClientes;
-        private System.Windows.Forms.Button button1;
     }
 }

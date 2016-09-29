@@ -19,7 +19,8 @@
     </Declarations>
     <Code Language="CSharp">
       <![CDATA[
-            tbl.PrimaryKey = new DataColumn[] { tbl.Columns["Id"] };
+            tablaOrigen = dt.Tables["ArticulosItems"];
+            tablaOrigen.PrimaryKey = new DataColumn[] { tablaOrigen.Columns["IdItemITE"] };
             ]]>
     </Code>
   </Snippet>

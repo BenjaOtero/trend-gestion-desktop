@@ -8,7 +8,7 @@ namespace StockVentas
     public partial class frmArqueoCajaAdmin : Form
     {
         public frmArqueoCajaAdmin frmInstanciaArqueo;
-        public DataSet dsArqueo = null;
+        public DataSet dt = null;
         DataTable tblArqueo;
         DataTable tblVentas;
         DataTable tblVentasDetalle;
@@ -28,7 +28,7 @@ namespace StockVentas
         {
             InitializeComponent();
             frmInstanciaArqueo = this;
-            this.dsArqueo = dsArqueo;
+            this.dt = dsArqueo;
             this.fecha = fecha;
             this.idLocal = idLocal;
             this.nombreLocal = nombreLocal;
@@ -78,7 +78,8 @@ namespace StockVentas
             if (e.ColumnIndex == dgvVentas.Columns["Editar"].Index)
             {
                 string idVenta = dgvVentas.CurrentRow.Cells["IdVentaVEN"].Value.ToString();
-                frmVentas ventas = new frmVentas(idVenta, idPc, tblVentas, tblVentasDetalle, frmInstanciaArqueo);
+                frmVentas ventas = new frmVentas(idVenta, idPc, tblVentas, tblVentasDetalle);
+                ventas.FormClosed += editVentas_FormClosed;
                 ventas.ShowDialog();
             }
             if (e.ColumnIndex == dgvVentas.Columns["Borrar"].Index)
@@ -94,8 +95,9 @@ namespace StockVentas
                         return;
                     }
                     int PK = Convert.ToInt32(dgvVentas.CurrentRow.Cells["IdVentaVEN"].Value.ToString());
-                    BL.VentasBLL.BorrarByPK(PK);
-                    ActualizarArqueo();
+                    frmProgress frm = new frmProgress(PK, "frmArqueoCajaAdmin_borrarVenta", "grabar");
+                    frm.FormClosed += progreso_FormClosed;
+                    frm.Show();
                 }
             }
         }
@@ -106,7 +108,8 @@ namespace StockVentas
             if (e.ColumnIndex == dgvTesoreria.Columns["Editar"].Index)
             {
                 string PK = dgvTesoreria.CurrentRow.Cells["IdMovTESM"].Value.ToString();
-                frmTesoreriaMov frm = new frmTesoreriaMov(idLocal, idPc, PK, tblTesoreria.Copy(), frmInstanciaArqueo);
+                frmTesoreriaMov frm = new frmTesoreriaMov(idLocal, idPc, PK, tblTesoreria.Copy());
+                frm.FormClosed += editTesoreria_FormClosed;
                 frm.Show();
             }
             if (e.ColumnIndex == dgvTesoreria.Columns["Borrar"].Index)
@@ -122,10 +125,41 @@ namespace StockVentas
                         return;
                     }
                     int PK = Convert.ToInt32(dgvTesoreria.CurrentRow.Cells["IdMovTESM"].Value.ToString());
-                    BL.TesoreriaMovimientosBLL.BorrarByPK(PK);
-                    ActualizarArqueo();
+                    frmProgress frm = new frmProgress(PK, "frmArqueoCajaAdmin_borrarTesoreria", "grabar");
+                    frm.FormClosed += progreso_FormClosed;
+                    frm.Show();
                 }
             }
+        }
+
+        void editVentas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmVentas formVentas = (frmVentas)sender;
+            if (formVentas.Tag != null && formVentas.Tag.ToString() == "ActualizarArqueo")
+            {
+                DataSet dsVentas = formVentas.dsVentas;
+                if (!BL.UtilDB.ValidarServicioMysql())
+                {
+                    MessageBox.Show("NO SE ACTUALIZARON LOS DATOS." + '\r' + "No se pudo conectar con el servidor de base de datos."
+                            + '\r' + "Consulte al administrador del sistema.", "Trend Sistemas", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    dsVentas.RejectChanges();
+                    return;
+                }                
+                frmProgress progreso = new frmProgress(dsVentas, "frmVentas", "grabar");
+                progreso.FormClosed += progreso_FormClosed;
+                progreso.Show();
+            }
+        }
+
+        void editTesoreria_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ActualizarArqueo();
+        }
+
+        void progreso_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ActualizarArqueo();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -142,20 +176,17 @@ namespace StockVentas
                         MessageBoxIcon.Error);
                 return;
             }
-            string strFechaDesde = fecha.ToString("yyyy-MM-dd 00:00:00"); //fecha string para mysql
-            string strFechaHasta = fecha.AddDays(1).ToString("yyyy-MM-dd 00:00:00");
-            dsArqueo = BL.VentasBLL.CrearDatasetArqueo(strFechaDesde, strFechaHasta, idPc);
-            OrganizarTablas();
-            CargarDatos();
+            frmProgress frm = new frmProgress(fecha, idLocal, nombreLocal, idPc, "frmArqueoInter", "cargar", frmInstanciaArqueo);
+            frm.ShowDialog();
         }
 
         public void OrganizarTablas()
         {
-            tblVentas = dsArqueo.Tables[0].Copy();
+            tblVentas = dt.Tables[0].Copy();
             tblVentas.TableName = "Ventas";
             tblVentas.AcceptChanges();
 
-            tblVentasDetalle = dsArqueo.Tables[1].Copy();
+            tblVentasDetalle = dt.Tables[1].Copy();
             tblVentasDetalle.TableName = "VentasDetalle";
             tblVentasDetalle.Columns.Remove("IdVentaVEN");
             tblVentasDetalle.Columns.Remove("FechaVEN");
@@ -166,7 +197,7 @@ namespace StockVentas
             tblVentasDetalle.Columns["Descripcion"].ColumnName = "DescripcionDVEN";
             tblVentasDetalle.AcceptChanges();
 
-            tblArqueo = dsArqueo.Tables[1].Copy();
+            tblArqueo = dt.Tables[1].Copy();
             tblArqueo.Columns.Remove("IdClienteVEN");
             tblArqueo.Columns.Remove("IdDVEN");
             tblArqueo.Columns.Remove("IdVentaDVEN");
@@ -185,17 +216,17 @@ namespace StockVentas
         public void CargarDatos()
         {
             Cursor.Current = Cursors.WaitCursor;
-            if (dsArqueo == null)
+            if (dt == null)
             {
                 Close();
                 return;
             }
-            tblFondoCajaInicial = dsArqueo.Tables[2];
-            tblFondoCajaFinal = dsArqueo.Tables[3];
-            tblTesoreria = dsArqueo.Tables[4];
-            tblEfectivo = dsArqueo.Tables[5];
-            tblTarjeta = dsArqueo.Tables[6];
-            tblSumaTesoreria = dsArqueo.Tables[7];
+            tblFondoCajaInicial = dt.Tables[2];
+            tblFondoCajaFinal = dt.Tables[3];
+            tblTesoreria = dt.Tables[4];
+            tblEfectivo = dt.Tables[5];
+            tblTarjeta = dt.Tables[6];
+            tblSumaTesoreria = dt.Tables[7];
             tblArqueo.DefaultView.Sort = "FechaVEN DESC";
             dgvVentas.DataSource = tblArqueo;
             dgvVentas.Columns["IdPCVEN"].Visible = false;

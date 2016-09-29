@@ -734,15 +734,11 @@
     <None Include="Snippets\combobox_inicializar.snippet" />
     <None Include="Snippets\datarowview_foreach_dataview.snippet" />
     <None Include="Snippets\datarowview_foreach_listbox.snippet" />
-    <None Include="Snippets\dataview_row_filter.snippet" />
-    <None Include="Snippets\keyDown.snippet" />
-    <None Include="Snippets\listbox_get_displayMemberOrValueMember.snippet" />
     <None Include="Snippets\table_create.snippet" />
+    <None Include="Snippets\dataview_row_filter.snippet" />
     <None Include="Snippets\table_find_row.snippet" />
     <None Include="Snippets\random.snippet" />
     <None Include="Snippets\datagridview_sort.snippet" />
-    <None Include="Snippets\table_get_table.snippet" />
-    <None Include="Snippets\table_get_table2.snippet" />
     <None Include="Snippets\table_primarykey.snippet" />
     <None Include="Snippets\mysql_connection.snippet" />
     <None Include="Snippets\datarowview_delete_row.snippet" />
@@ -795,11 +791,8 @@
     <None Include="Resources\btn_cerrar_down.jpg" />
     <None Include="Resources\btn_cerrar_down.gif" />
     <None Include="Resources\bckgrd_popup.jpg" />
-    <None Include="Resources\Help.png" />
-    <None Include="Resources\Help1.png" />
     <Content Include="Resources\LogoTrend1.jpg" />
     <None Include="Resources\top_ bar_form.jpg" />
-    <None Include="Resources\Noia_64_apps_help_index.png" />
     <Content Include="xml\Clientes.xml" />
   </ItemGroup>
   <ItemGroup>
