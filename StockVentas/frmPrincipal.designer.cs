@@ -290,6 +290,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AutoSize = false;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripMenuItem9,
@@ -299,7 +300,7 @@
             this.mantenimientoToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(537, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(537, 74);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -320,7 +321,7 @@
             this.toolStripMenuItem7,
             this.toolStripMenuItem8});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(87, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(87, 70);
             this.toolStripMenuItem1.Text = "Base de datos";
             // 
             // alícuotasIVAToolStripMenuItem
@@ -437,7 +438,7 @@
             this.toolStripMenuItem11,
             this.toolStripMenuItem12});
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(45, 20);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(45, 70);
             this.toolStripMenuItem9.Text = "Stock";
             // 
             // toolStripStockEntradas
@@ -464,7 +465,7 @@
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(52, 20);
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(52, 70);
             this.toolStripMenuItem13.Text = "Ventas";
             this.toolStripMenuItem13.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
             // 
@@ -475,7 +476,7 @@
             this.toolStripMenuItem15,
             this.toolStripMenuItem16});
             this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-            this.toolStripMenuItem14.Size = new System.Drawing.Size(64, 20);
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(64, 70);
             this.toolStripMenuItem14.Text = "Tesoreria";
             // 
             // movimientosDeEmpleadosToolStripMenuItem
@@ -508,7 +509,7 @@
             this.ventasToolStripMenuItem2,
             this.empleadosToolStripMenuItem2});
             this.toolStripMenuItem19.Name = "toolStripMenuItem19";
-            this.toolStripMenuItem19.Size = new System.Drawing.Size(62, 20);
+            this.toolStripMenuItem19.Size = new System.Drawing.Size(62, 70);
             this.toolStripMenuItem19.Text = "Informes";
             // 
             // fondosDeCajaToolStripMenuItem
@@ -627,7 +628,7 @@
             this.importarDatosToolStripMenuItem,
             this.importarDatosActualesToolStripMenuItem});
             this.mantenimientoToolStripMenuItem1.Name = "mantenimientoToolStripMenuItem1";
-            this.mantenimientoToolStripMenuItem1.Size = new System.Drawing.Size(89, 20);
+            this.mantenimientoToolStripMenuItem1.Size = new System.Drawing.Size(89, 70);
             this.mantenimientoToolStripMenuItem1.Text = "Mantenimiento";
             // 
             // backupBaseDeDatosToolStripMenuItem
@@ -683,7 +684,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
