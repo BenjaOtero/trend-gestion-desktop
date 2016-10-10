@@ -441,9 +441,13 @@
             this.toolStripStockEntradas,
             this.toolStripMenuItem11,
             this.toolStripMenuItem12});
+            this.toolStripMenuItem9.Image = global::StockVentas.Properties.Resources.stock;
+            this.toolStripMenuItem9.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(45, 70);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(62, 70);
             this.toolStripMenuItem9.Text = "Stock";
+            this.toolStripMenuItem9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripMenuItem9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripStockEntradas
             // 
