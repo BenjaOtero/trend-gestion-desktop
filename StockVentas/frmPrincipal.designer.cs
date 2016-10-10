@@ -100,6 +100,7 @@
             this.exportarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarDatosActualesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -297,7 +298,8 @@
             this.toolStripMenuItem13,
             this.toolStripMenuItem14,
             this.toolStripMenuItem19,
-            this.mantenimientoToolStripMenuItem1});
+            this.mantenimientoToolStripMenuItem1,
+            this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(537, 74);
@@ -690,6 +692,16 @@
             this.importarDatosActualesToolStripMenuItem.Text = "Importar datos de hoy";
             this.importarDatosActualesToolStripMenuItem.Click += new System.EventHandler(this.importarDatosActualesToolStripMenuItem_Click);
             // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.Image = global::StockVentas.Properties.Resources.ayuda;
+            this.ayudaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(62, 70);
+            this.ayudaToolStripMenuItem.Text = "Ayuda";
+            this.ayudaToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ayudaToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -785,6 +797,7 @@
         private System.Windows.Forms.ToolStripMenuItem importarDatosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restaurarBaseDeDatosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importarDatosActualesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
     }
 }
 
