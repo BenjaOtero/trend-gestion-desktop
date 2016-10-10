@@ -472,9 +472,13 @@
             // 
             // toolStripMenuItem13
             // 
+            this.toolStripMenuItem13.Image = global::StockVentas.Properties.Resources.ventas;
+            this.toolStripMenuItem13.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(52, 70);
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(62, 70);
             this.toolStripMenuItem13.Text = "Ventas";
+            this.toolStripMenuItem13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripMenuItem13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripMenuItem13.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
             // 
             // toolStripMenuItem14
@@ -483,9 +487,13 @@
             this.movimientosDeEmpleadosToolStripMenuItem,
             this.toolStripMenuItem15,
             this.toolStripMenuItem16});
+            this.toolStripMenuItem14.Image = global::StockVentas.Properties.Resources.tesoreria;
+            this.toolStripMenuItem14.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripMenuItem14.Name = "toolStripMenuItem14";
             this.toolStripMenuItem14.Size = new System.Drawing.Size(64, 70);
             this.toolStripMenuItem14.Text = "Tesoreria";
+            this.toolStripMenuItem14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripMenuItem14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // movimientosDeEmpleadosToolStripMenuItem
             // 
@@ -516,9 +524,13 @@
             this.toolStripMenuItem20,
             this.ventasToolStripMenuItem2,
             this.empleadosToolStripMenuItem2});
+            this.toolStripMenuItem19.Image = global::StockVentas.Properties.Resources.informes;
+            this.toolStripMenuItem19.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripMenuItem19.Name = "toolStripMenuItem19";
             this.toolStripMenuItem19.Size = new System.Drawing.Size(62, 70);
             this.toolStripMenuItem19.Text = "Informes";
+            this.toolStripMenuItem19.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripMenuItem19.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // fondosDeCajaToolStripMenuItem
             // 
@@ -635,9 +647,13 @@
             this.exportarDatosToolStripMenuItem,
             this.importarDatosToolStripMenuItem,
             this.importarDatosActualesToolStripMenuItem});
+            this.mantenimientoToolStripMenuItem1.Image = global::StockVentas.Properties.Resources.mantenimiento1;
+            this.mantenimientoToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.mantenimientoToolStripMenuItem1.Name = "mantenimientoToolStripMenuItem1";
             this.mantenimientoToolStripMenuItem1.Size = new System.Drawing.Size(89, 70);
             this.mantenimientoToolStripMenuItem1.Text = "Mantenimiento";
+            this.mantenimientoToolStripMenuItem1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.mantenimientoToolStripMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // backupBaseDeDatosToolStripMenuItem
             // 
