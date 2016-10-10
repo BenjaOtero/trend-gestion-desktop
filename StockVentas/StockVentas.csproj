@@ -791,8 +791,15 @@
     <None Include="Resources\btn_cerrar_down.jpg" />
     <None Include="Resources\btn_cerrar_down.gif" />
     <None Include="Resources\bckgrd_popup.jpg" />
+    <None Include="Resources\bd.gif" />
+    <None Include="Resources\informes.gif" />
+    <None Include="Resources\ayuda.gif" />
     <Content Include="Resources\LogoTrend1.jpg" />
     <None Include="Resources\top_ bar_form.jpg" />
+    <None Include="Resources\stock.gif" />
+    <None Include="Resources\ventas.gif" />
+    <None Include="Resources\tesoreria.gif" />
+    <None Include="Resources\mantenimiento.gif" />
     <Content Include="xml\Clientes.xml" />
   </ItemGroup>
   <ItemGroup>
