@@ -320,9 +320,13 @@
             this.localesToolStripMenuItem,
             this.toolStripMenuItem7,
             this.toolStripMenuItem8});
+            this.toolStripMenuItem1.Image = global::StockVentas.Properties.Resources.bd;
+            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(87, 70);
             this.toolStripMenuItem1.Text = "Base de datos";
+            this.toolStripMenuItem1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // alícuotasIVAToolStripMenuItem
             // 
