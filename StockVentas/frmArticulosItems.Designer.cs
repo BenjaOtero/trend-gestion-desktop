@@ -32,14 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmArticulosItems));
             this.grpBotones = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.chkActivoWebITE = new System.Windows.Forms.CheckBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.chkActivoWebITE = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtParametros = new System.Windows.Forms.TextBox();
             this.gvwDatos = new System.Windows.Forms.DataGridView();
@@ -75,45 +75,35 @@
             // grpBotones
             // 
             this.grpBotones.Controls.Add(this.btnCancelar);
-            this.grpBotones.Controls.Add(this.chkActivoWebITE);
             this.grpBotones.Controls.Add(this.btnSalir);
             this.grpBotones.Controls.Add(this.btnGrabar);
-            this.grpBotones.Controls.Add(this.label4);
             this.grpBotones.Controls.Add(this.btnBorrar);
             this.grpBotones.Controls.Add(this.btnEditar);
             this.grpBotones.Controls.Add(this.btnNuevo);
             this.grpBotones.Controls.Add(this.btnBuscar);
             this.grpBotones.Location = new System.Drawing.Point(333, 69);
             this.grpBotones.Name = "grpBotones";
-            this.grpBotones.Size = new System.Drawing.Size(200, 321);
+            this.grpBotones.Size = new System.Drawing.Size(200, 366);
             this.grpBotones.TabIndex = 1;
             this.grpBotones.TabStop = false;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(20, 185);
+            this.btnCancelar.Image = global::StockVentas.Properties.Resources.cancel;
+            this.btnCancelar.Location = new System.Drawing.Point(20, 262);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(160, 26);
+            this.btnCancelar.Size = new System.Drawing.Size(160, 40);
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // chkActivoWebITE
-            // 
-            this.chkActivoWebITE.AutoSize = true;
-            this.chkActivoWebITE.Location = new System.Drawing.Point(135, 281);
-            this.chkActivoWebITE.Name = "chkActivoWebITE";
-            this.chkActivoWebITE.Size = new System.Drawing.Size(15, 14);
-            this.chkActivoWebITE.TabIndex = 4;
-            this.chkActivoWebITE.UseVisualStyleBackColor = true;
-            this.chkActivoWebITE.Visible = false;
-            // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(20, 217);
+            this.btnSalir.Location = new System.Drawing.Point(20, 310);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(160, 26);
+            this.btnSalir.Size = new System.Drawing.Size(160, 40);
             this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -121,65 +111,86 @@
             // 
             // btnGrabar
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(20, 153);
+            this.btnGrabar.Image = global::StockVentas.Properties.Resources.grabar;
+            this.btnGrabar.Location = new System.Drawing.Point(20, 214);
             this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(160, 26);
+            this.btnGrabar.Size = new System.Drawing.Size(160, 40);
             this.btnGrabar.TabIndex = 4;
             this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGrabar.UseVisualStyleBackColor = true;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Image = global::StockVentas.Properties.Resources.borrar;
+            this.btnBorrar.Location = new System.Drawing.Point(20, 166);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(160, 40);
+            this.btnBorrar.TabIndex = 3;
+            this.btnBorrar.Text = "Borrar";
+            this.btnBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Image = global::StockVentas.Properties.Resources.editar;
+            this.btnEditar.Location = new System.Drawing.Point(20, 118);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(160, 40);
+            this.btnEditar.TabIndex = 2;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Image = global::StockVentas.Properties.Resources.add;
+            this.btnNuevo.Location = new System.Drawing.Point(20, 70);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(160, 40);
+            this.btnNuevo.TabIndex = 1;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Image = global::StockVentas.Properties.Resources.buscar;
+            this.btnBuscar.Location = new System.Drawing.Point(20, 22);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(160, 40);
+            this.btnBuscar.TabIndex = 0;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // chkActivoWebITE
+            // 
+            this.chkActivoWebITE.AutoSize = true;
+            this.chkActivoWebITE.Location = new System.Drawing.Point(136, 122);
+            this.chkActivoWebITE.Name = "chkActivoWebITE";
+            this.chkActivoWebITE.Size = new System.Drawing.Size(15, 14);
+            this.chkActivoWebITE.TabIndex = 4;
+            this.chkActivoWebITE.UseVisualStyleBackColor = true;
+            this.chkActivoWebITE.Visible = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label4.Location = new System.Drawing.Point(17, 278);
+            this.label4.Location = new System.Drawing.Point(18, 119);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 15);
             this.label4.TabIndex = 15;
             this.label4.Text = "Activo en la web";
             this.label4.Visible = false;
-            // 
-            // btnBorrar
-            // 
-            this.btnBorrar.Location = new System.Drawing.Point(20, 121);
-            this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(160, 26);
-            this.btnBorrar.TabIndex = 3;
-            this.btnBorrar.Text = "Borrar";
-            this.btnBorrar.UseVisualStyleBackColor = true;
-            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Location = new System.Drawing.Point(20, 89);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(160, 26);
-            this.btnEditar.TabIndex = 2;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Location = new System.Drawing.Point(20, 57);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(160, 26);
-            this.btnNuevo.TabIndex = 1;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(20, 25);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(160, 26);
-            this.btnBuscar.TabIndex = 0;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // groupBox1
             // 
@@ -273,14 +284,16 @@
             // grpCampos
             // 
             this.grpCampos.Controls.Add(this.label1);
+            this.grpCampos.Controls.Add(this.chkActivoWebITE);
             this.grpCampos.Controls.Add(this.txtDescripcionITE);
             this.grpCampos.Controls.Add(this.txtDescripcionWebITE);
             this.grpCampos.Controls.Add(this.label3);
+            this.grpCampos.Controls.Add(this.label4);
             this.grpCampos.Controls.Add(this.txtIdItemITE);
             this.grpCampos.Controls.Add(this.label2);
             this.grpCampos.Location = new System.Drawing.Point(12, 263);
             this.grpCampos.Name = "grpCampos";
-            this.grpCampos.Size = new System.Drawing.Size(308, 127);
+            this.grpCampos.Size = new System.Drawing.Size(308, 172);
             this.grpCampos.TabIndex = 0;
             this.grpCampos.TabStop = false;
             // 
@@ -300,7 +313,7 @@
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2});
-            this.bindingNavigator1.Location = new System.Drawing.Point(0, 406);
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 443);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -386,7 +399,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 431);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(545, 468);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.grpCampos);
             this.Controls.Add(this.gvwDatos);
@@ -400,7 +414,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmArticulosItems_FormClosing);
             this.Load += new System.EventHandler(this.frmArticulosItems_Load);
             this.grpBotones.ResumeLayout(false);
-            this.grpBotones.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvwDatos)).EndInit();

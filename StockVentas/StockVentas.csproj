@@ -794,6 +794,12 @@
     <None Include="Resources\bd.gif" />
     <None Include="Resources\informes.gif" />
     <None Include="Resources\ayuda.gif" />
+    <None Include="Resources\add.gif" />
+    <None Include="Resources\buscar.gif" />
+    <None Include="Resources\editar.gif" />
+    <None Include="Resources\borrar.gif" />
+    <None Include="Resources\grabar.gif" />
+    <None Include="Resources\cancel.gif" />
     <Content Include="Resources\LogoTrend1.jpg" />
     <None Include="Resources\top_ bar_form.jpg" />
     <None Include="Resources\stock.gif" />
